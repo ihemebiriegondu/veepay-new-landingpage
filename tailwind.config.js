@@ -5,11 +5,12 @@ module.exports = {
     extend: {
       colors: {
         primary: "#0E387A",
+        light: "#9FAFCA",
         secondary: "#FBC304",
-        darkSecondary: "#FFA500"
+        darkSecondary: "#FFA500",
       },
       spacing: {
-        140: '32rem'
+        140: "32rem",
       },
     },
   },
