@@ -12,7 +12,9 @@ export default function ServicesBox({ icon, heading, visible }) {
       <MyButtons link={"/"} text={"BUY NOW"} />
       <Link
         to={"/"}
-        className={`mt-1.5 py-3 px-6 border border-primary rounded hover:bg-primary hover:text-white transition ease-in-out duration-500 ${visible ? 'block' : 'hidden'}`}
+        className={`mt-1.5 py-3 px-6 border border-primary rounded hover:bg-primary hover:text-white transition ease-in-out duration-500 ${
+          visible ? "block" : "hidden"
+        }`}
       >
         SELL TO US
       </Link>

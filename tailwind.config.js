@@ -10,7 +10,9 @@ module.exports = {
         darkSecondary: "#FFA500",
       },
       spacing: {
+        130: "28.7rem",
         140: "32rem",
+        150: "39.6rem",
       },
     },
   },
