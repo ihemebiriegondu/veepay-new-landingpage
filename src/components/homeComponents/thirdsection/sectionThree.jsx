@@ -2,9 +2,9 @@ import React from "react";
 import sec3Img from "../../../assets/images/Group 15.png";
 import { Link } from "react-router-dom";
 
-export default function sectionThree() {
+export default function SectionThree() {
   return (
-    <section className="flex flex-row justify-between items-center gap-28 bg-light/10 p-14 pb-0 mb-12">
+    <section className="flex flex-row justify-between items-center gap-28 bg-light/10 p-14 pb-0 mb-28">
       <div className="w-150 h-130">
         <img src={sec3Img} alt="man img" className="w-full h-full object-contain" />
       </div>
