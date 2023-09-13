@@ -20,7 +20,7 @@ export default function About() {
       <hr className="bg-primary/20 w-1/6 mx-auto" />
       <article className="mt-8">
         <h2 className="font-bold text-2xl mb-12">Contacts</h2>
-        <div className="flex items-center gap-10 justify-center text-white">
+        <div className="flex md:flex-row flex-col items-center gap-10 justify-center text-white">
           <Link className="bg-neutral-600 p-4 rounded-full">
             <BsTelephoneFill className="w-6 h-6" />
           </Link>
