@@ -31,6 +31,7 @@ export default function Faqs() {
   ];
 
   const [targetElement, setTargetElement] = useState("");
+  const [isOpened, setIsOpened] = useState(false);
 
   return (
     <section className="lg:px-20 md:px-12 px-6 lg:pb-20 md:pb-10 pb-5">
@@ -45,6 +46,11 @@ export default function Faqs() {
               className="border border-primary lg:rounded-lg rounded lg:px-16 md:px-10 px-5 lg:py-7 md:py-4 py-2 cursor-pointer"
               dataaccordion={faq.ques}
               onClick={(e) => {
+                if (targetElement === e.target.getAttribute("dataaccordion")) {
+                  setIsOpened(true);
+                } else {
+                  setIsOpened(false);
+                }
                 setTargetElement(e.target.getAttribute("dataaccordion"));
               }}
             >
@@ -55,7 +61,7 @@ export default function Faqs() {
                 <h6
                   dataaccordion={faq.ques}
                   className={`lg:text-xl md:text-base text-sm font-semibold basis-11/12 ${
-                    targetElement === faq.ques ? "text-primary" : ""
+                    targetElement === faq.ques && !isOpened ? "text-primary" : ""
                   }`}
                 >
                   {faq.ques}
@@ -63,34 +69,38 @@ export default function Faqs() {
                 <AiOutlinePlus
                   dataaccordion={faq.ques}
                   className={`lg:w-5 md:w-3 w-2.5 lg:h-5 md:h-3 h-2.5 ${
-                    targetElement === faq.ques ? "hidden" : "block"
+                    targetElement === faq.ques && !isOpened ? "hidden" : "block"
                   }`}
                 />
                 <AiOutlineMinus
                   dataaccordion={faq.ques}
                   className={`lg:w-5 md:w-3 w-2.5 lg:h-5 md:h-3 h-2.5 ${
-                    targetElement === faq.ques ? "block" : "hidden"
+                    targetElement === faq.ques && !isOpened ? "block" : "hidden"
                   }`}
                 />
               </div>
-              <div
-                dataaccordion={faq.ques}
-                className={`pt-3 ${
-                  targetElement === faq.ques ? "block" : "hidden"
-                }`}
-              >
-                <p
+              {!isOpened && (
+                <div
                   dataaccordion={faq.ques}
-                  className="text-primary font-medium lg:text-base text-sm"
+                  className={`pt-3 ${
+                    targetElement === faq.ques ? "block" : "hidden"
+                  }`}
                 >
-                  {faq.ans}
-                </p>
-              </div>
+                  <p
+                    dataaccordion={faq.ques}
+                    className="text-primary font-medium lg:text-base text-sm"
+                  >
+                    {faq.ans}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
       </article>
       <div className="text-center">
-        <p className="lg:text-xl md:text-base text-sm font-medium">More Questions?</p>
+        <p className="lg:text-xl md:text-base text-sm font-medium">
+          More Questions?
+        </p>
         <Link
           to={"/"}
           className="text-primary lg:text-lg md:text-sm text-xs italic font-medium underline"
