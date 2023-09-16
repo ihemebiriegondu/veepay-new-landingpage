@@ -12,7 +12,7 @@ export default function Header() {
       <Nav />
       <div className="px-4 flex lg:flex-row flex-col lg:gap-4 gap-8 items-center justify-between">
         <div className="lg:basis-2/5 lg:block flex flex-col items-center">
-          <div className="md:w-140 w-52 md:h-44 h-24 mb-3">
+          <div className="md:w-140 sm:w-52 w-full md:h-44 sm:h-24 mb-3">
             <img
               src={logo}
               alt="veepay logo"
