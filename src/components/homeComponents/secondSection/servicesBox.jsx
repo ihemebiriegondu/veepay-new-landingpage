@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function ServicesBox({ icon, heading, visible }) {
   return (
-    <div className={`flex flex-col items-center bg-light/20 w-full md:pt-12 pt-4 md:pb-3.5 pb-2 px-2 shadow-md ${visible ? "" : "md:pb-16 pb-10"} lg:text-base text-sm`}>
+    <div className={`flex flex-col items-center bg-light/20 w-full md:pt-12 pt-4 md:pb-3.5 pb-2 px-2 shadow-md hover:shadow-xl transition ease-in-out duration-500 ${visible ? "" : "md:pb-16 pb-10"} lg:text-base text-sm`}>
       <div className="bg-zinc-300 sm:py-4 py-2 sm:px-3.5 px-1.5 rounded-full md:mb-5 mb-1.5">
         <img src={icon} alt="" className="sm:h-7 h-3 sm:w-8 w-4" />
       </div>

@@ -10,7 +10,7 @@ export default function About() {
     <section className="text-center lg:pb-14 md:pb-8 pb-4 lg:pt-8 md:pt-4 pt-2.5 lg:px-20 md:px-12 px-6 bg-light/10">
       <article className="2xl:w-7/12 xl:w-2/3 lg:w-3/4 md:w-11/12 w-full mx-auto lg:mb-10 md:mb-5 mb-2">
         <h2 className="font-bold lg:text-2xl md:text-lg text-base lg:mb-6 md:mb-4 mb-2.5">About Us</h2>
-        <p className="font-semibold md:text-base text-sm">
+        <p className="font-semibold lg:text-base md:text-sm text-xs">
           Veepay is a three in one telecommunication platform that provides its
           users with hassle-free experience anytime they use its product. Veepay
           intends to connect individuals in ways to pay for their favorite
@@ -22,23 +22,23 @@ export default function About() {
       <article className="lg:mt-8 md:mt-4 mt-2.5">
         <h2 className="font-bold lg:text-2xl md:text-lg text-base lg:mb-12 md:mb-8 mb-4">Contacts</h2>
         <div className="flex items-center lg:gap-10 md:gap-6 gap-3 justify-center text-white">
-          <Link className="bg-neutral-600 lg:p-4 md:p-2 p-1 rounded-full">
-            <IoIosCall className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-neutral-600 lg:p-4 p-2 rounded-full">
+            <IoIosCall className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
-          <Link className="bg-[#4267B2] lg:p-4 md:p-2 p-1 rounded-full">
-            <GrFacebookOption className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-[#4267B2] lg:p-4 p-2 rounded-full">
+            <GrFacebookOption className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
-          <Link className="bg-[#0072B1] lg:p-4 md:p-2 p-1 rounded-full">
-            <FaLinkedinIn className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-[#0072B1] lg:p-4 p-2 rounded-full">
+            <FaLinkedinIn className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
-          <Link className="bg-[#BC2A8D] lg:p-4 md:p-2 p-1 rounded-full">
-            <BsInstagram className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-[#BC2A8D] lg:p-4 p-2 rounded-full">
+            <BsInstagram className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
-          <Link className="bg-[#00ACEE] lg:p-4 md:p-2 p-1 rounded-full">
-            <FaTwitter className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-[#00ACEE] lg:p-4 p-2 rounded-full">
+            <FaTwitter className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
-          <Link className="bg-[#BB001B] lg:p-4 md:p-2 p-1 rounded-full">
-            <IoIosMail className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
+          <Link className="bg-[#BB001B] lg:p-4 p-2 rounded-full">
+            <IoIosMail className="lg:w-6 md:w-4 w-3 lg:h-6 md:h-4 h-3" />
           </Link>
         </div>
       </article>

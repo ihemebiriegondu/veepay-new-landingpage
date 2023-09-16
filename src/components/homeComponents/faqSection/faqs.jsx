@@ -54,7 +54,7 @@ export default function Faqs() {
               >
                 <h6
                   dataaccordion={faq.ques}
-                  className={`lg:text-xl md:text-base text-sm font-semibold ${
+                  className={`lg:text-xl md:text-base text-sm font-semibold basis-11/12 ${
                     targetElement === faq.ques ? "text-primary" : ""
                   }`}
                 >
@@ -81,7 +81,7 @@ export default function Faqs() {
               >
                 <p
                   dataaccordion={faq.ques}
-                  className="text-primary font-medium"
+                  className="text-primary font-medium lg:text-base text-sm"
                 >
                   {faq.ans}
                 </p>
