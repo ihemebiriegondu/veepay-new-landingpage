@@ -8,8 +8,10 @@ module.exports = {
         light: "#9FAFCA",
         secondary: "#FBC304",
         darkSecondary: "#FFA500",
-        invalid: '#C4C4C4',
-        warning: '#FF0000'
+        invalid: "#C4C4C4",
+        warning: "#FF0000",
+        formBg: "#CFD7E4",
+        mobileFormBg: '#E7EBF2',
       },
       spacing: {
         130: "28.7rem",
@@ -18,6 +20,9 @@ module.exports = {
       },
       screens: {
         xs: "480px",
+      },
+      skew: {
+        8: "8.488deg",
       },
     },
   },
