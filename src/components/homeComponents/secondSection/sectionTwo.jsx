@@ -15,7 +15,7 @@ export default function SectionTwo() {
   ];
 
   return (
-    <section className="lg:pt-12 pt-7 lg:pb-28 pb-9 lg:px-20 px-6">
+    <section className="lg:pt-12 pt-7 lg:pb-28 pb-9 lg:px-20 px-6" id="quickBuy">
       <h1 className="text-center font-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl lg:mb-6 mb-2.5">
         Products and Services
       </h1>
