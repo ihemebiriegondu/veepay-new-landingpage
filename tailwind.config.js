@@ -14,6 +14,9 @@ module.exports = {
         140: "32rem",
         150: "39.6rem",
       },
+      screens: {
+        xs: "480px",
+      },
     },
   },
   plugins: [],

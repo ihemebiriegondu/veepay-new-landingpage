@@ -27,7 +27,7 @@ export default function Header() {
               their favorite services by providing easier, faster and secure
               ways to recharge your favorite brands.
             </p>
-            <div className="italic underline md:text-base text-sm">
+            <div className="italic underline md:text-base text-xs">
               <MyButtons link={"/"} text={"Start now"} />
             </div>
           </div>

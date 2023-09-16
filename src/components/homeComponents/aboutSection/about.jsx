@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <section className="text-center pb-14 pt-8 px-20 bg-light/10">
-      <article className="w-7/12 mx-auto mb-10">
-        <h2 className="font-bold text-2xl mb-6">About Us</h2>
-        <p className="font-semibold">
+    <section className="text-center lg:pb-14 md:pb-8 pb-4 lg:pt-8 md:pt-4 pt-2.5 lg:px-20 md:px-12 px-6 bg-light/10">
+      <article className="2xl:w-7/12 xl:w-2/3 lg:w-3/4 md:w-11/12 w-full mx-auto lg:mb-10 md:mb-5 mb-2">
+        <h2 className="font-bold lg:text-2xl md:text-lg text-base lg:mb-6 md:mb-4 mb-2.5">About Us</h2>
+        <p className="font-semibold md:text-base text-sm">
           Veepay is a three in one telecommunication platform that provides its
           users with hassle-free experience anytime they use its product. Veepay
           intends to connect individuals in ways to pay for their favorite
@@ -18,27 +18,27 @@ export default function About() {
           favorite brands.
         </p>
       </article>
-      <hr className="bg-primary/20 w-1/6 mx-auto" />
-      <article className="mt-8">
-        <h2 className="font-bold text-2xl mb-12">Contacts</h2>
-        <div className="flex md:flex-row flex-col items-center gap-10 justify-center text-white">
-          <Link className="bg-neutral-600 p-4 rounded-full">
-            <IoIosCall className="w-6 h-6" />
+      <hr className="bg-primary/20 xl:w-1/6 sm:w-1/4 w-1/3 mx-auto" />
+      <article className="lg:mt-8 md:mt-4 mt-2.5">
+        <h2 className="font-bold lg:text-2xl md:text-lg text-base lg:mb-12 md:mb-8 mb-4">Contacts</h2>
+        <div className="flex items-center lg:gap-10 md:gap-6 gap-3 justify-center text-white">
+          <Link className="bg-neutral-600 lg:p-4 md:p-2 p-1 rounded-full">
+            <IoIosCall className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
-          <Link className="bg-[#4267B2] p-4 rounded-full">
-            <GrFacebookOption className="w-6 h-6" />
+          <Link className="bg-[#4267B2] lg:p-4 md:p-2 p-1 rounded-full">
+            <GrFacebookOption className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
-          <Link className="bg-[#0072B1] p-4 rounded-full">
-            <FaLinkedinIn className="w-6 h-6" />
+          <Link className="bg-[#0072B1] lg:p-4 md:p-2 p-1 rounded-full">
+            <FaLinkedinIn className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
-          <Link className="bg-[#BC2A8D] p-4 rounded-full">
-            <BsInstagram className="w-6 h-6" />
+          <Link className="bg-[#BC2A8D] lg:p-4 md:p-2 p-1 rounded-full">
+            <BsInstagram className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
-          <Link className="bg-[#00ACEE] p-4 rounded-full">
-            <FaTwitter className="w-6 h-6" />
+          <Link className="bg-[#00ACEE] lg:p-4 md:p-2 p-1 rounded-full">
+            <FaTwitter className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
-          <Link className="bg-[#BB001B] p-4 rounded-full">
-            <IoIosMail className="w-6 h-6" />
+          <Link className="bg-[#BB001B] lg:p-4 md:p-2 p-1 rounded-full">
+            <IoIosMail className="lg:w-6 md:w-4 w-2 lg:h-6 md:h-4 h-2" />
           </Link>
         </div>
       </article>
