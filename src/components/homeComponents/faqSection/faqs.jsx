@@ -33,16 +33,16 @@ export default function Faqs() {
   const [targetElement, setTargetElement] = useState("");
 
   return (
-    <section className="px-20 pb-20">
-      <h1 className="text-center font-bold text-4xl mb-6">
+    <section className="lg:px-20 md:px-12 px-6 lg:pb-20 md:pb-10 pb-5">
+      <h1 className="text-center font-bold lg:text-4xl md:text-2xl text-xl lg:mb-6 mb-3">
         Frequently asked Questions
       </h1>
-      <article className="flex flex-col gap-y-6 mb-5">
+      <article className="flex flex-col gap-y-6 lg:mb-5 mb-3">
         {faqs &&
           faqs.map((faq) => (
             <div
               key={faq.ques}
-              className="border border-primary rounded-lg px-16 py-7 cursor-pointer"
+              className="border border-primary lg:rounded-lg rounded lg:px-16 md:px-10 px-5 lg:py-7 md:py-4 py-2 cursor-pointer"
               dataaccordion={faq.ques}
               onClick={(e) => {
                 setTargetElement(e.target.getAttribute("dataaccordion"));
@@ -50,11 +50,11 @@ export default function Faqs() {
             >
               <div
                 dataaccordion={faq.ques}
-                className="flex justify-between items-center"
+                className="flex justify-between items-center gap-2"
               >
                 <h6
                   dataaccordion={faq.ques}
-                  className={`text-xl font-semibold ${
+                  className={`lg:text-xl md:text-base text-sm font-semibold ${
                     targetElement === faq.ques ? "text-primary" : ""
                   }`}
                 >
@@ -62,13 +62,13 @@ export default function Faqs() {
                 </h6>
                 <AiOutlinePlus
                   dataaccordion={faq.ques}
-                  className={`w-5 h-5 ${
+                  className={`lg:w-5 md:w-3 w-2.5 lg:h-5 md:h-3 h-2.5 ${
                     targetElement === faq.ques ? "hidden" : "block"
                   }`}
                 />
                 <AiOutlineMinus
                   dataaccordion={faq.ques}
-                  className={`w-5 h-5 ${
+                  className={`lg:w-5 md:w-3 w-2.5 lg:h-5 md:h-3 h-2.5 ${
                     targetElement === faq.ques ? "block" : "hidden"
                   }`}
                 />
@@ -90,10 +90,10 @@ export default function Faqs() {
           ))}
       </article>
       <div className="text-center">
-        <p className="text-xl font-medium">More Questions?</p>
+        <p className="lg:text-xl md:text-base text-sm font-medium">More Questions?</p>
         <Link
           to={"/"}
-          className="text-primary text-lg italic font-medium underline"
+          className="text-primary lg:text-lg md:text-sm text-xs italic font-medium underline"
         >
           Read more
         </Link>

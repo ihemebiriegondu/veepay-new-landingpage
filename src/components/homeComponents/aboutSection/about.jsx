@@ -1,7 +1,8 @@
 import React from "react";
-import { BsTelephoneFill, BsInstagram } from "react-icons/bs";
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
+import { BsInstagram } from "react-icons/bs";
+import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { IoIosMail, IoIosCall } from "react-icons/io";
+import { GrFacebookOption } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 export default function About() {
@@ -22,10 +23,10 @@ export default function About() {
         <h2 className="font-bold text-2xl mb-12">Contacts</h2>
         <div className="flex md:flex-row flex-col items-center gap-10 justify-center text-white">
           <Link className="bg-neutral-600 p-4 rounded-full">
-            <BsTelephoneFill className="w-6 h-6" />
+            <IoIosCall className="w-6 h-6" />
           </Link>
           <Link className="bg-[#4267B2] p-4 rounded-full">
-            <FaFacebookF className="w-6 h-6" />
+            <GrFacebookOption className="w-6 h-6" />
           </Link>
           <Link className="bg-[#0072B1] p-4 rounded-full">
             <FaLinkedinIn className="w-6 h-6" />

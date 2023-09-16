@@ -19,7 +19,7 @@ export default function Header() {
               className="h-full w-full object-contain"
             />
           </div>
-          <div className="lg:px-0 lg:ps-20 px-6 text-sm lg:text-start text-center md:text-base text-sm">
+          <div className="lg:px-0 lg:ps-20 sm:px-6 text-sm lg:text-start text-center md:text-base text-sm">
             <p className="font-medium md:pb-6 pb-4">
               Veepay is a three in one telecommunication platform that provides
               its users with hassle-free experience anytime they use its
