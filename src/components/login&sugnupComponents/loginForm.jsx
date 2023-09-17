@@ -16,7 +16,7 @@ export default function LoginForm(props) {
   const [emailError, setEmailError] = useState(false);
   const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
 
-  
+
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -42,7 +42,7 @@ export default function LoginForm(props) {
   };
 
   return (
-    <form className="w-full" noValidate onSubmit={(e) => submitForm(e)}>
+    <form className="w-full lg:h-auto h-full lg:py-0 py-16" noValidate onSubmit={(e) => submitForm(e)}>
       <h1 className="text-primary lg:text-3xl text-2xl font-bold text-center lg:mb-5 mb-4">
         Log in to Account
       </h1>
@@ -159,7 +159,7 @@ export default function LoginForm(props) {
         </Link>
       </div>
 
-      <p className="pt-16 text-center text-sm font-medium lg:hidden block">
+      <p className="pt-16 pb-10 text-center text-sm font-medium lg:hidden block">
         <span>
           Don’t have an Account?{" "}
           <Link to={"/signUp"} className="text-primary">
