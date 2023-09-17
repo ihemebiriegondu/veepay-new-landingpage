@@ -12,6 +12,7 @@ module.exports = {
         warning: "#FF0000",
         formBg: "#CFD7E4",
         mobileFormBg: '#E7EBF2',
+        feedbackBg: '#D9D9D9E5',
       },
       spacing: {
         130: "28.7rem",

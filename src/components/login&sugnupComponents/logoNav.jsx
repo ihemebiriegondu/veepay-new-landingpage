@@ -8,9 +8,9 @@ export default function LogoNav() {
 
   return (
     <nav className="md:pt-2 pt-5 md:pb-0 pb-5 fixed w-full top-0 z-30 md:px-0 px-7 md:bg-transparent bg-white md:shadow-none shadow-md">
-      <div className="md:block hidden">
-        <Link to={"/"} className="">
-          <div className="md:w-40 md:h-12 w-24 h-7">
+      <div className="md:inline-block hidden">
+        <Link to={"/"} className="inline-block">
+          <div className="md:w-40 md:h-12 w-24 h-7 inline-block">
             <img
               src={logo}
               alt="veepay logo"
@@ -19,8 +19,9 @@ export default function LogoNav() {
           </div>
         </Link>
       </div>
+
       <IoArrowBackOutline
-        className="w-4 h-4 md:hidden inline"
+        className="w-4 h-4 md:hidden inline cursor-pointer"
         onClick={() => {
           navigate(-1);
         }}

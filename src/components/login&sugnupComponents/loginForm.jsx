@@ -1,13 +1,48 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption, GrApple } from "react-icons/gr";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import FormButtons from "./formButtons";
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+  const navigate = useNavigate();
+
+  const [validityButton, setValidityButton] = useState("submit");
+  const [passwordType, setPasswordType] = useState("password");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+  
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    if (email === "" && password === "") {
+      setEmailError(true);
+      setPasswordError(true);
+      setValidityButton("invalid");
+    } else if (email === "" || password === "" || !emailRegex.test(email)) {
+      if (email === "" || !emailRegex.test(email)) {
+        setEmailError(true);
+        setValidityButton("invalid");
+      } else if (password === "") {
+        setPasswordError(true);
+        setValidityButton("invalid");
+      }
+    } else {
+      props.sucessType('login')
+      setTimeout(() => {
+        props.sucessType('')
+        navigate('/dashboard')
+      }, 2000);
+    }
+  };
+
   return (
-    <form className="w-full">
+    <form className="w-full" noValidate onSubmit={(e) => submitForm(e)}>
       <h1 className="text-primary lg:text-3xl text-2xl font-bold text-center lg:mb-5 mb-4">
         Log in to Account
       </h1>
@@ -18,52 +53,120 @@ export default function LoginForm() {
           name="email"
           id="email"
           placeholder="Email/Phone No"
-          className="outline-none lg:py-4 py-3 lg:px-6 px-4 w-full border border-black lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent"
+          className={`outline-none lg:py-4 py-3 lg:px-6 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent ${
+            emailError ? "border-warning" : "border-black"
+          }`}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailError(false);
+            setPasswordError(false);
+            setValidityButton("button");
+          }}
         />
-        <span className="mt-3 mb-4 inline-block text-warning text-base hidden">
-          invalid email
-        </span>
+        {emailError && (
+          <span className="mt-3 mb-4 inline-block text-warning md:text-base text-sm">
+            invalid email
+          </span>
+        )}
       </div>
       <div className="mb-4">
-        <div className="lg:py-4 py-3 lg:px-6 px-4 w-full border border-black lg:rounded-xl rounded-lg lg:text-xl text-lg flex items-center justify-between">
+        <div
+          className={`lg:px-6 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl text-lg flex items-center justify-between ${
+            passwordError ? "border-warning" : "border-black"
+          }`}
+        >
           <input
-            type="password"
+            type={passwordType}
             name="password"
             id="password"
             placeholder="Password"
-            className="outline-none bg-transparent"
+            className="lg:py-4 py-3 outline-none bg-transparent w-full me-4"
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setEmailError(false);
+              setPasswordError(false);
+              setValidityButton("button");
+            }}
           />
-          <HiOutlineEye />
-          <HiOutlineEyeOff className="hidden" />
+          <button type="button" className="outline-none border-none">
+            <HiOutlineEye
+              className={`${passwordType === "password" ? "block" : "hidden"}`}
+              onClick={() => setPasswordType("text")}
+            />
+            <HiOutlineEyeOff
+              className={`${passwordType === "password" ? "hidden" : "block"}`}
+              onClick={() => setPasswordType("password")}
+            />
+          </button>
         </div>
-        <span className="mt-3 mb-1.5 inline-block text-warning text-base hidden">
-          Incorrect Password?
-        </span>
+        {passwordError && (
+          <span className="mt-3 mb-1.5 inline-block text-warning md:text-base text-sm">
+            Incorrect Password?
+          </span>
+        )}
       </div>
       <div className="flex justify-between items-center md:text-base text-sm mb-11">
-        <div className="flex">
-          <input type="checkbox" name="remember" id="remember" className="" />
-          <p className="ms-3">Remember me</p>
+        <div
+          className={`flex ${
+            emailError || passwordError ? "invisible" : "visible"
+          }`}
+        >
+          <input
+            type="checkbox"
+            name="remember"
+            id="remember"
+            className="cursor-pointer"
+          />
+          <label htmlFor="remember" className="ms-3 cursor-pointer">
+            Remember me
+          </label>
         </div>{" "}
-        <Link to={"/login"}>Forgot Password?</Link>
+        <Link
+          to={"/login"}
+          className={`${passwordError ? "text-warning" : "text-black"}`}
+        >
+          Forgot Password?
+        </Link>
       </div>
-      <FormButtons type={"submit"} text={"Login"} font={"font-bold lg:text-xl"} />
+      <FormButtons
+        type={validityButton}
+        text={"Login"}
+        font={"font-bold lg:text-xl"}
+        buttonType={"submit"}
+      />
       <div className="lg:mt-11 mt-9 lg:mb-11 mb-9 flex justify-center items-center">
         <span className="border border-primary md:w-16 w-14"></span>
-        <p className="mx-2.5 lg:text-base text-sm font-medium">Or sign in with </p>
+        <p className="mx-2.5 lg:text-base text-sm font-medium">
+          Or sign in with{" "}
+        </p>
         <span className="border border-primary md:w-16 w-14"></span>
       </div>
       <div className="flex items-center justify-center md:gap-10 gap-8">
-        <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-          <FcGoogle />
-        </div>
-        <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-          <GrFacebookOption />
-        </div>
-        <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-          <GrApple />
-        </div>
+        <Link to={"/login"}>
+          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
+            <FcGoogle />
+          </div>
+        </Link>
+        <Link to={"/login"}>
+          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
+            <GrFacebookOption />
+          </div>
+        </Link>
+        <Link to={"/login"}>
+          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
+            <GrApple />
+          </div>
+        </Link>
       </div>
+
+      <p className="pt-16 text-center text-sm font-medium lg:hidden block">
+        <span>
+          Don’t have an Account?{" "}
+          <Link to={"/signUp"} className="text-primary">
+            Sign Up
+          </Link>
+        </span>
+      </p>
     </form>
   );
 }
