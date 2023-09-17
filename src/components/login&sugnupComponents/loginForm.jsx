@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { GrFacebookOption, GrApple } from "react-icons/gr";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import FormButtons from "./formButtons";
+import FormsFooter from "./formsFooter";
 
 export default function LoginForm(props) {
   const navigate = useNavigate();
@@ -33,9 +32,9 @@ export default function LoginForm(props) {
         setValidityButton("invalid");
       }
     } else {
-      props.sucessType('login')
+      props.sucessType(true)
       setTimeout(() => {
-        props.sucessType('')
+        props.sucessType(false)
         navigate('/dashboard')
       }, 2000);
     }
@@ -134,39 +133,7 @@ export default function LoginForm(props) {
         font={"font-bold lg:text-xl"}
         buttonType={"submit"}
       />
-      <div className="lg:mt-11 mt-9 lg:mb-11 mb-9 flex justify-center items-center">
-        <span className="border border-primary md:w-16 w-14"></span>
-        <p className="mx-2.5 lg:text-base text-sm font-medium">
-          Or sign in with{" "}
-        </p>
-        <span className="border border-primary md:w-16 w-14"></span>
-      </div>
-      <div className="flex items-center justify-center md:gap-10 gap-8">
-        <Link to={"/login"}>
-          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-            <FcGoogle />
-          </div>
-        </Link>
-        <Link to={"/login"}>
-          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-            <GrFacebookOption />
-          </div>
-        </Link>
-        <Link to={"/login"}>
-          <div className="md:px-5 px-4 md:py-1 py-0.5 border border-primary/30 md:rounded-md rounded">
-            <GrApple />
-          </div>
-        </Link>
-      </div>
-
-      <p className="pt-16 pb-10 text-center text-sm font-medium lg:hidden block">
-        <span>
-          Don’t have an Account?{" "}
-          <Link to={"/signUp"} className="text-primary">
-            Sign Up
-          </Link>
-        </span>
-      </p>
+      <FormsFooter />
     </form>
   );
 }
