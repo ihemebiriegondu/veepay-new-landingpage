@@ -3,9 +3,9 @@ import { FcGoogle } from "react-icons/fc";
 import { GrFacebookOption, GrApple } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
-export default function FormsFooter() {
+export default function FormsFooter({text, link, linkto}) {
   return (
-    <article>
+    <article className="lg:pb-16 pb-8">
       <div className="lg:mt-11 mt-9 lg:mb-11 mb-9 flex justify-center items-center">
         <span className="border border-primary md:w-16 w-14"></span>
         <p className="mx-2.5 lg:text-base text-sm font-medium">
@@ -33,9 +33,9 @@ export default function FormsFooter() {
 
       <p className="pt-16 pb-16 mb-6 text-center text-sm font-medium lg:hidden block">
         <span>
-          Don’t have an Account?{" "}
-          <Link to={"/signUp"} className="text-primary">
-            Sign Up
+          {text} {' '}
+          <Link to={linkto} className="text-primary">
+            {link}
           </Link>
         </span>
       </p>

@@ -67,16 +67,16 @@ export default function SignUpForm(props) {
 
   return (
     <form
-      className="w-full lg:h-auto h-full lg:py-0 py-16"
+      className="w-full lg:h-auto h-full lg:pt-16 pt-2"
       noValidate
       onSubmit={(e) => submitForm(e)}
     >
-      <h1 className="text-primary lg:text-3xl text-2xl font-bold text-center mt-6 lg:mb-5 mb-4">
+      <h1 className="text-primary lg:text-3xl text-2xl font-bold text-center lg:mt-6 lg:mb-5 mb-4">
         Sign up for an Account
       </h1>
       <hr className="mx-auto lg:w-1/12 w-14 border-t border-primary" />
 
-      <div className="lg:mt-20 mt-16 lg:mb-7 mb-6">
+      <div className={` ${fnameError ? 'lg:mt-10' : 'lg:mt-20'} mt-16 lg:mb-7 mb-6`}>
         <input
           type="text"
           name="fname"
@@ -226,7 +226,7 @@ export default function SignUpForm(props) {
         buttonType={"submit"}
       />
 
-      <FormsFooter />
+      <FormsFooter text={'Already have an Account?'} link={'Login'} linkto={'/login'} />
     </form>
   );
 }

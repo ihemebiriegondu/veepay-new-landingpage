@@ -41,7 +41,7 @@ export default function LoginForm(props) {
   };
 
   return (
-    <form className="w-full lg:h-auto h-full lg:py-0 py-16" noValidate onSubmit={(e) => submitForm(e)}>
+    <form className="w-full lg:h-auto h-full lg:pt-16 pt-2" noValidate onSubmit={(e) => submitForm(e)}>
       <h1 className="text-primary lg:text-3xl text-2xl font-bold text-center lg:mb-5 mb-4">
         Log in to Account
       </h1>
@@ -133,7 +133,7 @@ export default function LoginForm(props) {
         font={"font-bold lg:text-xl"}
         buttonType={"submit"}
       />
-      <FormsFooter />
+      <FormsFooter text={'Don’t have an Account?'} link={'Sign Up'} linkto={'/signUp'} />
     </form>
   );
 }
