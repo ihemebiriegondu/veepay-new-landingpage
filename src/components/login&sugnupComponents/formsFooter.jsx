@@ -31,7 +31,7 @@ export default function FormsFooter() {
         </Link>
       </div>
 
-      <p className="pt-16 pb-10 mb-6 text-center text-sm font-medium lg:hidden block">
+      <p className="pt-16 pb-16 mb-6 text-center text-sm font-medium lg:hidden block">
         <span>
           Don’t have an Account?{" "}
           <Link to={"/signUp"} className="text-primary">

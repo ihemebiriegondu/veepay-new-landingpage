@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import FormButtons from "./formButtons";
 import FormsFooter from "./formsFooter";
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
+  const navigate = useNavigate();
   const [validityButton, setValidityButton] = useState("submit");
 
   const [fname, setFname] = useState("");
@@ -20,7 +21,49 @@ export default function SignUpForm() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
 
-  const submitForm = () => {};
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    if (
+      fname === "" &&
+      lname === "" &&
+      phoneNo === "" &&
+      email === "" &&
+      password === ""
+    ) {
+      setFnameError(true);
+      setLnameError(true);
+      setPhoneNoError(true);
+      setEmailError(true);
+      setPasswordError(true);
+      setValidityButton("invalid");
+    } else if (
+      fname === "" ||
+      lname === "" ||
+      phoneNo === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      setValidityButton("invalid");
+      if (fname === "") {
+        setFnameError(true);
+      } else if (lname === "") {
+        setLnameError(true);
+      } else if (email === "" || !emailRegex.test(email)) {
+        setEmailError(true);
+      } else if (phoneNo === "") {
+        setPhoneNoError(true);
+      } else if (password === "") {
+        setPasswordError(true);
+      }
+    } else {
+      props.sucessType(true);
+      setTimeout(() => {
+        props.sucessType(false);
+        navigate("/login");
+      }, 2000);
+    }
+  };
 
   return (
     <form
@@ -54,7 +97,7 @@ export default function SignUpForm() {
         />
         {fnameError && (
           <span className="mt-3 mb-4 inline-block text-warning md:text-base text-sm">
-            invalid email
+            Firstname field cannot be empty
           </span>
         )}
       </div>
@@ -80,7 +123,7 @@ export default function SignUpForm() {
         />
         {lnameError && (
           <span className="mt-3 mb-4 inline-block text-warning md:text-base text-sm">
-            invalid email
+            Lastname input field cannot be empty
           </span>
         )}
       </div>
@@ -132,7 +175,7 @@ export default function SignUpForm() {
         />
         {phoneNoError && (
           <span className="mt-3 mb-4 inline-block text-warning md:text-base text-sm">
-            invalid email
+            Phone number field cannot be empty
           </span>
         )}
       </div>

@@ -11,7 +11,7 @@ export default function SignUp() {
     <div>
       <main className="absolute top-0 bottom-0 w-full z-20 md:bg-transparent bg-mobileFormBg">
         <LogoNav />
-        <section className="xl:px-20 md:px-12 px-6 pt-10 pb-10 flex flex-row justify-between items-center xl:gap-x-52 gap-x-44 h-full lg:bg-transparent bg-mobileFormBg formSection">
+        <section className="xl:px-20 md:px-12 px-6 lg:pt-64 pt-28 pb-20 flex flex-row justify-between items-center xl:gap-x-52 gap-x-44 h-full lg:bg-transparent bg-mobileFormBg formSection">
           <SignUpForm sucessType={setSucessForm} />
           <SideInfo sideText={'Already Signed Up?'} sideActionText={''} sideStep={'then proceed to login to your account'} sideButton={'Login'} sideLink={'/login'} />
         </section>
