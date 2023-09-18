@@ -9,9 +9,9 @@ export default function ServicesBox({ icon, heading, visible }) {
         <img src={icon} alt="" className="sm:h-7 h-3 sm:w-8 w-4" />
       </div>
       <h3 className="md:mb-5 mb-1.5 font-bold lg:text-2xl md:text-xl sm:text-base">{heading}</h3>
-      <MyButtons link={"/"} text={"BUY NOW"} />
+      <MyButtons link={"/login"} text={"BUY NOW"} />
       <Link
-        to={"/"}
+        to={"/login"}
         className={`mt-1.5 md:py-3 py-2 px-6 border border-primary rounded hover:bg-primary hover:text-white transition ease-in-out duration-500 lg:text-sm text-xs ${
           visible ? "block" : "hidden"
         }`}

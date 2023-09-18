@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import LogoNav from "../components/login&sugnupComponents/logoNav";
-import SideInfo from "../components/login&sugnupComponents/sideInfo";
-import SignUpForm from "../components/login&sugnupComponents/signUpForm";
-import Feedbacks from "../components/login&sugnupComponents/feedbacks";
+import LogoNav from "../components/login&signupComponents/logoNav";
+import SideInfo from "../components/login&signupComponents/sideInfo";
+import SignUpForm from "../components/login&signupComponents/signUpForm";
+import Feedbacks from "../components/login&signupComponents/feedbacks";
 
 export default function SignUp() {
   const [sucessForm, setSucessForm] = useState(false)

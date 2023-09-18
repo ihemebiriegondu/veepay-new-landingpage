@@ -16,7 +16,7 @@ export default function Nav() {
         </div>
       </Link>
       <div className="flex items-center md:gap-6 xs:gap-4 gap-2 text-xs font-medium italic text-primary">
-        <a href="#quickBuy" className="underline xs:block hidden">Quick Buy</a>
+        <Link to={'/plans'} className="underline xs:block hidden">View Plans</Link>
         <MyButtons link={"/login"} text={"Login"} />
         <Link
           to={"/signUp"}

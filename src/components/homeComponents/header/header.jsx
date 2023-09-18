@@ -4,7 +4,6 @@ import Nav from "./nav";
 import logo from "../../../assets/icons/Veepay Logo (2).png";
 import heroImage from "../../../assets/images/Group 14.png";
 import heroImageMobile from "../../../assets/images/Group 13.png";
-import MyButtons from "../myButtons";
 
 export default function Header() {
   return (
@@ -27,14 +26,21 @@ export default function Header() {
               their favorite services by providing easier, faster and secure
               ways to recharge your favorite brands.
             </p>
-            <div className="italic underline md:text-base text-xs">
-              <MyButtons link={"/"} text={"Start now"} />
-            </div>
+            <a
+              href="#quickBuy"
+              className="md:py-3.5 py-2 md:px-7 px-6 italic underline md:text-base text-xs text-white rounded bg-primary hover:bg-primary/80 outline-none transition ease-in-out duration-500"
+            >
+              Start now
+            </a>
           </div>
         </div>
         <div className="">
-          <img src={heroImage} alt="hero pic"  className="md:block hidden"/>
-          <img src={heroImageMobile} alt="hero pic" className="md:hidden block" />
+          <img src={heroImage} alt="hero pic" className="md:block hidden" />
+          <img
+            src={heroImageMobile}
+            alt="hero pic"
+            className="md:hidden block"
+          />
         </div>
       </div>
     </header>

@@ -7,7 +7,7 @@ export default function LogoNav() {
   const navigate = useNavigate();
 
   return (
-    <nav className="lg:pt-2 pt-5 lg:pb-0 pb-5 sticky w-full top-0 z-30 lg:px-0 px-7 lg:bg-transparent bg-white lg:shadow-none shadow-lg">
+    <nav className="lg:pt-2 pt-5 lg:pb-0 pb-5 relative w-full top-0 z-30 lg:px-0 px-7 lg:bg-transparent bg-white lg:shadow-none shadow-lg">
       <div className="lg:inline-block hidden">
         <Link to={"/"} className="inline-block">
           <div className="lg:w-40 lg:h-12 w-24 h-7 inline-block">
