@@ -8,14 +8,41 @@ import tvIcon from "../../../assets/icons/tv.svg";
 
 export default function SectionTwo() {
   const services = [
-    { icon: arrowIcon, heading: "SME DATA", visible: false },
-    { icon: wifiIcon, heading: "RECHARGE", visible: true  },
-    { icon: smsIcon, heading: "BULK SMS", visible: false  },
-    { icon: tvIcon, heading: "CABLE TV", visible: false  },
+    {
+      icon: arrowIcon,
+      heading: "SME DATA",
+      text: "VIEW PLANS",
+      link: "/plans",
+      mobileView: "mobile",
+    },
+    {
+      icon: wifiIcon,
+      heading: "RECHARGE",
+      text: "SELL TO US",
+      link: "/login",
+      mobileView: "both",
+    },
+    {
+      icon: smsIcon,
+      heading: "BULK SMS",
+      text: "VIEW PLANS",
+      link: "/plans",
+      mobileView: "mobile",
+    },
+    {
+      icon: tvIcon,
+      heading: "CABLE TV",
+      text: "",
+      link: "",
+      mobileView: "none",
+    },
   ];
 
   return (
-    <section className="lg:pt-12 pt-7 lg:pb-28 pb-9 lg:px-20 px-6" id="quickBuy">
+    <section
+      className="lg:pt-12 pt-7 lg:pb-28 pb-9 lg:px-20 px-6"
+      id="quickBuy"
+    >
       <h1 className="text-center font-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl lg:mb-6 mb-2.5">
         Products and Services
       </h1>
@@ -27,7 +54,14 @@ export default function SectionTwo() {
       </p>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-5">
         {services.map((service) => (
-          <ServicesBox key={service.heading} icon={service.icon} heading={service.heading} visible={service.visible} />
+          <ServicesBox
+            key={service.heading}
+            icon={service.icon}
+            heading={service.heading}
+            visibleLinkTo={service.link}
+            visibleText={service.text}
+            mbView={service.mobileView}
+          />
         ))}
       </div>
     </section>
