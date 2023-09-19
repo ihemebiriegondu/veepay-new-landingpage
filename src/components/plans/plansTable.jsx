@@ -17,7 +17,7 @@ export default function PlansTable() {
       </div>
       <div className="flex items-center justify-center mb-6">
         <h4
-          className={`xlg:text-xl lg:text-lg md:text-base sm:text-sm text-xs cursor-pointer me-5 ${
+          className={`xlg:text-xl lg:text-lg md:text-base sm:text-sm text-xs cursor-pointer xlg:me-5 lg:me-4 md:me-3 me-2.5 ${
             activeTable === "data"
               ? "font-bold border-b border-[#545353]"
               : "font-normal"
@@ -26,9 +26,9 @@ export default function PlansTable() {
         >
           SME Data
         </h4>
-        <span className="h-5 w-px bg-black"></span>
+        <span className="xlg:h-5 lg:h-4 md:h-3 h-2.5 w-px bg-black"></span>
         <h4
-          className={`xlg:text-xl lg:text-lg md:text-base sm:text-sm text-xs cursor-pointer ms-5 ${
+          className={`xlg:text-xl lg:text-lg md:text-base sm:text-sm text-xs cursor-pointer xlg:ms-5 lg:ms-4 md:ms-3 ms-2.5 ${
             activeTable === "sms"
               ? "font-bold border-b border-[#545353]"
               : "font-normal"
