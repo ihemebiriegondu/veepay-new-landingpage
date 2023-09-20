@@ -1,5 +1,6 @@
 import React from "react";
 import { GoBellFill } from "react-icons/go";
+import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
 import avatar from "../../assets/images/Vector.png";
 import { Link } from "react-router-dom";
 
@@ -38,14 +39,14 @@ export default function MainDashboard(props) {
             <p className="text-base font-medium text-tableRow">
               Available Amount
             </p>
-            <div>
-            <h1 className="text-3xl font-semibold mb-8">N 0.00</h1>
-<RiEyeCloseLine />
-<RiEyeLine />
+            <div className="mb-8 flex items-center gap-8">
+              <h1 className="text-3xl font-semibold">N 0.00</h1>
+              <RiEyeCloseLine className="hidden" />
+              <RiEyeLine className="" />
             </div>
-            <div>
-              <Link to={"/dashboard"}>Fund Wallet</Link>
-              <Link to={"/dashboard"}>Withdraw Cash</Link>
+            <div className="flex items-center gap-8 italic font-medium">
+              <Link to={"/dashboard"} className="inline-block md:py-3.5 py-2 md:px-7 px-6 text-primary rounded-md bg-white outline-none transition ease-in-out duration-500">Fund Wallet</Link>
+              <Link to={"/dashboard"} className="inline-block md:py-3.5 py-2 md:px-7 px-6 text-white hover:text-primary rounded-md border border-white hover:bg-white outline-none transition ease-in-out duration-500">Withdraw Cash</Link>
             </div>
           </div>
         </article>
