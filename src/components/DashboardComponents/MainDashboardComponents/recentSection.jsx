@@ -44,11 +44,11 @@ export default function Recent() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl py-5 pe-2.5">
+      <div className="bg-white rounded-xl py-5 pe-4">
         <div className="h-64 overflow-y-scroll snap-mandatory snap-y scroll-my-5 recentScroll">
           {history &&
             history.map((hist, i) => (
-              <div key={i} className="py-5 ps-5 pe-2.5 snap-start">
+              <div key={i} className="py-5 ps-10 pe-6 snap-start">
                 <div className="text-2xl flex items-center gap-2.5 mb-3">
                   <div
                     className={`rounded-lg p-3 ${

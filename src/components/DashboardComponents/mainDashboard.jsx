@@ -6,6 +6,8 @@ import Wallet from "./MainDashboardComponents/walletSection";
 import QuickActions from "./MainDashboardComponents/quickActionsSection";
 import Bank from "./MainDashboardComponents/bankSection";
 import Recent from "./MainDashboardComponents/recentSection";
+import AppAside from "./MainDashboardComponents/appAside";
+import Ads from "./MainDashboardComponents/ads";
 
 export default function MainDashboard(props) {
   return (
@@ -37,7 +39,7 @@ export default function MainDashboard(props) {
         <article className="grow">
           <Wallet />
           <div className="w-full mt-8 flex gap-x-5">
-            <div>
+            <div className="grow">
               <QuickActions />
               <Recent />
             </div>
@@ -45,10 +47,9 @@ export default function MainDashboard(props) {
           </div>
         </article>
 
-        <aside className="flex-none">
-          <div className="bg-secondary p-4 rounded-lg">
-            <p>Refer a friend and earn up to $1,000 airtime!</p>
-          </div>
+        <aside className="flex-none flex flex-col">
+          <Ads />
+          <AppAside />
         </aside>
       </section>
     </section>
