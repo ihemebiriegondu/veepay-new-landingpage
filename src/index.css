@@ -5,7 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
 
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -30,4 +30,23 @@ code {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.recentScroll::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 2px;
+}
+
+.recentScroll::-webkit-scrollbar-track {
+  background: #ececec;
+}
+
+.recentScroll::-webkit-scrollbar-thumb {
+  background: #03243d96;
+  border-radius: 3px;
+  width: 4px;
+}
+
+.recentScroll::-webkit-scrollbar-thumb:hover {
+  background: #03243d;
 }

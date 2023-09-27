@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Wallet from "./MainDashboardComponents/walletSection";
 import QuickActions from "./MainDashboardComponents/quickActionsSection";
 import Bank from "./MainDashboardComponents/bankSection";
+import Recent from "./MainDashboardComponents/recentSection";
 
 export default function MainDashboard(props) {
   return (
@@ -35,8 +36,11 @@ export default function MainDashboard(props) {
       <section className="flex gap-12 mt-10">
         <article className="grow">
           <Wallet />
-          <div className="w-full flex items-center gap-x-5">
-            <QuickActions />
+          <div className="w-full mt-8 flex gap-x-5">
+            <div>
+              <QuickActions />
+              <Recent />
+            </div>
             <Bank />
           </div>
         </article>
