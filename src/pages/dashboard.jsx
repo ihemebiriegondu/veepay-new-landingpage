@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
 
   return (
-    <main className="bg-tableRow/30">
+    <main className="bg-[#F5F4F7]">
       <DashboardNav activeTab={setCurrentTab} tabCheck={currentTab} />
 
       <section className="w-10/12 ms-auto py-14 px-12">

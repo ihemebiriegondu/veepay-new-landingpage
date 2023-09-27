@@ -1,8 +1,10 @@
 import React from "react";
 import { GoBellFill } from "react-icons/go";
-import { RiEyeLine, RiEyeCloseLine } from "react-icons/ri";
 import avatar from "../../assets/images/Vector.png";
 import { Link } from "react-router-dom";
+import Wallet from "./MainDashboardComponents/walletSection";
+import QuickActions from "./MainDashboardComponents/quickActionsSection";
+import Bank from "./MainDashboardComponents/bankSection";
 
 export default function MainDashboard(props) {
   return (
@@ -32,22 +34,10 @@ export default function MainDashboard(props) {
 
       <section className="flex gap-12 mt-10">
         <article className="grow">
-          <div className="bg-primary text-white p-5 rounded-xl">
-            <h3 className="text-2xl text-tableRow mb-8 font-semibold">
-              Wallet
-            </h3>
-            <p className="text-base font-medium text-tableRow">
-              Available Amount
-            </p>
-            <div className="mb-8 flex items-center gap-8">
-              <h1 className="text-3xl font-semibold">N 0.00</h1>
-              <RiEyeCloseLine className="hidden" />
-              <RiEyeLine className="" />
-            </div>
-            <div className="flex items-center gap-8 italic font-medium">
-              <Link to={"/dashboard"} className="inline-block md:py-3.5 py-2 md:px-7 px-6 text-primary rounded-md bg-white outline-none transition ease-in-out duration-500">Fund Wallet</Link>
-              <Link to={"/dashboard"} className="inline-block md:py-3.5 py-2 md:px-7 px-6 text-white hover:text-primary rounded-md border border-white hover:bg-white outline-none transition ease-in-out duration-500">Withdraw Cash</Link>
-            </div>
+          <Wallet />
+          <div className="w-full flex items-center gap-x-5">
+            <QuickActions />
+            <Bank />
           </div>
         </article>
 
