@@ -121,7 +121,7 @@ export default function LoginForm(props) {
           </label>
         </div>{" "}
         <Link
-          to={"/login"}
+          to={"/resetpassword"}
           className={`${passwordError ? "text-warning" : "text-black"}`}
         >
           Forgot Password?
