@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/icons/Veepay Logo.png";
 import mobileApp from "../../../assets/images/Group 18.png";
 import notIcon from '../../../assets/icons/notification 3d 1 (1).png'
+import AirplanePath from "./airplanePath";
 
 export default function AppAside() {
   return (
@@ -32,6 +33,8 @@ export default function AppAside() {
             <img src={notIcon} alt="notofication icon" />
         </div>
       </div>
+
+      <AirplanePath />
     </div>
   );
 }
