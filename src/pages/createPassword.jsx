@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
@@ -8,8 +8,6 @@ import Footer from "../components/footer";
 import Feedbacks from "../components/login&signupComponents/feedbacks";
 
 export default function CreatePassword() {
-  const navigate = useNavigate();
-
   const [validityButton, setValidityButton] = useState("submit");
   const [passwordType, setPasswordType] = useState("password");
   const [passwordType2, setPasswordType2] = useState("password");
@@ -35,30 +33,27 @@ export default function CreatePassword() {
         <div className="bg-white">
           <LogoNav />
         </div>
-        <section className="pt-11 px-20 grow flex flex-col">
-          <div className="flex items-center">
-            <IoArrowBackOutline
-              className="w-4 h-4 inline cursor-pointer"
-              onClick={() => {
-                navigate(-1);
-              }}
-            />
+        <section className="xl:pt-11 pt-8 sm:px-20 xs:px-16 px-4 grow flex flex-col">
+          <Link to={"/"} className="lg:flex hidden items-center w-fit">
+            <IoArrowBackOutline className="w-4 h-4 inline cursor-pointer" />
             <p className="text-base font-medium ms-2.5">Back to Homepage</p>
-          </div>
+          </Link>
 
           <form
-            className="flex flex-col justify-center items-center grow text-center mx-auto w-1/4"
+            className="flex flex-col justify-center items-center grow text-center mx-auto 2xl:w-1/3 lg:w-1/2 md:w-2/3 w-full"
             onSubmit={(e) => {
               submitForm(e);
             }}
           >
-            <h1 className="mb-4 text-4xl font-bold text-primary">
+            <h1 className="mb-4 lg:text-4xl md:text-3xl text-2xl font-bold text-primary">
               Create Password
             </h1>
-            <p className="text-xl font-medium">Kindly create new password</p>
+            <p className="lg:text-xl md:text-base text-sm font-medium">
+              Kindly create new password
+            </p>
 
             <div
-              className={`mt-5 lg:px-5 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent flex items-center justify-between ${
+              className={`mt-5 lg:px-5 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl md:text-lg text-base bg-transparent flex items-center justify-between ${
                 passwordError ? "border-warning" : "border-black"
               }`}
             >
@@ -91,14 +86,14 @@ export default function CreatePassword() {
             </div>
 
             <div
-              className={`mt-5 lg:px-5 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent flex items-center justify-between ${
+              className={`mt-5 lg:px-5 px-4 w-full border lg:rounded-xl rounded-lg lg:text-xl md:text-lg text-base bg-transparent flex items-center justify-between ${
                 passwordError ? "border-warning mb-2.5" : "border-black mb-8"
               }`}
             >
               <input
                 type={passwordType2}
-                name="password1"
-                id="password1"
+                name="password2"
+                id="password2"
                 placeholder="Confirm password"
                 className="lg:py-4 py-3 outline-none bg-transparent w-full me-4"
                 onChange={(e) => {
@@ -134,14 +129,16 @@ export default function CreatePassword() {
             <FormButtons
               type={validityButton}
               text={"Submit"}
-              font={"font-bold lg:text-xl"}
+              font={"font-medium lg:text-xl"}
               buttonType={"submit"}
             />
           </form>
         </section>
         <Footer />
       </div>
-      <Feedbacks text={'Password reset successfully'}subtext={'Login'} />
+      {success && (
+        <Feedbacks text={"Password reset successfully"} subtext={"Login"} />
+      )}
     </main>
   );
 }

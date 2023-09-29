@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { IoArrowBackOutline } from "react-icons/io5";
 import FormButtons from "../components/login&signupComponents/formButtons";
@@ -8,7 +8,7 @@ import Footer from "../components/footer";
 export default function PasswordResetCode() {
   const navigate = useNavigate();
 
-  const [validationCode, setValidationCode] = useState([])
+  const [validationCode, setValidationCode] = useState([]);
   const completeCode = ["", "", "", "", "", ""];
 
   const checkCodeFunction = (e, index) => {
@@ -40,14 +40,14 @@ export default function PasswordResetCode() {
         inputBoxes[index].disabled = true;
       }
     }
-    setValidationCode(codeValues)
+    setValidationCode(codeValues);
   };
 
   const submitForm = (e) => {
     e.preventDefault();
 
     if (validationCode.length !== 0) {
-        navigate('/createpassword')
+      navigate("/createpassword");
     }
   };
 
@@ -57,31 +57,26 @@ export default function PasswordResetCode() {
         <div className="bg-white">
           <LogoNav />
         </div>
-        <section className="pt-11 px-20 grow flex flex-col">
-          <div className="flex items-center">
-            <IoArrowBackOutline
-              className="w-4 h-4 inline cursor-pointer"
-              onClick={() => {
-                navigate(-1);
-              }}
-            />
+        <section className="xl:pt-11 pt-8 md:px-20 px-10 grow flex flex-col">
+          <Link to={"/"} className="lg:flex hidden items-center w-fit">
+            <IoArrowBackOutline className="w-4 h-4 inline cursor-pointer" />
             <p className="text-base font-medium ms-2.5">Back to Homepage</p>
-          </div>
+          </Link>
 
           <form
-            className="flex flex-col justify-center items-center grow text-center mx-auto w-1/4"
+            className="flex flex-col justify-center items-center grow text-center mx-auto 2xl:w-1/3 lg:w-1/2 sm:w-2/3 w-full"
             onSubmit={(e) => {
               submitForm(e);
             }}
           >
-            <h1 className="mb-4 text-4xl font-bold text-primary">
+            <h1 className="mb-4 lg:text-4xl md:text-3xl text-2xl font-bold text-primary">
               Confirm Code
             </h1>
-            <p className="text-xl font-medium">
+            <p className="lg:text-xl md:text-base text-sm font-medium">
               Enter the code sent to your phone
             </p>
 
-            <div className="mt-5 mb-12 w-full font-bold text-2xl flex items-center gap-x-4">
+            <div className="mt-5 mb-12 w-full font-bold lg:text-2xl md:text-xl text-lg flex items-center justify-center md:gap-x-4 gap-x-2.5">
               {completeCode &&
                 completeCode.map((code, index) => (
                   <input
@@ -91,7 +86,7 @@ export default function PasswordResetCode() {
                     maxLength={"1"}
                     disabled={index !== 0}
                     autoFocus={index === 0}
-                    className="outline-none bg-white rounded-lg border-2 border-neutral-500/50 px-px text-center py-px w-full placeholder:text-black disabled:bg-gray-300 codeInput"
+                    className="outline-none bg-white rounded-lg border-2 border-neutral-500/50 px-px text-center py-px md:w-14 w-10 placeholder:text-black disabled:bg-gray-300 codeInput"
                     onChange={(e) => {
                       checkCodeFunction(e, index);
                     }}
@@ -102,7 +97,7 @@ export default function PasswordResetCode() {
             <FormButtons
               type={""}
               text={"Submit"}
-              font={"font-bold lg:text-xl"}
+              font={"font-medium lg:text-xl"}
               buttonType={"submit"}
             />
           </form>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { IoArrowBackOutline } from "react-icons/io5";
 import FormButtons from "../components/login&signupComponents/formButtons";
@@ -7,15 +7,15 @@ import Footer from "../components/footer";
 
 export default function PasswordReset() {
   const navigate = useNavigate();
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState("");
 
   const submitForm = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (input !== "") {
-      navigate('/confirmcode')
+      navigate("/confirmcode");
     }
-  }
+  };
 
   return (
     <main className="bg-primary/10 absolute top-0 bottom-0 w-full">
@@ -23,22 +23,22 @@ export default function PasswordReset() {
         <div className="bg-white">
           <LogoNav />
         </div>
-        <section className="pt-11 px-20 grow flex flex-col">
-          <div className="flex items-center">
-            <IoArrowBackOutline
-              className="w-4 h-4 inline cursor-pointer"
-              onClick={() => {
-                navigate(-1);
-              }}
-            />
+        <section className="pt-11 sm:px-20 xs:px-16 px-4 grow flex flex-col">
+          <Link to={"/"} className="lg:flex hidden items-center w-fit">
+            <IoArrowBackOutline className="w-4 h-4 inline cursor-pointer" />
             <p className="text-base font-medium ms-2.5">Back to Homepage</p>
-          </div>
+          </Link>
 
-          <form className="flex flex-col justify-center items-center grow text-center mx-auto w-1/4" onSubmit={(e) => {submitForm(e)}}>
-            <h1 className="mb-4 text-4xl font-bold text-primary">
+          <form
+            className="flex flex-col justify-center items-center grow text-center mx-auto 2xl:w-1/3 lg:w-1/2 md:w-2/3 w-full"
+            onSubmit={(e) => {
+              submitForm(e);
+            }}
+          >
+            <h1 className="mb-4 lg:text-4xl md:text-3xl text-2xl font-bold text-primary">
               Password Reset
             </h1>
-            <p className="text-xl font-medium">
+            <p className="lg:text-xl md:text-base text-sm font-medium">
               A code will be sent to your phone number
             </p>
 
@@ -48,7 +48,7 @@ export default function PasswordReset() {
                 name="mail/no"
                 id="mail/no"
                 placeholder="Enter phone/email"
-                className="outline-none lg:py-4 py-3 lg:px-6 px-4 w-full border border-primary lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent"
+                className="outline-none lg:py-4 py-3 lg:px-6 px-4 w-full border border-primary lg:rounded-xl rounded-lg lg:text-xl md:text-lg text-base bg-transparent"
                 onChange={(e) => setInput(e.target.value)}
               />
             </div>
@@ -56,7 +56,7 @@ export default function PasswordReset() {
             <FormButtons
               type={""}
               text={"Send Code"}
-              font={"font-bold lg:text-xl"}
+              font={"font-medium lg:text-xl"}
               buttonType={"submit"}
             />
           </form>
