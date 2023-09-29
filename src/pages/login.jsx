@@ -18,7 +18,7 @@ export default function Login() {
       </main>
       <div className="bg-formBg fixed top-0 bottom-0 2xl:-left-28 xl:-left-20 -left-28 xl:w-5/12 lg:w-1/2 w-5/12 z-10 -skew-x-8 lg:block hidden"></div>
 
-      {sucessForm && <Feedbacks text={'Login Successful'} />}
+      {sucessForm && <Feedbacks text={'Login Successful'} subtext={'Enjoy!'} />}
     </div>
   );
 }

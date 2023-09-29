@@ -6,6 +6,8 @@ import Dashboard from "./pages/dashboard";
 import Plans from "./pages/plans";
 import ScrollToTop from "./components/ScrollToTop";
 import PasswordReset from "./pages/passwordReset";
+import PasswordResetCode from "./pages/passwordResetCode";
+import CreatePassword from "./pages/createPassword";
 
 function App() {
   return (
@@ -17,7 +19,10 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/resetpassword" element={<PasswordReset />} />
+
+        <Route path="/passwordreset" element={<PasswordReset />} />
+        <Route path="/confirmcode" element={<PasswordResetCode />} />
+        <Route path="/createpassword" element={<CreatePassword />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

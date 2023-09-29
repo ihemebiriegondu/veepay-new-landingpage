@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { IoArrowBackOutline } from "react-icons/io5";
@@ -7,6 +7,15 @@ import Footer from "../components/footer";
 
 export default function PasswordReset() {
   const navigate = useNavigate();
+  const [input, setInput] = useState('')
+
+  const submitForm = (e) => {
+    e.preventDefault()
+
+    if (input !== "") {
+      navigate('/confirmcode')
+    }
+  }
 
   return (
     <main className="bg-primary/10 absolute top-0 bottom-0 w-full">
@@ -25,7 +34,7 @@ export default function PasswordReset() {
             <p className="text-base font-medium ms-2.5">Back to Homepage</p>
           </div>
 
-          <form className="flex flex-col justify-center items-center grow text-center mx-auto w-1/4">
+          <form className="flex flex-col justify-center items-center grow text-center mx-auto w-1/4" onSubmit={(e) => {submitForm(e)}}>
             <h1 className="mb-4 text-4xl font-bold text-primary">
               Password Reset
             </h1>
@@ -40,6 +49,7 @@ export default function PasswordReset() {
                 id="mail/no"
                 placeholder="Enter phone/email"
                 className="outline-none lg:py-4 py-3 lg:px-6 px-4 w-full border border-primary lg:rounded-xl rounded-lg lg:text-xl text-lg bg-transparent"
+                onChange={(e) => setInput(e.target.value)}
               />
             </div>
 

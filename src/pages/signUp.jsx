@@ -18,7 +18,7 @@ export default function SignUp() {
       </main>
       <div className="bg-formBg fixed top-0 bottom-0 2xl:-right-28 xl:-right-20 -right-28 xl:w-5/12 lg:w-1/2 w-5/12 z-10 skew-x-8 lg:block hidden"></div>
 
-      {sucessForm && <Feedbacks text={"Sign Up Successful"} />}
+      {sucessForm && <Feedbacks text={"Sign Up Successful"} subtext={'Explore!'} />}
     </div>
   );
 }
