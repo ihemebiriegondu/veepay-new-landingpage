@@ -28,6 +28,8 @@ module.exports = {
       screens: {
         xs: "480px",
         xlg: "1130px",
+        "2.5xl": "1590px",
+        tvScreen: "1830px",
       },
       skew: {
         8: "8.488deg",

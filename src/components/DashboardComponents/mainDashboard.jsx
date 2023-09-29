@@ -11,7 +11,7 @@ import Ads from "./MainDashboardComponents/ads";
 
 export default function MainDashboard(props) {
   return (
-    <section>
+    <section className="">
       <div className="flex flex-row justify-end items-center gap-3">
         <Link
           to={"/dashboard"}
@@ -36,7 +36,7 @@ export default function MainDashboard(props) {
       </div>
 
       <section className="flex gap-12 mt-10">
-        <article className="grow">
+        <article className="basis-4/5">
           <Wallet />
           <div className="w-full mt-8 flex gap-x-5">
             <div className="grow">
@@ -47,7 +47,7 @@ export default function MainDashboard(props) {
           </div>
         </article>
 
-        <aside className="flex-none flex flex-col">
+        <aside className="tvScreen:basis-1/5 basis-1/4 flex-none flex flex-col">
           <Ads />
           <AppAside />
         </aside>

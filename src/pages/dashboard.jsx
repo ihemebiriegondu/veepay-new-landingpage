@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
 
   return (
-    <main className="bg-[#F5F4F7]">
+    <main className="bg-[#F5F4F7] tvScreen:relative top-0 bottom-0 w-full">
       <DashboardNav activeTab={setCurrentTab} tabCheck={currentTab} />
 
       <section className="w-10/12 ms-auto py-14 px-12">

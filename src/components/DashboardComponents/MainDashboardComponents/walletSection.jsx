@@ -13,7 +13,7 @@ export default function Wallet() {
           <p className="text-base font-medium text-tableRow">
             Available Amount
           </p>
-          <button type="button">
+          <button type="button" className="outline-none border-none">
             <RiEyeCloseLine
               className={`${showAmount ? "hidden" : "block"}`}
               onClick={() => {
