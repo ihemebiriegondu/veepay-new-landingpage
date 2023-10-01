@@ -34,24 +34,24 @@ export default function Recent() {
 
   return (
     <div className="">
-      <div className="flex items-center justify-between mb-5">
-        <h5 className="text-xl font-semibold">Recent Transactions</h5>
+      <div className="flex items-baseline justify-between mb-5">
+        <h5 className="md:text-xl text-lg font-semibold">Recent Transactions</h5>
         <Link
-          className="text-gray-500 hover:text-black transition duration-200 ease mb-5"
+          className="md:text-base text-sm text-gray-500 hover:text-black transition duration-200 ease"
           to={"/dashboard"}
         >
           View all
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl py-5 pe-4">
-        <div className="h-64 overflow-y-scroll snap-mandatory snap-y scroll-my-5 recentScroll">
+      <div className="bg-white md:rounded-xl rounded-lg md:py-5 py-4 md:pe-4 pe-1">
+        <div className="md:h-64 h-44 overflow-y-scroll snap-mandatory snap-y scroll-my-4 recentScroll">
           {history &&
             history.map((hist, i) => (
-              <div key={i} className="py-5 ps-10 pe-6 snap-start">
-                <div className="text-2xl flex items-center gap-2.5 mb-3">
+              <div key={i} className="md:py-5 md:ps-10 ps-4 md:pe-6 pe-3 snap-start">
+                <div className={`${hist.type === 'cabletv' ? 'md:text-2xl sm:text-xl text-lg' : 'md:text-2xl text-xl'} flex items-center md:gap-2.5 gap-2 md:mb-3 mb-2.5`}>
                   <div
-                    className={`rounded-lg p-3 ${
+                    className={`rounded-lg md:p-3 p-2 ${
                       hist.type === "airtime"
                         ? "bg-green-100"
                         : hist.type === "data"
@@ -77,30 +77,30 @@ export default function Recent() {
                   </div>
                   <h2 className="font-semibold">{hist.name}</h2>
                 </div>
-                <div className="mb-4">
-                  <p className="text-base text-gray-400 mb-2.5">Amount</p>
-                  <div className="flex items-center">
-                    <h2 className="text-3xl font-bold">₦{hist.amount}</h2>
+                <div className="md:mb-4 mb-3">
+                  <p className="md:text-base text-sm text-gray-400 md:mb-2.5 mb-2">Amount</p>
+                  <div className="flex items-center gap-1">
+                    <h2 className="md:text-3xl text-2xl font-bold">₦{hist.amount}</h2>
                     {hist.type === "cabletv" && (
-                      <span className="text-base">
+                      <span className="md:text-base text-sm">
                         {" (" + hist.item + ")"}
                       </span>
                     )}
                   </div>
                 </div>
-                <div className="flex justify-between items-end">
+                <div className="flex justify-between items-end md:mb-0 mb-4">
                   <div>
                     {hist.type === "cabletv" ? (
-                      <p className="text-base text-gray-400 mb-1.5">
+                      <p className="md:text-base text-sm text-gray-400 md:mb-1.5 mb-1">
                         Decoder number:
                       </p>
                     ) : (
-                      <p className="text-base text-gray-400 mb-1.5">To</p>
+                      <p className="md:text-base text-sm text-gray-400 md:mb-1.5 mb-1">To</p>
                     )}
 
-                    <h6 className="text-lg text-gray-500">{hist.number}</h6>
+                    <h6 className="md:text-lg text-base text-gray-500">{hist.number}</h6>
                   </div>
-                  <p className="text-base text-gray-400">{hist.date}</p>
+                  <p className="md:text-base text-sm text-gray-400">{hist.date}</p>
                 </div>
               </div>
             ))}

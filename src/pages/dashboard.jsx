@@ -11,10 +11,10 @@ export default function Dashboard() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
 
   return (
-    <main className="bg-[#F5F4F7] tvScreen:relative top-0 bottom-0 w-full">
+    <main className="bg-[#F5F4F7] relative top-0 bottom-0 w-full">
       <DashboardNav activeTab={setCurrentTab} tabCheck={currentTab} />
 
-      <section className="w-10/12 ms-auto py-14 px-12">
+      <section className="md:w-10/12 ms-auto md:pt-14 pt-4 md:pb-14 pb-24  md:px-12 px-4">
         {currentTab === "Profile" ? (
           <Profile />
         ) : currentTab === "About Us" ? (

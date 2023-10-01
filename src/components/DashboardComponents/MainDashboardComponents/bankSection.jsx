@@ -3,7 +3,7 @@ import cardDecor from "../../../assets/images/NicePng_wave-png_145581.png";
 
 export default function Bank() {
   return (
-    <div className="bg-white p-5 rounded-xl text-lg">
+    <div className="text-lg">
       <div className="flex items-center justify-between mb-5">
         <h5 className="mb-5 text-xl font-semibold">Bank</h5>
         <a

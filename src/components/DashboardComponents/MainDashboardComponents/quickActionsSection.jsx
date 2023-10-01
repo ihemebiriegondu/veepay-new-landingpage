@@ -6,24 +6,24 @@ import { CgScreen } from "react-icons/cg";
 
 export default function QuickActions() {
   return (
-    <div className="p-5 bg-white rounded-xl shadow-sm mb-9">
-      <h5 className="mb-5 text-xl font-semibold">Quick Actions</h5>
+    <div className="md:p-5 xs:p-4 p-3 bg-white md:rounded-xl rounded-lg shadow-sm md:mb-9 mb-5">
+      <h5 className="md:mb-5 mb-4 md:text-xl text-lg font-semibold">Quick Actions</h5>
       <div className="flex items-center justify-around gap-x-2.5">
-        <div className="2.5xl:w-full flex flex-col items-center rounded-md px-2 py-3 bg-purple-100">
-          <TbMobiledata className="text-xl mb-2.5" />
-          <p className="text-base font-semibold">SME Data</p>
+        <div className="2.5xl:w-full md:w-auto w-full flex flex-col items-center rounded-md px-2 py-3 bg-purple-100">
+          <TbMobiledata className="md:text-xl sm:text-lg xs:text-base text-sm mb-2.5" />
+          <p className="md:text-base sm:text-sm xs:text-xs text-xxs font-semibold">SME Data</p>
         </div>
-        <div className="2.5xl:w-full flex flex-col items-center rounded-md px-2 py-3 bg-green-100">
-          <HiDevicePhoneMobile className="text-xl mb-2.5" />
-          <p className="text-base font-semibold">Buy Airtime</p>
+        <div className="2.5xl:w-full md:w-auto w-full flex flex-col items-center rounded-md px-2 py-3 bg-green-100">
+          <HiDevicePhoneMobile className="md:text-xl sm:text-lg xs:text-base text-sm mb-2.5" />
+          <p className="md:text-base sm:text-sm xs:text-xs text-xxs font-semibold">Buy Airtime</p>
         </div>
-        <div className="2.5xl:w-full flex flex-col items-center rounded-md px-2 py-3 bg-red-100">
-          <MdOutlineTextsms className="text-xl mb-2.5" />
-          <p className="text-base font-semibold">Bulk SMS</p>
+        <div className="2.5xl:w-full md:w-auto w-full flex flex-col items-center rounded-md px-2 py-3 bg-red-100">
+          <MdOutlineTextsms className="md:text-xl sm:text-lg xs:text-base text-sm mb-2.5" />
+          <p className="md:text-base sm:text-sm xs:text-xs text-xxs font-semibold">Bulk SMS</p>
         </div>
-        <div className="2.5xl:w-full flex flex-col items-center rounded-md px-2 py-3 bg-blue-100">
-          <CgScreen className="text-xl mb-2.5" />
-          <p className="text-base font-semibold">Cable TV</p>
+        <div className="2.5xl:w-full md:w-auto w-full flex flex-col items-center rounded-md px-2 py-3 bg-blue-100">
+          <CgScreen className="md:text-xl sm:text-lg xs:text-base text-sm mb-2.5" />
+          <p className="md:text-base sm:text-sm xs:text-xs text-xxs font-semibold">Cable TV</p>
         </div>
       </div>
     </div>
