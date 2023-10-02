@@ -35,24 +35,24 @@ export default function MainDashboard(props) {
         </div>
       </div>
 
-      <section className="flex gap-12 md:mt-10 mt-5">
-        <article className="md:basis-4/5 basis-full">
+      <section className="flex 1.5xl:gap-12 md:gap-4 1.5xl:mt-10 lg:mt-6 mt-5">
+        <article className="xl:basis-4/5 basis-full">
           <Wallet />
-          <div className="w-full md:mt-8 mt-5 md:flex md:gap-x-5">
+          <div className="w-full md:mt-8 mt-5 md:flex 1.5xl:gap-x-5 xl:gap-x-1.5 lg:gap-x-5 gap-x-1.5">
             <div className="md:grow">
               <QuickActions />
-              <div className="md:hidden block">
+              <div className="xl:hidden block">
                 <Ads />
               </div>
               <Recent />
             </div>
-            <div className="bg-white p-5 rounded-xl md:block hidden">
+            <div className="bg-white p-5 rounded-xl xmd:block hidden">
               <Bank />
             </div>
           </div>
         </article>
 
-        <aside className="tvScreen:basis-1/5 basis-1/4 flex-none md:flex hidden flex-col">
+        <aside className="tvScreen:basis-1/5 basis-1/4 flex-none xl:flex hidden flex-col">
           <Ads />
           <AppAside />
         </aside>

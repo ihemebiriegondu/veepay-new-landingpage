@@ -64,7 +64,7 @@ export default function Wallet() {
         <div className="absolute -top-8 -left-8 md:w-40 w-32 md:h-40 h-32 rounded-full bg-secondary/90"></div>
         <div className="absolute -bottom-8 -right-8 md:w-48 w-40 md:h-48 h-40 rounded-full bg-secondary/90"></div>
         <div className="absolute bottom-2 left-2 md:w-10 w-6 md:h-10 h-6 rounded-full bg-secondary/90"></div>
-        <div className="absolute top-8 right-64 md:w-20 w-12 md:h-20 h-12 rounded-full bg-secondary/90"></div>
+        <div className="absolute xs:top-8 -top-6 xs:right-64 right-0 md:w-20 w-12 md:h-20 h-12 rounded-full bg-secondary/90"></div>
       </div>
     </div>
   );
