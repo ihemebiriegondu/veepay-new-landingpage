@@ -8,10 +8,11 @@ import Bank from "./MainDashboardComponents/bankSection";
 import Recent from "./MainDashboardComponents/recentSection";
 import AppAside from "./MainDashboardComponents/appAside";
 import Ads from "./MainDashboardComponents/ads";
+import TopMobileCarousel from "./MainDashboardComponents/topMobileCarousel";
 
 export default function MainDashboard(props) {
   return (
-    <section className="">
+    <section className="overflow-x-hidden">
       <div className="flex flex-row justify-end items-center md:gap-3 gap-2.5">
         <Link
           to={"/dashboard"}
@@ -35,9 +36,15 @@ export default function MainDashboard(props) {
         </div>
       </div>
 
-      <section className="flex 1.5xl:gap-12 md:gap-4 1.5xl:mt-10 lg:mt-6 mt-5">
+      <section className="xmd:flex 1.5xl:gap-12 md:gap-4 1.5xl:mt-10 lg:mt-6 mt-5">
         <article className="xl:basis-4/5 basis-full">
-          <Wallet />
+          <div className="xmd:block hidden">
+            <Wallet />
+          </div>
+          <div className="xmd:hidden block relative">
+            <TopMobileCarousel />
+          </div>
+
           <div className="w-full md:mt-8 mt-5 md:flex 1.5xl:gap-x-5 xl:gap-x-1.5 lg:gap-x-5 gap-x-1.5">
             <div className="md:grow">
               <QuickActions />

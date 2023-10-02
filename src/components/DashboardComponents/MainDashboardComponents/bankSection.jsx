@@ -3,21 +3,21 @@ import cardDecor from "../../../assets/images/NicePng_wave-png_145581.png";
 
 export default function Bank() {
   return (
-    <div className="text-lg">
-      <div className="flex items-center justify-between mb-5">
-        <h5 className="mb-5 text-xl font-semibold">Bank</h5>
+    <div className="text-lg relative overflow-hidden">
+      <div className="flex items-center xmd:justify-between justify-end xmd:mb-5">
+        <h5 className="xmd:mb-5 text-xl font-semibold xmd:inline-block hidden">Bank</h5>
         <a
-          className="text-gray-500 hover:text-black transition duration-200 ease mb-5"
+          className="text-gray-500 hover:text-black transition duration-200 ease xmd:mb-5 mb-2 xmd:text-lg text-sm"
           href="/"
         >
           Manage
         </a>
       </div>
 
-      <div className="relative py-3 px-4 bg-primary/90 text-white rounded-xl font-medium overflow-hidden">
-        <div className="flex flex-col gap-y-16 relative z-40">
+      <div className="relative xmd:py-3 md:py-5 py-4 px-4 bg-primary/90 text-white rounded-xl font-medium overflow-hidden">
+        <div className="flex flex-col xmd:gap-y-16 xs:gap-y-24 gap-y-20 relative z-40">
           <p className="text-right">Access</p>
-          <div className="ps-0.5 pe-32">
+          <div className="ps-0.5 md:pe-32">
             <p className="text-xl">Oyetunji Peter</p>
             <p className="mt-2">13****1131</p>
           </div>
