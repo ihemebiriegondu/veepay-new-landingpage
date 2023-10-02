@@ -10,6 +10,7 @@ import {
 } from "react-icons/hi2";
 import logo from "../../assets/icons/Veepay Logo.png";
 import logo2 from "../../assets/icons/Logo (1).png";
+import navBg from "../../assets/images/Rectangle 1 (1).png";
 
 export default function DashboardNav(props) {
   const navs = [
@@ -22,11 +23,14 @@ export default function DashboardNav(props) {
   ];
 
   return (
-    <nav className="1.5xl:w-2/12 md:w-fit w-full bg-formBg fixed md:top-0 bottom-0 md:left-0 z-50">
+    <nav className="1.5xl:w-2/12 md:w-fit w-full md:bg-formBg fixed md:top-0 bottom-0 md:left-0 z-40">
       <div className="md:flex flex-col justify-between 1.5xl:pt-4 md:pb-8 h-full">
-        <div className="md:flex flex-col 1.5xl:gap-12 lg:gap-16 md:gap-12">
+        <div className="md:flex flex-col 1.5xl:gap-12 lg:gap-16 md:gap-12 relative">
           <div className="md:block hidden">
-            <Link to={"/"} className="inline-block 1.5xl:py-0 py-4 1.5xl:bg-transparent bg-primary">
+            <Link
+              to={"/"}
+              className="inline-block 1.5xl:py-0 py-4 1.5xl:bg-transparent bg-primary"
+            >
               <div className="lg:h-12 h-7 1.5xl:w-40 w-20 inline-block">
                 <img
                   src={logo}
@@ -50,29 +54,38 @@ export default function DashboardNav(props) {
                   onClick={() => {
                     props.activeTab(nav.tab);
                   }}
-                  className={`flex-col-reverse items-center font-semibold cursor-pointer md:ps-5 1.5xl:pe-0 md:pe-7 md:border-l md:border-l-4 rounded-sm transition duration-200 ease-in md:text-start text-center w-fit ${
+                  className={`flex-col-reverse items-center font-semibold cursor-pointer md:ps-5 1.5xl:pe-0 md:pe-7 md:border-l md:border-l-4 rounded-sm transition duration-200 ease-in md:text-start text-center w-fit relative z-50 ${
                     props.tabCheck === nav.tab
                       ? "md:text-black text-primary md:border-primary"
                       : "text-black/50 hover:md:text-black hover:text-primary border-formBg"
-                  } ${!nav.mobile ? "1.5xl:inline-block md:flex hidden" : "1.5xl:inline-block flex"} ${
+                  } ${
+                    !nav.mobile
+                      ? "1.5xl:inline-block md:flex hidden"
+                      : "1.5xl:inline-block flex"
+                  } ${
                     i + 1 < 3
                       ? `md:order-none order-1`
                       : `md:order-none order-3`
                   }`}
                 >
-                  <span className="1.5xl:inline hidden 1.5xl:text-lg text-xxs 1.5xl:leading-7 leading-none">{nav.tab}</span>
+                  <span className="1.5xl:inline hidden 1.5xl:text-lg text-xxs 1.5xl:leading-7 leading-none">
+                    {nav.tab}
+                  </span>
                   <span className="1.5xl:hidden inline">{nav.tabIcon}</span>
                 </li>
               ))}
 
-            <div className="order-2 relative flex justify-center w-full md:hidden block text-3xl">
-              <div className="absolute bottom-0 text-white bg-white p-2 rounded-b-full">
-                <div className="bg-primary rounded-full p-2 w-fit">
+            <div className="order-2 relative flex justify-center w-full md:hidden block xs:text-4xl text-3xl">
+              <div className="absolute bottom-0 text-white p-2 rounded-b-full">
+                <div className="bg-primary rounded-full sm:p-3 p-2 w-fit">
                   <HiMiniPlus />
                 </div>
               </div>
             </div>
           </ul>
+          <div className="absolute top-0 bottom-0 z-40 w-full h-full md:hidden block">
+            <img src={navBg} alt="curved bg" className="w-full h-full object-fill" />
+          </div>
         </div>
 
         <p className="md:flex items-center gap-2.5 ps-6 hidden">

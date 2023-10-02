@@ -5,7 +5,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 export default function CarouselSwipperButtons() {
   const swiper = useSwiper();
 
-  const [snapIn, setSnapIn] = useState("");
+  const [snapIn, setSnapIn] = useState(0);
 
   return (
     <div>
