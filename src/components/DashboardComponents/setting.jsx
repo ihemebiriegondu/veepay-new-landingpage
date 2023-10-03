@@ -72,7 +72,7 @@ export default function Setting(props) {
       </div>
 
       {currentTab === "User Info" ? (
-        <UserInfoSetting displayPic={props.profilePic} />
+        <UserInfoSetting displayPic={props.profilePic} updateImg={props.setProfilePic} />
       ) : (
         <article className="grid grid-cols-3 gap-4">
           {settingTabs &&

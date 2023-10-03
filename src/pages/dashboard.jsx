@@ -25,7 +25,7 @@ export default function Dashboard() {
         ) : currentTab === "FAQs" ? (
           <Faqs />
         ) : currentTab === "Settings" ? (
-          <Setting profilePic={userPhoto} />
+          <Setting profilePic={userPhoto} setProfilePic={setUserPhoto} />
         ) : currentTab === "Contact Us" ? (
           <Contact />
         ) : (
