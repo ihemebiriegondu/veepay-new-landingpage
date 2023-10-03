@@ -221,7 +221,7 @@ export default function SignUpForm(props) {
       </div>
       <FormButtons
         type={validityButton}
-        text={"Login"}
+        text={"Sign up"}
         font={"font-bold lg:text-xl"}
         buttonType={"submit"}
       />

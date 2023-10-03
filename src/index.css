@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   color: #222222;
+  background-color: #F5F4F7;
   overflow-x: hidden!;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
