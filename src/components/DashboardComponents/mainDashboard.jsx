@@ -1,6 +1,5 @@
 import React from "react";
 import { GoBellFill } from "react-icons/go";
-import avatar from "../../assets/images/Vector.png";
 import { Link } from "react-router-dom";
 import Wallet from "./MainDashboardComponents/walletSection";
 import QuickActions from "./MainDashboardComponents/quickActionsSection";
@@ -29,7 +28,7 @@ export default function MainDashboard(props) {
           onClick={() => props.activeTab("Profile")}
         >
           <img
-            src={avatar}
+            src={props.profilePic}
             alt="avatar img"
             className="md:w-10 w-8 md:h-10 h-8 rounded-full"
           />

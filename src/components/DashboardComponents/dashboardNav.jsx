@@ -4,7 +4,6 @@ import { IoLogOut } from "react-icons/io5";
 import { BiSolidMessageDots } from "react-icons/bi";
 import { MdSpaceDashboard, MdPerson, MdSettings } from "react-icons/md";
 import {
-  HiMiniQuestionMarkCircle,
   HiMiniPlus,
   HiMiniInformationCircle,
 } from "react-icons/hi2";
@@ -16,9 +15,8 @@ export default function DashboardNav(props) {
   const navs = [
     { tab: "Dashboard", tabIcon: <MdSpaceDashboard />, mobile: true },
     { tab: "Profile", tabIcon: <MdPerson />, mobile: true },
-    { tab: "About Us", tabIcon: <HiMiniInformationCircle />, mobile: false },
     { tab: "Settings", tabIcon: <MdSettings />, mobile: true },
-    { tab: "FAQs", tabIcon: <HiMiniQuestionMarkCircle />, mobile: true },
+    { tab: "About Us", tabIcon: <HiMiniInformationCircle />, mobile: true },
     { tab: "Contact Us", tabIcon: <BiSolidMessageDots />, mobile: false },
   ];
 

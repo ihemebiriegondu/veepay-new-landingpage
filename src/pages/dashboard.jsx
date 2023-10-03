@@ -7,8 +7,11 @@ import Setting from "../components/DashboardComponents/setting";
 import Contact from "../components/DashboardComponents/contact";
 import MainDashboard from "../components/DashboardComponents/mainDashboard";
 
+import avatar from "../assets/images/Vector.png";
+
 export default function Dashboard() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
+  const [userPhoto, setUserPhoto] = useState(avatar);
 
   return (
     <main className="bg-[#F5F4F7] relative top-0 bottom-0 w-full">
@@ -22,11 +25,11 @@ export default function Dashboard() {
         ) : currentTab === "FAQs" ? (
           <Faqs />
         ) : currentTab === "Settings" ? (
-          <Setting />
+          <Setting profilePic={userPhoto} />
         ) : currentTab === "Contact Us" ? (
           <Contact />
         ) : (
-          <MainDashboard activeTab={setCurrentTab} />
+          <MainDashboard activeTab={setCurrentTab} profilePic={userPhoto} />
         )}
       </section>
     </main>
