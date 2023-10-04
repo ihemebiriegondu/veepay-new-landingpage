@@ -56,15 +56,15 @@ export default function Setting(props) {
         <h1
           className={`${
             currentTab === "genSetting"
-              ? "text-3xl font-bold text-primary mb-10"
+              ? "text-3xl font-bold text-primary md:mb-10 sm:mb-8 xs:mb-6"
               : "text-sm font-semibold text-black hover:text-primary hover:underline cursor-pointer"
-          } w-fit`}
+          } w-fit ps-4`}
           onClick={() => setCurrentTab("genSetting")}
         >
           Settings
         </h1>
         {currentTab !== "genSetting" && (
-          <div className="flex items-center gap-4 text-sm font-semibold">
+          <div className="flex items-center gap-4 text-sm font-medium">
             <MdKeyboardArrowRight />
             <p>{currentTab}</p>
           </div>
@@ -74,7 +74,7 @@ export default function Setting(props) {
       {currentTab === "User Info" ? (
         <UserInfoSetting displayPic={props.profilePic} updateImg={props.setProfilePic} />
       ) : (
-        <article className="grid grid-cols-3 gap-4">
+        <article className="grid sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-4">
           {settingTabs &&
             settingTabs.map((nav) => (
               <SettingBox
