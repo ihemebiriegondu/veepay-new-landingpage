@@ -11,7 +11,7 @@ import TopMobileCarousel from "./MainDashboardComponents/topMobileCarousel";
 
 export default function MainDashboard(props) {
   return (
-    <section className="overflow-x-hidden">
+    <section className="">
       <div className="flex flex-row justify-end items-center md:gap-3 gap-2.5">
         <Link
           to={"/dashboard"}

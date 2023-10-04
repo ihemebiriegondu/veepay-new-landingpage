@@ -51,6 +51,7 @@ export default function DashboardNav(props) {
                   key={nav.tab}
                   onClick={() => {
                     props.activeTab(nav.tab);
+                    props.setCurrentSettingTab('genSetting')
                   }}
                   className={`flex-col-reverse items-center font-semibold cursor-pointer md:ps-5 1.5xl:pe-0 md:pe-7 md:border-l md:border-l-4 rounded-sm transition duration-200 ease-in md:text-start text-center w-fit relative z-50 ${
                     props.tabCheck === nav.tab

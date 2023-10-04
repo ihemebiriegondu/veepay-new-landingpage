@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSwiper } from "swiper/react";
-import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 export default function CarouselSwipperButtons() {
   const swiper = useSwiper();
@@ -8,31 +8,29 @@ export default function CarouselSwipperButtons() {
   const [snapIn, setSnapIn] = useState(swiper.activeIndex);
 
   return (
-    <div>
+    <div className="">
       <div
-        className={`absolute top-1/2 left-2 z-50 text-xl text-white/30 hover:text-white transition duration-200 ease-in cursor-pointer ${
+        className={`absolute top-1/2 left-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer ${
           snapIn === 0 ? "hidden" : "block"
         }`}
+        onClick={() => {
+          swiper.slidePrev();
+          setSnapIn(swiper.activeIndex);
+        }}
       >
-        <BiSolidLeftArrow
-          onClick={() => {
-            swiper.slidePrev();
-            setSnapIn(swiper.activeIndex);
-          }}
-        />
+        <FiChevronLeft />
       </div>
 
       <div
-        className={`absolute top-1/2 right-2 z-50 text-xl text-white/30 hover:text-white transition duration-200 ease-in cursor-pointer ${
+        className={`absolute bottom-1/2 right-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer ${
           snapIn === 1 ? "hidden" : "block"
         }`}
+        onClick={() => {
+          swiper.slideNext();
+          setSnapIn(swiper.activeIndex);
+        }}
       >
-        <BiSolidRightArrow
-          onClick={() => {
-            swiper.slideNext();
-            setSnapIn(swiper.activeIndex);
-          }}
-        />
+        <FiChevronRight />
       </div>
     </div>
   );
