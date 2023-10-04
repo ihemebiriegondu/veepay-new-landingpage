@@ -6,7 +6,7 @@ export default function Wallet() {
   const [showAmount, setShowAmount] = useState(true);
 
   return (
-    <div className="bg-primary text-white md:p-5 p-4 md:rounded-xl rounded-lg relative overflow-hidden text-start xmd:mb-0 md:mb-6 sm:mb-0">
+    <div className="bg-primary text-white md:p-5 p-4 md:rounded-xl rounded-lg relative overflow-hidden text-start xmd:mb-0 md:mb-6 mb-7">
       <div className="relative z-40">
         <h3 className="text-2xl text-tableRow md:mb-8 mb-7 font-semibold">Wallet</h3>
         <div className="flex items-center gap-x-10">

@@ -11,6 +11,8 @@ import avatar from "../assets/images/Vector.png";
 
 export default function Dashboard() {
   const [currentTab, setCurrentTab] = useState("Dashboard");
+  const [currentSettingTab, setCurrentSettingTab] = useState("genSetting");
+
   const [userPhoto, setUserPhoto] = useState(avatar);
   const [bankDetails, setBankDetails] = useState({
     bankName: "",
@@ -30,11 +32,23 @@ export default function Dashboard() {
         ) : currentTab === "FAQs" ? (
           <Faqs />
         ) : currentTab === "Settings" ? (
-          <Setting profilePic={userPhoto} setProfilePic={setUserPhoto} bankDetails={bankDetails} updateBankDetails={setBankDetails} />
+          <Setting
+            currentSettingTab={currentSettingTab}
+            setCurrentSettingTab={setCurrentSettingTab}
+            profilePic={userPhoto}
+            setProfilePic={setUserPhoto}
+            bankDetails={bankDetails}
+            updateBankDetails={setBankDetails}
+          />
         ) : currentTab === "Contact Us" ? (
           <Contact />
         ) : (
-          <MainDashboard activeTab={setCurrentTab} profilePic={userPhoto} bankDetails={bankDetails} />
+          <MainDashboard
+            activeTab={setCurrentTab}
+            setCurrentSettingTab={setCurrentSettingTab}
+            profilePic={userPhoto}
+            bankDetails={bankDetails}
+          />
         )}
       </section>
     </main>

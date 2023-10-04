@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SettingBox from "./SettingsComponents/settingBox";
 import UserInfoSetting from "./SettingsComponents/userInfoSetting";
 import AccountSetting from "./SettingsComponents/accountSettings";
@@ -16,7 +16,6 @@ import {
 } from "react-icons/md";
 
 export default function Setting(props) {
-  const [currentTab, setCurrentTab] = useState("genSetting");
 
   const settingTabs = [
     {
@@ -56,28 +55,28 @@ export default function Setting(props) {
       <div className="flex items-center gap-4 mb-6">
         <h1
           className={`${
-            currentTab === "genSetting"
+            props.currentSettingTab === "genSetting"
               ? "text-3xl font-bold text-primary md:mb-10 sm:mb-8 xs:mb-6"
               : "text-sm font-semibold text-black hover:text-primary hover:underline cursor-pointer"
           } w-fit ps-4`}
-          onClick={() => setCurrentTab("genSetting")}
+          onClick={() => props.setCurrentSettingTab("genSetting")}
         >
           Settings
         </h1>
-        {currentTab !== "genSetting" && (
+        {props.currentSettingTab !== "genSetting" && (
           <div className="flex items-center gap-4 text-sm font-medium">
             <MdKeyboardArrowRight />
-            <p>{currentTab}</p>
+            <p>{props.currentSettingTab}</p>
           </div>
         )}
       </div>
 
-      {currentTab === "User Info" ? (
+      {props.currentSettingTab === "User Info" ? (
         <UserInfoSetting
           displayPic={props.profilePic}
           updateImg={props.setProfilePic}
         />
-      ) : currentTab === "Accounts" ? (
+      ) : props.currentSettingTab === "Accounts" ? (
         <AccountSetting
           bankDetails={props.bankDetails}
           updateBankDetails={props.updateBankDetails}
@@ -92,7 +91,7 @@ export default function Setting(props) {
                 tabIcon={nav.tabIcon}
                 tabText={nav.tabText}
                 tabClickFunction={() => {
-                  setCurrentTab(nav.tabName);
+                  props.setCurrentSettingTab(nav.tabName);
                 }}
               />
             ))}

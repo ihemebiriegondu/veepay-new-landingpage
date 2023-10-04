@@ -5,7 +5,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 export default function CarouselSwipperButtons() {
   const swiper = useSwiper();
 
-  const [snapIn, setSnapIn] = useState(0);
+  const [snapIn, setSnapIn] = useState(swiper.activeIndex);
 
   return (
     <div>
@@ -17,7 +17,7 @@ export default function CarouselSwipperButtons() {
         <BiSolidLeftArrow
           onClick={() => {
             swiper.slidePrev();
-            setSnapIn(swiper.snapIndex);
+            setSnapIn(swiper.activeIndex);
           }}
         />
       </div>
@@ -30,7 +30,7 @@ export default function CarouselSwipperButtons() {
         <BiSolidRightArrow
           onClick={() => {
             swiper.slideNext();
-            setSnapIn(swiper.snapIndex);
+            setSnapIn(swiper.activeIndex);
           }}
         />
       </div>

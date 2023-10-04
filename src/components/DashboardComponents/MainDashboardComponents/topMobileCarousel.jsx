@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, A11y} from "swiper/modules";
+import { Pagination, A11y } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,7 +9,7 @@ import Wallet from "./walletSection";
 import Bank from "./bankSection";
 import CarouselSwipperButtons from "./carouselSwipperButtons";
 
-export default function TopMobileCarousel() {
+export default function TopMobileCarousel(props) {
   return (
     <div>
       <Swiper
@@ -22,9 +22,17 @@ export default function TopMobileCarousel() {
         <SwiperSlide>
           <Wallet />
         </SwiperSlide>
-        <SwiperSlide>
-          <Bank />
-        </SwiperSlide>
+        {props.bankDetails.bankName && (
+          <SwiperSlide>
+            <Bank
+              bankName={props.bankDetails.bankName}
+              accName={props.bankDetails.accName}
+              accNo={props.bankDetails.accNo}
+              activeMainTab={props.activeMainTab}
+              activeSettingTab={props.activeSettingTab}
+            />
+          </SwiperSlide>
+        )}
       </Swiper>
     </div>
   );

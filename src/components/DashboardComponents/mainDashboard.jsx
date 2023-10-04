@@ -41,7 +41,11 @@ export default function MainDashboard(props) {
             <Wallet />
           </div>
           <div className="xmd:hidden block relative">
-            <TopMobileCarousel />
+            <TopMobileCarousel
+              bankDetails={props.bankDetails}
+              activeMainTab={props.activeTab}
+              activeSettingTab={props.setCurrentSettingTab}
+            />
           </div>
 
           <div className="w-full md:mt-8 mt-5 md:flex 1.5xl:gap-x-5 xl:gap-x-1.5 lg:gap-x-5 gap-x-1.5">
@@ -53,7 +57,13 @@ export default function MainDashboard(props) {
               <Recent />
             </div>
             <div className="bg-white p-5 rounded-xl xmd:block hidden">
-              <Bank bankName={props.bankDetails.bankName} accName={props.bankDetails.accName} accNo={props.bankDetails.accNo} />
+              <Bank
+                bankName={props.bankDetails.bankName}
+                accName={props.bankDetails.accName}
+                accNo={props.bankDetails.accNo}
+                activeMainTab={props.activeTab}
+                activeSettingTab={props.setCurrentSettingTab}
+              />
             </div>
           </div>
         </article>
