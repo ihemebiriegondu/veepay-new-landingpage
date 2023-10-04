@@ -53,7 +53,7 @@ export default function MainDashboard(props) {
               <Recent />
             </div>
             <div className="bg-white p-5 rounded-xl xmd:block hidden">
-              <Bank />
+              <Bank bankName={props.bankDetails.bankName} accName={props.bankDetails.accName} accNo={props.bankDetails.accNo} />
             </div>
           </div>
         </article>

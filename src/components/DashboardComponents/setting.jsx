@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import SettingBox from "./SettingsComponents/settingBox";
+import UserInfoSetting from "./SettingsComponents/userInfoSetting";
+import AccountSetting from "./SettingsComponents/accountSettings";
 
 import {
   GrContactInfo,
@@ -12,7 +14,6 @@ import {
   MdOutlineHistory,
   MdKeyboardArrowRight,
 } from "react-icons/md";
-import UserInfoSetting from "./SettingsComponents/userInfoSetting";
 
 export default function Setting(props) {
   const [currentTab, setCurrentTab] = useState("genSetting");
@@ -29,7 +30,7 @@ export default function Setting(props) {
       tabText: "Provide personal details and how we can reach you",
     },
     {
-      tabName: "Account",
+      tabName: "Accounts",
       tabIcon: <MdOutlineAccountBalance />,
       tabText: "Provide personal details and how we can reach you",
     },
@@ -51,7 +52,7 @@ export default function Setting(props) {
   ];
 
   return (
-    <section>
+    <section className="relative">
       <div className="flex items-center gap-4 mb-6">
         <h1
           className={`${
@@ -72,7 +73,15 @@ export default function Setting(props) {
       </div>
 
       {currentTab === "User Info" ? (
-        <UserInfoSetting displayPic={props.profilePic} updateImg={props.setProfilePic} />
+        <UserInfoSetting
+          displayPic={props.profilePic}
+          updateImg={props.setProfilePic}
+        />
+      ) : currentTab === "Accounts" ? (
+        <AccountSetting
+          bankDetails={props.bankDetails}
+          updateBankDetails={props.updateBankDetails}
+        />
       ) : (
         <article className="grid sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-4">
           {settingTabs &&

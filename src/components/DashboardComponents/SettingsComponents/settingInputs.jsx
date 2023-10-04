@@ -26,7 +26,7 @@ export default function SettingInputs({ label, value, inputEvent }) {
 
       <button
         type="button"
-        className="text-base"
+        className="text-base relative"
         data-target-input={label}
         onClick={(e) => {
           const allInputs = document.querySelectorAll(".settingInputs");
@@ -45,6 +45,8 @@ export default function SettingInputs({ label, value, inputEvent }) {
         }}
       >
         <LuPencilLine data-target-input={label} />
+
+        <div className="absolute top-0 bottom-0 w-full z-20" data-target-input={label}></div>
       </button>
     </div>
   );
