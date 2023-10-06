@@ -29,14 +29,14 @@ export default function NewsLetter() {
             name="email"
             id="email"
             placeholder="Email Address"
-            className="bg-transparent outline-none grow md:px-2.5 px-2 md:text-base text-sm"
+            className="bg-transparent outline-none grow md:px-2.5 px-2 md:text-base xs:text-sm text-xs md:py-2 py-1"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
           <button
             type="submit"
-            className="outline-none bg-gradient-to-r from-primary to-darkPrimary md:px-3.5 px-2.5 md:py-2 py-1 rounded-tr rounded-br uppercase font-bold text-white md:text-base text-sm"
+            className="outline-none bg-gradient-to-r from-primary to-darkPrimary md:px-3.5 px-2.5 md:py-2 py-1 rounded-tr rounded-br uppercase font-bold text-white md:text-base xs:text-sm text-xs"
           >
             Subscribe
           </button>
