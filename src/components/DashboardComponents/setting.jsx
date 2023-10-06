@@ -14,9 +14,9 @@ import {
   MdOutlineHistory,
   MdKeyboardArrowRight,
 } from "react-icons/md";
+import SettingFAQs from "./SettingsComponents/settingFAQs";
 
 export default function Setting(props) {
-
   const settingTabs = [
     {
       tabName: "User Info",
@@ -81,6 +81,8 @@ export default function Setting(props) {
           bankDetails={props.bankDetails}
           updateBankDetails={props.updateBankDetails}
         />
+      ) : props.currentSettingTab === "FAQs" ? (
+        <SettingFAQs />
       ) : (
         <article className="grid sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-4">
           {settingTabs &&
