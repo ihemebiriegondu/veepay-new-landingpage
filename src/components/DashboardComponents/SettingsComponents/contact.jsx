@@ -1,5 +1,5 @@
 import React from "react";
-import FormButtons from "../login&signupComponents/formButtons";
+import FormButtons from "../../login&signupComponents/formButtons";
 
 export default function Contact() {
   const submitMessage = (e) => {

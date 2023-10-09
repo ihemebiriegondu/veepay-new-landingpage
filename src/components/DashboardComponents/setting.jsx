@@ -3,29 +3,21 @@ import SettingBox from "./SettingsComponents/settingBox";
 import UserInfoSetting from "./SettingsComponents/userInfoSetting";
 import AccountSetting from "./SettingsComponents/accountSettings";
 
-import {
-  GrContactInfo,
-  GrAnnounce,
-  GrCircleQuestion,
-  GrSecure,
-} from "react-icons/gr";
+import { GrContactInfo, GrAnnounce, GrCircleQuestion } from "react-icons/gr";
 import {
   MdOutlineAccountBalance,
   MdOutlineHistory,
   MdKeyboardArrowRight,
+  MdOutlineSupportAgent,
 } from "react-icons/md";
 import SettingFAQs from "./SettingsComponents/settingFAQs";
+import Contact from "./SettingsComponents/contact";
 
 export default function Setting(props) {
   const settingTabs = [
     {
       tabName: "User Info",
       tabIcon: <GrContactInfo />,
-      tabText: "Provide personal details and how we can reach you",
-    },
-    {
-      tabName: "Login & security",
-      tabIcon: <GrSecure />,
       tabText: "Provide personal details and how we can reach you",
     },
     {
@@ -48,23 +40,28 @@ export default function Setting(props) {
       tabIcon: <GrCircleQuestion />,
       tabText: "Provide personal details and how we can reach you",
     },
+    {
+      tabName: "Contact Us",
+      tabIcon: <MdOutlineSupportAgent />,
+      tabText: "Provide personal details and how we can reach you",
+    },
   ];
 
   return (
     <section className="relative">
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center md:gap-4 gap-2 mb-6">
         <h1
           className={`${
             props.currentSettingTab === "genSetting"
               ? "text-3xl font-bold text-primary md:mb-10 sm:mb-8 xs:mb-6"
-              : "text-sm font-semibold text-black hover:text-primary hover:underline cursor-pointer"
+              : "sm:text-sm text-xs font-semibold text-black hover:text-primary hover:underline cursor-pointer"
           } w-fit ps-4`}
           onClick={() => props.setCurrentSettingTab("genSetting")}
         >
           Settings
         </h1>
         {props.currentSettingTab !== "genSetting" && (
-          <div className="flex items-center gap-4 text-sm font-medium">
+          <div className="flex items-center md:gap-4 gap-2 sm:text-sm text-xs font-medium">
             <MdKeyboardArrowRight />
             <p>{props.currentSettingTab}</p>
           </div>
@@ -83,6 +80,8 @@ export default function Setting(props) {
         />
       ) : props.currentSettingTab === "FAQs" ? (
         <SettingFAQs />
+      ) : props.currentSettingTab === "Contact Us" ? (
+        <Contact />
       ) : (
         <article className="grid sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-4">
           {settingTabs &&

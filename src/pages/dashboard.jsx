@@ -3,7 +3,6 @@ import DashboardNav from "../components/DashboardComponents/dashboardNav";
 import Profile from "../components/DashboardComponents/profile";
 import About from "../components/DashboardComponents/about";
 import Setting from "../components/DashboardComponents/setting";
-import Contact from "../components/DashboardComponents/contact";
 import MainDashboard from "../components/DashboardComponents/mainDashboard";
 
 import avatar from "../assets/images/Vector.png";
@@ -41,8 +40,6 @@ export default function Dashboard() {
             bankDetails={bankDetails}
             updateBankDetails={setBankDetails}
           />
-        ) : currentTab === "Contact Us" ? (
-          <Contact />
         ) : (
           <MainDashboard
             activeTab={setCurrentTab}

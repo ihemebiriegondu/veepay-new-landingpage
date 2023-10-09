@@ -1,12 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoLogOut } from "react-icons/io5";
-import { BiSolidMessageDots } from "react-icons/bi";
 import { MdSpaceDashboard, MdPerson, MdSettings } from "react-icons/md";
-import {
-  HiMiniPlus,
-  HiMiniInformationCircle,
-} from "react-icons/hi2";
+import { HiMiniPlus, HiMiniInformationCircle } from "react-icons/hi2";
 import logo from "../../assets/icons/Veepay Logo.png";
 import logo2 from "../../assets/icons/Logo (1).png";
 import navBg from "../../assets/images/Rectangle 1 (1).png";
@@ -15,9 +11,9 @@ export default function DashboardNav(props) {
   const navs = [
     { tab: "Dashboard", tabIcon: <MdSpaceDashboard />, mobile: true },
     { tab: "Profile", tabIcon: <MdPerson />, mobile: true },
+    { tab: "More Options", tabIcon: <HiMiniPlus />, mobile: "none" },
     { tab: "Settings", tabIcon: <MdSettings />, mobile: true },
     { tab: "About Us", tabIcon: <HiMiniInformationCircle />, mobile: true },
-    { tab: "Contact Us", tabIcon: <BiSolidMessageDots />, mobile: false },
   ];
 
   return (
@@ -51,21 +47,19 @@ export default function DashboardNav(props) {
                   key={nav.tab}
                   onClick={() => {
                     props.activeTab(nav.tab);
-                    props.setCurrentSettingTab('genSetting')
+                    props.setCurrentSettingTab("genSetting");
                   }}
                   className={`flex-col-reverse items-center font-semibold cursor-pointer md:ps-5 1.5xl:pe-0 md:pe-7 md:border-l md:border-l-4 rounded-sm transition duration-200 ease-in md:text-start text-center w-fit relative z-50 ${
                     props.tabCheck === nav.tab
                       ? "md:text-black text-primary md:border-primary"
                       : "text-black/50 hover:md:text-black hover:text-primary border-formBg"
                   } ${
-                    !nav.mobile
+                    nav.mobile === false
                       ? "1.5xl:inline-block md:flex hidden"
-                      : "1.5xl:inline-block flex"
-                  } ${
-                    i + 1 < 3
-                      ? `md:order-none order-1`
-                      : `md:order-none order-3`
-                  }`}
+                      : nav.mobile === true
+                      ? "1.5xl:inline-block flex"
+                      : "1.5xl:inline-block hidden"
+                  } ${i + 1 < 3 ? `order-1` : `order-3`}`}
                 >
                   <span className="1.5xl:inline hidden 1.5xl:text-lg text-xxs 1.5xl:leading-7 leading-none">
                     {nav.tab}
@@ -74,16 +68,20 @@ export default function DashboardNav(props) {
                 </li>
               ))}
 
-            <div className="order-2 relative flex justify-center w-full md:hidden block xs:text-4xl text-3xl">
-              <div className="absolute bottom-0 text-white p-2 rounded-b-full">
-                <div className="bg-primary rounded-full sm:p-3 p-2 w-fit">
+            <div className="order-2 relative flex justify-center w-full xs:text-4xl text-3xl 1.5xl:hidden block">
+              <div className="md:static absolute bottom-0 text-white md:p-0 p-2 rounded-b-full">
+                <div className="md:bg-primary/90 bg-primary rounded-full sm:p-3 p-2 w-fit">
                   <HiMiniPlus />
                 </div>
               </div>
             </div>
           </ul>
           <div className="absolute top-0 bottom-0 z-40 w-full h-full md:hidden block">
-            <img src={navBg} alt="curved bg" className="w-full h-full object-fill" />
+            <img
+              src={navBg}
+              alt="curved bg"
+              className="w-full h-full object-fill"
+            />
           </div>
         </div>
 
