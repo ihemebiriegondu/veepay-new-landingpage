@@ -21,7 +21,7 @@ export default function SideInfo({
           <FormButtons
             type={"info"}
             text={sideButton}
-            font={"font-medium text-lg"}
+            font={"font-medium text-lg rounded-md"}
             buttonType={"button"}
           />
         </Link>

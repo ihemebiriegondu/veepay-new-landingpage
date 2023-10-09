@@ -130,7 +130,7 @@ export default function LoginForm(props) {
       <FormButtons
         type={validityButton}
         text={"Login"}
-        font={"font-bold lg:text-xl"}
+        font={"font-bold lg:text-xl rounded-md"}
         buttonType={"submit"}
       />
       <FormsFooter text={'Don’t have an Account?'} link={'Sign Up'} linkto={'/signUp'} />
