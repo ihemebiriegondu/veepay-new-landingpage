@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Feedbacks({ text, subtext }) {
   return (
-    <section className="absolute top-0 bottom-0 w-full z-40 bg-feedbackBg flex flex-col items-center justify-center text-center">
+    <section className="absolute top-0 bottom-0 w-full z-40 bg-servicesBg/90 flex flex-col items-center justify-center text-center">
       <img
         src={successIcon}
         alt="sucess iicon"

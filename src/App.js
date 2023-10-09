@@ -8,6 +8,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import PasswordReset from "./pages/passwordReset";
 import PasswordResetCode from "./pages/passwordResetCode";
 import CreatePassword from "./pages/createPassword";
+import SmeData from "./allServices/smeData";
+import AirtimePurchase from "./allServices/airtimePurchase";
+import Bulksms from "./allServices/bulksms";
+import CableTV from "./allServices/cableTV";
 
 function App() {
   return (
@@ -25,6 +29,11 @@ function App() {
         <Route path="/createpassword" element={<CreatePassword />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/sme data" element={<SmeData />} />
+        <Route path="/airtime purchase" element={<AirtimePurchase />} />
+        <Route path="/bulk sms" element={<Bulksms />} />
+        <Route path="/cable tv subscription" element={<CableTV />} />
       </Routes>
     </Router>
   );

@@ -55,9 +55,9 @@ export default function PasswordResetCode() {
     <main className="bg-primary/10 absolute top-0 bottom-0 w-full">
       <div className="h-full flex flex-col">
         <div className="bg-white">
-          <LogoNav />
+          <LogoNav background={'lg:bg-transparent bg-white'} />
         </div>
-        <section className="xl:pt-11 pt-8 md:px-20 px-10 grow flex flex-col">
+        <section className="lg:pt-20 pt-8 md:px-20 px-10 grow flex flex-col">
           <Link to={"/"} className="lg:flex hidden items-center w-fit">
             <IoArrowBackOutline className="w-4 h-4 inline cursor-pointer" />
             <p className="text-base font-medium ms-2.5">Back to Homepage</p>

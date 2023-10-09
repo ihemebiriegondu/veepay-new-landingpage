@@ -14,9 +14,11 @@ module.exports = {
         warning: "#FF0000",
         formBg: "#CFD7E4",
         mobileFormBg: "#E7EBF2",
-        feedbackBg: "#D9D9D9E5",
+        servicesBg: "#D9D9D9",
         tableBorder: "#030B18",
         tableRow: "#ECEFF4",
+        servicesInput: "#AFBDD3",
+        servicesInputFocused: "#292D32",
       },
       fontSize: {
         xxs: "7.022px",
@@ -40,6 +42,9 @@ module.exports = {
       },
       boxShadow: {
         table: "0px 4px 20px 0px rgba(0, 0, 0, 0.50)",
+      },
+      borderRadius: {
+        "4xl": "40px",
       },
     },
   },
