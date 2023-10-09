@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DashboardNav from "../components/DashboardComponents/dashboardNav";
 import Profile from "../components/DashboardComponents/profile";
 import About from "../components/DashboardComponents/about";
-import Faqs from "../components/DashboardComponents/faqs";
 import Setting from "../components/DashboardComponents/setting";
 import Contact from "../components/DashboardComponents/contact";
 import MainDashboard from "../components/DashboardComponents/mainDashboard";
@@ -33,8 +32,6 @@ export default function Dashboard() {
           <Profile />
         ) : currentTab === "About Us" ? (
           <About />
-        ) : currentTab === "FAQs" ? (
-          <Faqs />
         ) : currentTab === "Settings" ? (
           <Setting
             currentSettingTab={currentSettingTab}
