@@ -11,6 +11,8 @@ import FormButtons from "../components/login&signupComponents/formButtons";
 import Footer from "../components/footer";
 
 export default function SmeData() {
+  const [error, setError] = useState(false);
+
   const [dataValues, setDataValues] = useState([]);
 
   const [networkValue, setNetworkValue] = useState("Select Network");
@@ -32,6 +34,12 @@ export default function SmeData() {
     });
   };
 
+  const buySmeDataFunction = (e) => {
+    e.preventDefault();
+
+    setError(false)
+  };
+
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">
       <main className="absolute top-0 bottom-0 w-full z-20 lg:bg-servicesBg bg-mobileFormBg flex flex-col justify-between">
@@ -51,7 +59,12 @@ export default function SmeData() {
             Buy <span>SME</span> Data
           </h1>
 
-          <form className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 px-6 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4">
+          <form
+            onSubmit={(e) => {
+              buySmeDataFunction(e);
+            }}
+            className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 px-6 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4"
+          >
             <div>
               <label
                 htmlFor="datanetwork"
@@ -81,6 +94,11 @@ export default function SmeData() {
                 disabled={false}
                 value={""}
               />
+              {
+                error && <p className="ps-1 lg:text-base md:text-sm text-xs text-warning lg:font-normal font-light lg:not-italic italic mont">
+                Incorrect Network Number
+              </p>
+              }
             </div>
 
             <div>
