@@ -6,7 +6,7 @@ export default function PlansTable() {
   const [activeTable, setActiveTable] = useState("data");
 
   return (
-    <section className="pt-12 pb-40 xl:px-20 xs:px-6 px-3">
+    <section className="sm:pt-10 pt-6 pb-40 xl:px-20 xs:px-6 px-3">
       <h1 className="text-center xlg:text-4xl lg:text-3xl md:text-2xl text-xl font-bold xlg:mb-4 md:mb-2.5 mb-1.5">
         Rates and Pricing Table
       </h1>

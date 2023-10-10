@@ -33,10 +33,10 @@ export default function SmeData() {
   };
 
   return (
-    <div className="bg-servicesBg">
-      <main className="absolute top-0 bottom-0 w-full z-20 bg-servicesBg">
+    <div className="lg:bg-servicesBg bg-mobileFormBg">
+      <main className="absolute top-0 bottom-0 w-full z-20 lg:bg-servicesBg bg-mobileFormBg flex flex-col justify-between">
         <LogoNav background={"bg-white"} />
-        <section className="pt-10 px-10 pb-16 bg-servicesBg">
+        <section className="pt-10 md:px-10 px-6 pb-16 lg:bg-servicesBg bg-mobileFormBg grow">
           <div className="mb-6 mont">
             <Link
               to={"/dashboard"}
@@ -47,13 +47,16 @@ export default function SmeData() {
             </Link>
           </div>
 
-          <h1 className="mb-3 text-primary font-bold text-4xl text-center mont">
-            BUY SME DATA
+          <h1 className="lg:mb-3 md:mb-5 mb-7 text-primary font-bold lg:text-4xl md:text-3xl text-2xl text-center mont lg:uppercase capitalize">
+            Buy <span>SME</span> Data
           </h1>
 
-          <form className="py-16 px-20 bg-white mx-32 rounded-t-4xl rounded-br-4xl text-2xl flex flex-col gap-y-12">
+          <form className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 px-6 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4">
             <div>
-              <label htmlFor="datanetwork" className="ps-2.5">
+              <label
+                htmlFor="datanetwork"
+                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
+              >
                 Network
               </label>
               <FormDropdowns
@@ -65,7 +68,10 @@ export default function SmeData() {
             </div>
 
             <div>
-              <label htmlFor="datanumber" className="ps-2.5">
+              <label
+                htmlFor="datanumber"
+                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
+              >
                 Phone Number
               </label>
               <FormInputs
@@ -78,7 +84,10 @@ export default function SmeData() {
             </div>
 
             <div>
-              <label htmlFor="datavalue" className="ps-2.5">
+              <label
+                htmlFor="datavalue"
+                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
+              >
                 Data Value
               </label>
               <FormDropdowns
@@ -91,7 +100,10 @@ export default function SmeData() {
             </div>
 
             <div>
-              <label htmlFor="dataamount" className="ps-2.5">
+              <label
+                htmlFor="dataamount"
+                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
+              >
                 Amount
               </label>
               <FormInputs
@@ -108,12 +120,16 @@ export default function SmeData() {
                 type={"submit"}
                 text={"Buy"}
                 buttonType={"submit"}
-                font={"font-bold lg:text-3xl mont md:text-lg text-base rounded-t-2xl rounded-br-2xl"}
+                font={
+                  "font-bold mont lg:text-3xl md:text-xl text-base md:rounded-t-2xl md:rounded-br-2xl"
+                }
               />
             </div>
           </form>
         </section>
-        <Footer />
+        <div className="bottom-0 w-full">
+          <Footer />
+        </div>
       </main>
     </div>
   );

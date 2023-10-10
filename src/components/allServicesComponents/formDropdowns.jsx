@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 
 export default function FormDropdowns(props) {
-  const [showDropdown, setShowDropdown] = useState(false);
-
   const toggleDropdown = (e) => {
     const allButtons = document.querySelectorAll(".dropdownButton");
     const allDropdowns = document.querySelectorAll(".dropdownElement");
@@ -13,15 +11,21 @@ export default function FormDropdowns(props) {
     );
 
     allButtons.forEach((button) => {
-      if (button.id !== targetElement.id) {
+      if (button.children[2].id !== targetElement.id) {
         button.classList.remove("border-servicesInputFocused");
       }
     });
 
-    if (targetElement.classList.contains("border-servicesInputFocused")) {
-      targetElement.classList.remove("border-servicesInputFocused");
+    if (
+      targetElement.parentElement.classList.contains(
+        "border-servicesInputFocused"
+      )
+    ) {
+      targetElement.parentElement.classList.remove(
+        "border-servicesInputFocused"
+      );
     } else {
-      targetElement.classList.add("border-servicesInputFocused");
+      targetElement.parentElement.classList.add("border-servicesInputFocused");
     }
 
     allDropdowns.forEach((dropdown) => {
@@ -41,18 +45,14 @@ export default function FormDropdowns(props) {
     e.target.parentElement.classList.add("invisible");
     document
       .getElementById(e.target.parentElement.getAttribute("data-target-option"))
-      .classList.remove("border-servicesInputFocused");
+      .parentElement.classList.remove("border-servicesInputFocused");
   };
 
   return (
     <div className="relative">
-      <button
-        id={props.id}
+      <div
         type="button"
-        className={`my-3 flex items-center justify-between outline-none border-4 border-servicesInput text-black rounded-xl px-10 py-5 w-full dropdownButton`}
-        onClick={(e) => {
-          toggleDropdown(e);
-        }}
+        className={`my-3 lg:text-2xl md:text-lg text-base relative flex items-center justify-between outline-none lg:border-4 md:border-3 border-2 border-servicesInput text-black lg:rounded-xl md:rounded-lg rounded-md lg:px-10 md:px-6 px-2 lg:py-5 md:py-3.5 py-2 w-full dropdownButton`}
       >
         <p
           className={`${
@@ -66,17 +66,25 @@ export default function FormDropdowns(props) {
           {props.value}
         </p>
         <IoChevronDownOutline />
-      </button>
+        <button
+          type="button"
+          id={props.id}
+          className="outline-none absolute top-0 bottom-0 w-full left-0"
+          onClick={(e) => {
+            toggleDropdown(e);
+          }}
+        ></button>
+      </div>
 
       <ul
-        className={`dropdownElement absolute w-full border-2 border-servicesInput rounded-xl text-xl flex flex-col divide-y divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
+        className={`dropdownElement absolute w-full lg:border-2 border border-servicesInput lg:rounded-xl md:rounded-md rounded flex flex-col lg:divide-y divide-y-0.3 divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
         data-target-option={props.id}
       >
         {props.formOptions &&
           props.formOptions.map((options, i) => (
             <li
               key={props.id + i}
-              className={`px-10 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer ${
+              className={`px-10 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
                 props.id === "datanetwork" && "uppercase"
               }`}
               onClick={(e) => {
