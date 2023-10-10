@@ -10,7 +10,7 @@ export default function Login() {
   return (
     <div className="">
       <main className="absolute top-0 bottom-0 w-full z-20 md:bg-transparent bg-mobileFormBg">
-        <LogoNav background={'lg:bg-transparent bg-white'} />
+        <LogoNav background={'lg:bg-transparent bg-white lg:fixed relative'} />
         <section className="xl:px-20 md:px-12 px-6 pt-10 pb-10 flex flex-row justify-between items-center xl:gap-x-52 gap-x-44 h-full lg:bg-white bg-mobileFormBg formSection">
           <SideInfo page={'login'} sideText={'Don’t have an Account?'} sideActionText={'Sign Up'} sideStep={'Fill up some informations and start journey with us.'} sideButton={'Sign up'}sideLink={'/signUp'} />
           <LoginForm sucessType={setSucessForm} />

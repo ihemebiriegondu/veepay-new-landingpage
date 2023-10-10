@@ -55,7 +55,7 @@ export default function PasswordResetCode() {
     <main className="bg-primary/10 absolute top-0 bottom-0 w-full">
       <div className="h-full flex flex-col">
         <div className="bg-white">
-          <LogoNav background={'lg:bg-transparent bg-white'} />
+          <LogoNav background={'lg:bg-transparent bg-white lg:fixed relative'} />
         </div>
         <section className="lg:pt-20 pt-8 md:px-20 px-10 grow flex flex-col">
           <Link to={"/"} className="lg:flex hidden items-center w-fit">
