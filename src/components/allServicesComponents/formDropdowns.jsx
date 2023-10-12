@@ -77,7 +77,7 @@ export default function FormDropdowns(props) {
       </div>
 
       <ul
-        className={`dropdownElement absolute w-full lg:border-2 border border-servicesInput lg:rounded-xl md:rounded-md rounded flex flex-col lg:divide-y divide-y-0.3 divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
+        className={`dropdownElement absolute z-30 w-full lg:border-2 border border-servicesInput lg:rounded-xl md:rounded-md rounded flex flex-col lg:divide-y divide-y-0.3 divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
         data-target-option={props.id}
       >
         {props.formOptions &&
@@ -94,19 +94,44 @@ export default function FormDropdowns(props) {
                     ? options.network
                     : props.id === "datavalue"
                     ? options.value + "- " + options.days + " Days"
+                    : props.id === "billerInput"
+                    ? options.biller
+                    : props.id === "paymentItemInput"
+                    ? options.item
                     : ""
                 );
                 props.id === "datavalue" &&
                   props.setDataAmount("₦ " + options.price);
+                props.id === "paymentItemInput" &&
+                  props.setSubAmount(
+                    options.price === "Fill Amount"
+                      ? options.price
+                      : "₦ " + options.price
+                  );
 
                 secondOptionClickFunction(e);
               }}
             >
-              {props.id === "datanetwork" || props.id === "airtimenetwork"
-                ? options.network
-                : props.id === "datavalue"
-                ? options.value + "- " + options.days + " Days"
-                : ""}
+              {props.id === "datanetwork" || props.id === "airtimenetwork" ? (
+                options.network
+              ) : props.id === "datavalue" ? (
+                options.value + "- " + options.days + " Days"
+              ) : props.id === "billerInput" ? (
+                options.biller
+              ) : props.id === "paymentItemInput" ? (
+                <span className="">
+                  {options.item}{" "}
+                  <span className="text-black/50">
+                    (
+                    {options.price === "Fill Amount"
+                      ? options.price
+                      : "N" + options.price}
+                    )
+                  </span>
+                </span>
+              ) : (
+                ""
+              )}
             </li>
           ))}
       </ul>

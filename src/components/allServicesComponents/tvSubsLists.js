@@ -1,5 +1,3 @@
-import React from "react";
-
 const TvSubsLists = [
   {
     biller: "GOtv",
@@ -17,8 +15,8 @@ const TvSubsLists = [
       { item: "Jolli- 12 Months", price: "33,600" },
       { item: "Max- 4 Month", price: "16,600" },
       { item: "Max- 12 Months", price: "49,800" },
-      { item: "GOTV RENEW- (Fill Amount)", price: "" },
-      { item: "GOTV TOP UP- (Fill Amount)", price: "" },
+      { item: "GOTV RENEW", price: "Fill Amount" },
+      { item: "GOTV TOP UP", price: "Fill Amount" },
     ],
   },
   {
@@ -40,7 +38,7 @@ const TvSubsLists = [
       { item: "Nova (Dish) - Weekly", price: "300" },
       { item: "Nova (Dish) - Monthly", price: "900" },
       { item: "Startimes All inclusive - Monthly", price: "12,000" },
-      { item: "Startimes Renew - (Fill Amount)", price: "" },
+      { item: "Startimes Renew", price: "Fill Amount" },
     ],
   },
   {
@@ -54,13 +52,13 @@ const TvSubsLists = [
       { item: "Premium", price: "21,000" },
       { item: "Business", price: "2,66g" },
       { item: "Xtraview + PVR Access", price: "2,900" },
-      { item: "DSTV RENEW (Fill Amount)", price: "" },
+      { item: "DSTV RENEW", price: "Fill Amount" },
     ],
   },
   {
     biller: "Box Office DSTV",
     paymentItems: [
-      { item: "Box Office Wallet Topup (Fill Amount)", price: "" },
+      { item: "Box Office Wallet Topup", price: "Fill Amount" },
     ],
   },
   {
