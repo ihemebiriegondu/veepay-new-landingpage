@@ -11,13 +11,15 @@ import FormButtons from "../components/login&signupComponents/formButtons";
 import Footer from "../components/footer";
 
 export default function SmeData() {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("none");
+  const [phoneNoError, setPhoneNoError] = useState(false);
 
   const [dataValues, setDataValues] = useState([]);
 
   const [networkValue, setNetworkValue] = useState("Select Network");
   const [dataValue, setDataValue] = useState("");
   const [dataAmount, setDataAmount] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const setNetworkFunction = (netWorkOption) => {
     setNetworkValue(netWorkOption);
@@ -32,19 +34,30 @@ export default function SmeData() {
         setDataAmount("₦ " + datas.dataValue[0].price);
       }
     });
+    setError("none");
   };
 
   const buySmeDataFunction = (e) => {
     e.preventDefault();
 
-    setError(false)
+    if (networkValue === "Select Network" || phoneNo === "") {
+      setError("all");
+      if (phoneNo === "" || phoneNo.length !== 11) {
+        setPhoneNoError(true);
+      }
+    } else {
+      if (phoneNo === "" || phoneNo.length !== 11) {
+        setPhoneNoError(true);
+      }
+      setError("none");
+    }
   };
 
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">
       <main className="absolute top-0 bottom-0 w-full z-20 lg:bg-servicesBg bg-mobileFormBg flex flex-col justify-between">
         <LogoNav background={"bg-white"} />
-        <section className="pt-10 md:px-10 px-6 pb-16 lg:bg-servicesBg bg-mobileFormBg grow">
+        <section className="lg:pt-10 pt-5 md:px-10 xs:px-6 px-4 pb-16 lg:bg-servicesBg bg-mobileFormBg grow">
           <div className="mb-6 mont">
             <Link
               to={"/dashboard"}
@@ -63,7 +76,7 @@ export default function SmeData() {
             onSubmit={(e) => {
               buySmeDataFunction(e);
             }}
-            className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 px-6 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4"
+            className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 xs:px-6 px-4 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4"
           >
             <div>
               <label
@@ -93,12 +106,17 @@ export default function SmeData() {
                 placeholder={"Enter number"}
                 disabled={false}
                 value={""}
+                inputChanged={(value) => {
+                  setPhoneNo(value);
+                  setPhoneNoError(false);
+                  setError("none");
+                }}
               />
-              {
-                error && <p className="ps-1 lg:text-base md:text-sm text-xs text-warning lg:font-normal font-light lg:not-italic italic mont">
-                Incorrect Network Number
-              </p>
-              }
+              {phoneNoError && (
+                <p className="ps-1 lg:text-base md:text-sm text-xs text-warning lg:font-normal font-light lg:not-italic italic mont">
+                  Incorrect Network Number
+                </p>
+              )}
             </div>
 
             <div>
@@ -112,7 +130,10 @@ export default function SmeData() {
                 id={"datavalue"}
                 formOptions={dataValues}
                 value={dataValue}
-                optionClickFunction={setDataValue}
+                optionClickFunction={(value) => {
+                  setDataValue(value);
+                  setError("none");
+                }}
                 setDataAmount={setDataAmount}
               />
             </div>
@@ -135,7 +156,7 @@ export default function SmeData() {
 
             <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
               <FormButtons
-                type={"submit"}
+                type={error === "all" || phoneNoError ? "invalid" : "submit"}
                 text={"Buy"}
                 buttonType={"submit"}
                 font={

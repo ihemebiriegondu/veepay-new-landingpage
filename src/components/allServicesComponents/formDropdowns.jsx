@@ -56,7 +56,7 @@ export default function FormDropdowns(props) {
       >
         <p
           className={`${
-            props.id === "datanetwork"
+            props.id === "datanetwork" || props.id === "airtimenetwork"
               ? props.value === "Select Network"
                 ? "capitalize"
                 : "uppercase"
@@ -85,11 +85,12 @@ export default function FormDropdowns(props) {
             <li
               key={props.id + i}
               className={`px-10 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
-                props.id === "datanetwork" && "uppercase"
+                (props.id === "datanetwork" || props.id === "airtimenetwork") &&
+                "uppercase"
               }`}
               onClick={(e) => {
                 props.optionClickFunction(
-                  props.id === "datanetwork"
+                  props.id === "datanetwork" || props.id === "airtimenetwork"
                     ? options.network
                     : props.id === "datavalue"
                     ? options.value + "- " + options.days + " Days"
@@ -101,7 +102,7 @@ export default function FormDropdowns(props) {
                 secondOptionClickFunction(e);
               }}
             >
-              {props.id === "datanetwork"
+              {props.id === "datanetwork" || props.id === "airtimenetwork"
                 ? options.network
                 : props.id === "datavalue"
                 ? options.value + "- " + options.days + " Days"
