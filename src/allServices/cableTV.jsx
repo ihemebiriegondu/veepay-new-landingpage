@@ -31,9 +31,10 @@ export default function CableTV() {
 
   const cableTvSubFunction = (e) => {
     e.preventDefault();
+
+    console.log(decoderNo)
   };
 
-  console.log(subAmount);
 
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">

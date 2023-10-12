@@ -5,10 +5,10 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import FormDropdowns from "../components/allServicesComponents/formDropdowns";
 import FormInputs from "../components/allServicesComponents/formInputs";
-
-import smeDatas from "../components/allServicesComponents/smeDatas";
 import FormButtons from "../components/login&signupComponents/formButtons";
 import Footer from "../components/footer";
+
+import smeDatas from "../components/allServicesComponents/smeDatas";
 
 export default function AirtimePurchase() {
   const [error, setError] = useState("none");
