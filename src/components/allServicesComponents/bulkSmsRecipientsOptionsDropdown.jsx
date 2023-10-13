@@ -21,11 +21,12 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
     try {
       const contacts = await navigator.contacts.select(props, opts);
       setRecipients(contacts);
+      props.setShowDropdown(false);
 
       contacts.forEach((contact) => {
         console.log(contact.name);
         alert(contact.name);
-        alert(contact.tel);
+        alert(contact.tel[0]);
       });
     } catch (error) {
       // Handle any errors here.
