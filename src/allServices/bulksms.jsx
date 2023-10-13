@@ -9,12 +9,6 @@ import Footer from "../components/footer";
 import BulkSmsRecipientsOptionsDropdown from "../components/allServicesComponents/bulkSmsRecipientsOptionsDropdown";
 
 export default function Bulksms() {
-  const recipientOptions = [
-    "Select from Contacts",
-    "Upload contacts from Google Drive",
-    "Upload contact file",
-  ];
-
   const [recipientOption, setRecipientOption] = useState("");
   const [sender, setSender] = useState("");
   const [subject, setSubject] = useState("");
@@ -83,7 +77,6 @@ export default function Bulksms() {
               </label>
 
               <BulkSmsRecipientsOptionsDropdown
-                formOptions={recipientOptions}
                 showDropdown={showRecipientDropdown}
                 setShowDropdown={setShowRecipientDropdown}
                 inputChanged={(value) => {

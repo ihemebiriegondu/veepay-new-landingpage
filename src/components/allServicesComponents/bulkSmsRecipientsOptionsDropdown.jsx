@@ -3,21 +3,26 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { GiPaperClip } from "react-icons/gi";
 
 export default function BulkSmsRecipientsOptionsDropdown(props) {
+  //check if browser supports the contact picker api
+  const supported = "contacts" in navigator && "ContactsManager" in window;
+  //console.log(supported);
+
   const [placeholder, setPlaceholder] = useState(
     "Input Numbers or select other options"
   );
-  const supported = "contacts" in navigator && "ContactsManager" in window;
-  console.log(supported);
 
   const getContact = async () => {
-    const props = ["name", "email", "tel", "address", "icon"];
+    const props = ["name", "tel", "icon"];
     const opts = { multiple: true };
 
     try {
       const contacts = await navigator.contacts.select(props, opts);
-      console.log(contacts);
-      alert(contacts);
-    } catch (ex) {
+      contacts.forEach(contact => {
+        console.log(contact.name)
+        alert(contact.name)
+        alert(contact.tel)
+      });
+    } catch (error) {
       // Handle any errors here.
     }
   };
@@ -65,19 +70,26 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
           !props.showDropdown && "invisible"
         }`}
       >
-        {props.formOptions &&
-          props.formOptions.map((options, i) => (
-            <li
-              key={options}
-              onClick={() => {
-                getContact();
-              }}
-              className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs"
-            >
-              {options}
-              {i === 2 && <GiPaperClip />}
-            </li>
-          ))}
+        <li
+          className="flex items-center justify-between gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs"
+          onClick={() => {
+            getContact();
+          }}
+        >
+          <span>Select from Contacts</span>
+          {!supported && (
+            <span className="text-warning text-sm font-thin">
+              This browser does NOT support upload from contacts
+            </span>
+          )}
+        </li>
+        <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
+          Upload contacts from Google Drive
+        </li>
+        <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
+          Upload contact file
+          <GiPaperClip />
+        </li>
       </ul>
     </div>
   );
