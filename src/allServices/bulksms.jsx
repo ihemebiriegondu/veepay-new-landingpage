@@ -3,20 +3,30 @@ import { Link } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
 
 import LogoNav from "../components/login&signupComponents/logoNav";
-import FormDropdowns from "../components/allServicesComponents/formDropdowns";
 import FormInputs from "../components/allServicesComponents/formInputs";
 import FormButtons from "../components/login&signupComponents/formButtons";
 import Footer from "../components/footer";
-
-import smeDatas from "../components/allServicesComponents/smeDatas";
+import BulkSmsRecipientsOptionsDropdown from "../components/allServicesComponents/bulkSmsRecipientsOptionsDropdown";
 
 export default function Bulksms() {
-  const [recipientOption, setRecipientOption] = useState(
-    "Input Numbers or select other options"
-  );
+  const recipientOptions = [
+    "Select from Contacts",
+    "Upload contacts from Google Drive",
+    "Upload contact file",
+  ];
+
+  const [recipientOption, setRecipientOption] = useState("");
+  const [sender, setSender] = useState("");
+  const [subject, setSubject] = useState("");
+  //const [body, setBody] = useState("");
+  //const [sendType, setSendType] = useState("");
+
+  const [showRecipientDropdown, setShowRecipientDropdown] = useState(false);
 
   const sendBulkSms = (e) => {
     e.preventDefault();
+
+    console.log(sender, subject)
   };
 
   return (
@@ -58,7 +68,9 @@ export default function Bulksms() {
                 disabled={false}
                 value={""}
                 page={"sms"}
-                inputChanged={(value) => {}}
+                inputChanged={(value) => {
+                  setSender(value);
+                }}
               />
             </div>
 
@@ -69,13 +81,14 @@ export default function Bulksms() {
               >
                 Recipient
               </label>
-              <FormDropdowns
-                id={"recipientOptions"}
-                formOptions={smeDatas}
-                value={recipientOption}
-                page={"sms"}
-                optionClickFunction={(value) => {
-                  setRecipientOption(value)
+
+              <BulkSmsRecipientsOptionsDropdown
+                formOptions={recipientOptions}
+                showDropdown={showRecipientDropdown}
+                setShowDropdown={setShowRecipientDropdown}
+                inputChanged={(value) => {
+                  setRecipientOption(value);
+                  console.log(recipientOption);
                 }}
               />
             </div>
@@ -94,7 +107,9 @@ export default function Bulksms() {
                 disabled={false}
                 value={""}
                 page={"sms"}
-                inputChanged={(value) => {}}
+                inputChanged={(value) => {
+                  setSubject(value);
+                }}
               />
             </div>
 
@@ -114,7 +129,9 @@ export default function Bulksms() {
             </div>
 
             <div className="flex lg:gap-x-3 md:gap-x-2 gap-x-1 lg:pt-4 md:pt-1 pt-0">
-              <p className="lg:text-2xl md:text-lg text-sm font-semibold mont">Send:</p>
+              <p className="lg:text-2xl md:text-lg text-sm font-semibold mont">
+                Send:
+              </p>
               <div className="lg:text-xl md:text-base text-sm font-medium mont flex flex-col lg:gap-y-4 md:gap-y-3 gap-y-1">
                 <div className="flex items-stretch lg:gap-x-4 md:gap-x-2 gap-x-1">
                   <input

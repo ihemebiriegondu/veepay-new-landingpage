@@ -88,7 +88,7 @@ export default function FormDropdowns(props) {
           props.formOptions.map((options, i) => (
             <li
               key={props.id + i}
-              className={`px-10 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
+              className={`lg:px-10 md:px-6 px-3 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
                 (props.id === "datanetwork" || props.id === "airtimenetwork") &&
                 "uppercase"
               }`}
