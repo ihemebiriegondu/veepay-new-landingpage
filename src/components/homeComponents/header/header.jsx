@@ -9,8 +9,8 @@ export default function Header() {
   return (
     <header className="bg-primary/20">
       <Nav />
-      <div className="px-4 flex lg:flex-row flex-col lg:gap-4 gap-8 items-center justify-between">
-        <div className="lg:basis-2/5 lg:block flex flex-col items-center lg:pt-0 md:pt-10 pt-5">
+      <div className="px-4 flex lg:flex-row flex-col 2xl:gap-10 lg:gap-4 gap-8 items-center justify-between">
+        <div className="2xl:basis-3/5 lg:basis-2/5 lg:block flex flex-col items-center lg:pt-0 md:pt-10 pt-5">
           <div className="md:w-140 w-52 w-full md:h-44 h-24 mb-3">
             <img
               src={logo}

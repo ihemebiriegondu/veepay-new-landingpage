@@ -6,6 +6,21 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
   const [placeholder, setPlaceholder] = useState(
     "Input Numbers or select other options"
   );
+  const supported = "contacts" in navigator && "ContactsManager" in window;
+  console.log(supported);
+
+  const getContact = async () => {
+    const props = ["name", "email", "tel", "address", "icon"];
+    const opts = { multiple: true };
+
+    try {
+      const contacts = await navigator.contacts.select(props, opts);
+      console.log(contacts);
+      alert(contacts);
+    } catch (ex) {
+      // Handle any errors here.
+    }
+  };
 
   return (
     <div className="relative">
@@ -54,6 +69,9 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
           props.formOptions.map((options, i) => (
             <li
               key={options}
+              onClick={() => {
+                getContact();
+              }}
               className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs"
             >
               {options}
