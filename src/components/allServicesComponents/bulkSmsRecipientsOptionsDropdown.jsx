@@ -21,7 +21,6 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
     try {
       const contacts = await navigator.contacts.select(props, opts);
       setRecipients(contacts);
-      props.setShowDropdown(false);
 
       contacts.forEach((contact) => {
         console.log(contact.name);
@@ -31,6 +30,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
     } catch (error) {
       // Handle any errors here.
     }
+      //props.setShowDropdown(false);
   };
 
   return (
