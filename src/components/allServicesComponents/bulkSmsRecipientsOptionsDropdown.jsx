@@ -17,6 +17,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
   const getContact = async () => {
     const props = ["name", "tel"];
     const opts = { multiple: true };
+    const recArray = [];
 
     try {
       const contacts = await navigator.contacts.select(props, opts);
@@ -26,11 +27,19 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
         console.log(contact.name);
         alert(contact.name);
         alert(contact.tel);
+
+        let numbersArray = [];
+        numbersArray = contact.tel.split(", ");
+
+        recArray.push(numbersArray[0]);
       });
+      console.log(recArray)
+
+
     } catch (error) {
       // Handle any errors here.
     }
-      //props.setShowDropdown(false);
+    props.setShowDropdown(false);
   };
 
   return (
