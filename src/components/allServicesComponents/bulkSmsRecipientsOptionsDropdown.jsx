@@ -77,7 +77,11 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
         </button>
 
         {recipients.length > 0 && (
-          <ContactSelectedToast amount={recipients.length} />
+          <ContactSelectedToast
+            amount={recipients.length}
+            setRecipients={setRecipients}
+            setRecipientOptionsArray={props.setRecipientOptionsArray}
+          />
         )}
       </div>
 
