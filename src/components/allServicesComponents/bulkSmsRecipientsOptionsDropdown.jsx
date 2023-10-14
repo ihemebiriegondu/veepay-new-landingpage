@@ -29,7 +29,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
       });
 
       document.getElementById("recipientOptions").value = "";
-      props.setRecipientOptions(recArray.join(", "));
+      props.setRecipientOptionsArray(recArray);
     } catch (error) {
       // Handle any errors here.
     }
@@ -55,7 +55,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
             props.showDropdown && "placeholder:text-black"
           }`}
           onChange={(e) => {
-            props.setRecipientOptions(e.target.value);
+            props.setRecipientOptionsArray(e.target.value.split(", "));
           }}
         />
         <button
@@ -81,7 +81,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
         )}
       </div>
 
-      {props.recipientOptions !== "" && (
+      {props.recipientOptionsArray.length !== 0 && recipients.length === 0 && (
         <p className="lg:-mt-1.5 md:-mt-0.5 mt-0 lg:text-sm text-xs text-gray-500">
           Separate numbers with commas
         </p>

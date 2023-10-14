@@ -9,8 +9,7 @@ import Footer from "../components/footer";
 import BulkSmsRecipientsOptionsDropdown from "../components/allServicesComponents/bulkSmsRecipientsOptionsDropdown";
 
 export default function Bulksms() {
-  const [recipientOptions, setRecipientOptions] = useState("");
-  const [recipientOptionsArray, setRecipientOptionsArray] = useState("");
+  const [recipientOptionsArray, setRecipientOptionsArray] = useState([]);
   const [sender, setSender] = useState("");
   const [subject, setSubject] = useState("");
   //const [body, setBody] = useState("");
@@ -20,8 +19,6 @@ export default function Bulksms() {
 
   const sendBulkSms = (e) => {
     e.preventDefault();
-
-    setRecipientOptionsArray(recipientOptions.split(", "));
 
     console.log(recipientOptionsArray);
     console.log(sender, subject);
@@ -83,8 +80,8 @@ export default function Bulksms() {
               <BulkSmsRecipientsOptionsDropdown
                 showDropdown={showRecipientDropdown}
                 setShowDropdown={setShowRecipientDropdown}
-                recipientOptions={recipientOptions}
-                setRecipientOptions={setRecipientOptions}
+                recipientOptionsArray={recipientOptionsArray}
+                setRecipientOptionsArray={setRecipientOptionsArray}
               />
             </div>
 
