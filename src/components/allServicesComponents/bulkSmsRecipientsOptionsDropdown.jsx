@@ -55,7 +55,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
             props.showDropdown && "placeholder:text-black"
           }`}
           onChange={(e) => {
-            props.setRecipientOptionsArray(e.target.value.split(", "));
+            props.setRecipientOptionsArray(e.target.value.split(","));
           }}
         />
         <button

@@ -5,15 +5,17 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import FormInputs from "../components/allServicesComponents/formInputs";
 import FormButtons from "../components/login&signupComponents/formButtons";
-import Footer from "../components/footer";
 import BulkSmsRecipientsOptionsDropdown from "../components/allServicesComponents/bulkSmsRecipientsOptionsDropdown";
+import SendTypeCheckboxes from "../components/allServicesComponents/sendTypeCheckboxes";
+import Footer from "../components/footer";
 
 export default function Bulksms() {
   const [recipientOptionsArray, setRecipientOptionsArray] = useState([]);
   const [sender, setSender] = useState("");
   const [subject, setSubject] = useState("");
   //const [body, setBody] = useState("");
-  //const [sendType, setSendType] = useState("");
+  const [sendType, setSendType] = useState("");
+  const [scheduleTime, setScheduleTime] = useState("");
 
   const [showRecipientDropdown, setShowRecipientDropdown] = useState(false);
 
@@ -22,6 +24,8 @@ export default function Bulksms() {
 
     console.log(recipientOptionsArray);
     console.log(sender, subject);
+    console.log(sendType);
+    console.log(scheduleTime);
   };
 
   return (
@@ -120,31 +124,11 @@ export default function Bulksms() {
               ></textarea>
             </div>
 
-            <div className="flex lg:gap-x-3 md:gap-x-2 gap-x-1 lg:pt-4 md:pt-1 pt-0">
-              <p className="lg:text-2xl md:text-lg text-sm font-semibold mont">
-                Send:
-              </p>
-              <div className="lg:text-xl md:text-base text-sm font-medium mont flex flex-col lg:gap-y-4 md:gap-y-3 gap-y-1">
-                <div className="flex items-stretch lg:gap-x-4 md:gap-x-2 gap-x-1">
-                  <input
-                    type="checkbox"
-                    name="sendType"
-                    id="sendImmediately"
-                    className="lg:w-6 md:w-5 lg:h-6 md:h-5"
-                  />
-                  <label htmlFor="sendImmediately">Immediately</label>
-                </div>
-                <div className="flex items-stretch lg:gap-x-4 md:gap-x-2 gap-x-1">
-                  <input
-                    type="checkbox"
-                    name="sendType"
-                    id="scheduleSend"
-                    className="lg:w-6 md:w-5 lg:h-6 md:h-5"
-                  />
-                  <label htmlFor="scheduleSend">Schedule</label>
-                </div>
-              </div>
-            </div>
+            <SendTypeCheckboxes
+              setSendType={setSendType}
+              scheduleTime={scheduleTime}
+              setScheduleTime={setScheduleTime}
+            />
 
             <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
               <FormButtons
