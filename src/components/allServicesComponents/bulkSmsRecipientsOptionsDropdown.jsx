@@ -15,29 +15,25 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
   );
 
   const getContact = async () => {
-    const props = ["name", "tel"];
+    const property = ["tel"];
     const opts = { multiple: true };
     const recArray = [];
 
     try {
-      const contacts = await navigator.contacts.select(props, opts);
+      const contacts = await navigator.contacts.select(property, opts);
       setRecipients(contacts);
 
       contacts.forEach((contact) => {
-        console.log(contact.name);
-        console.log(contact.tel);
-        alert(contact.name);
-        alert(contact.tel);
-
+        //push the first number associated with the name to the recArray array
         recArray.push(contact.tel[0]);
       });
-      console.log(recArray)
 
-
+      document.getElementById("recipientOptions").value = "";
+      props.setRecipientOptions(recArray.join(", "));
     } catch (error) {
       // Handle any errors here.
     }
-    //props.setShowDropdown(false);
+    props.setShowDropdown(false);
   };
 
   return (
@@ -59,7 +55,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
             props.showDropdown && "placeholder:text-black"
           }`}
           onChange={(e) => {
-            props.inputChanged(e.target.value);
+            props.setRecipientOptions(e.target.value);
           }}
         />
         <button

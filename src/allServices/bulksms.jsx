@@ -85,9 +85,6 @@ export default function Bulksms() {
                 setShowDropdown={setShowRecipientDropdown}
                 recipientOptions={recipientOptions}
                 setRecipientOptions={setRecipientOptions}
-                inputChanged={(value) => {
-                  setRecipientOptions(value);
-                }}
               />
             </div>
 
