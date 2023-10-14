@@ -25,7 +25,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
       contacts.forEach((contact) => {
         console.log(contact.name);
         alert(contact.name);
-        alert(contact.tel[0]);
+        alert(contact.tel);
       });
     } catch (error) {
       // Handle any errors here.
