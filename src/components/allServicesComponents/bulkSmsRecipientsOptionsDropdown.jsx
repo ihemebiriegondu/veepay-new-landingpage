@@ -25,13 +25,11 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
 
       contacts.forEach((contact) => {
         console.log(contact.name);
+        console.log(contact.tel);
         alert(contact.name);
         alert(contact.tel);
 
-        let numbersArray = [];
-        numbersArray = contact.tel.split(", ");
-
-        recArray.push(numbersArray[0]);
+        recArray.push(contact.tel[0]);
       });
       console.log(recArray)
 
@@ -39,7 +37,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
     } catch (error) {
       // Handle any errors here.
     }
-    props.setShowDropdown(false);
+    //props.setShowDropdown(false);
   };
 
   return (
