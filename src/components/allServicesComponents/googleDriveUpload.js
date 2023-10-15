@@ -8,8 +8,8 @@ export default function GoogleDriveUpload() {
   const API_KEY = "AIzaSyDD0fA8LuMQKMDs2LoUFDwzcVlc187MKPU";
   const APP_ID = "arched-bot-311203";
   const scope = [
-    "https://www.googleapis.com/auth/drive.readonly",
-    "https://www.googleapis.com/auth/drive.photos.readonly",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/drive.photos",
   ];
 
   return (
