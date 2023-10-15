@@ -17,7 +17,7 @@ export default function GoogleDriveUpload() {
   const [isLoadingGoogleDriveApi, setIsLoadingGoogleDriveApi] = useState(false);
   const [isFetchingGoogleDriveFiles, setIsFetchingGoogleDriveFiles] =
     useState(false);
-  const [signedInUser, setSignedInUser] = useState();
+  //const [signedInUser, setSignedInUser] = useState();
   /*const handleChange = (file) => {
     console.log(file)
   };*/
@@ -52,7 +52,7 @@ export default function GoogleDriveUpload() {
   const updateSigninStatus = (isSignedIn) => {
     if (isSignedIn) {
       // Set the signed in user
-      setSignedInUser(gapi.auth2.getAuthInstance().currentUser.je.Qt);
+      //setSignedInUser(gapi.auth2.getAuthInstance().currentUser.je.Qt);
       setIsLoadingGoogleDriveApi(false);
       // list files if user is authenticated
       listFiles();
@@ -111,7 +111,7 @@ export default function GoogleDriveUpload() {
   };
 */
   console.log(documents)
-  console.log(isLoadingGoogleDriveApi, isFetchingGoogleDriveFiles, signedInUser, listDocumentsVisible)
+  console.log(isLoadingGoogleDriveApi, isFetchingGoogleDriveFiles, listDocumentsVisible)
 
   return (
     <li onClick={() => {handleClientLoad()}} className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
