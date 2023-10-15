@@ -4,7 +4,7 @@ import GooglePicker from "react-google-picker";
 export default function GoogleDriveUpload() {
   //const [data, setData] = useState([]);
   const CLIENT_ID =
-    "891792574135-d3d45975advcmsbc8uo2rcuibebacllh.apps.googleusercontent.com";
+    "891792574135-ifpgmstrb480daqmk2ajitcrgkebjj80.apps.googleusercontent.com";
   const API_KEY = "AIzaSyDD0fA8LuMQKMDs2LoUFDwzcVlc187MKPU";
   const SCOPE = ["https://www.googleapis.com/auth/drive.readonly"];
 
