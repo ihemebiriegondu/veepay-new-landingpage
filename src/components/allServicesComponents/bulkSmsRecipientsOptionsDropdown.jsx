@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { GiPaperClip } from "react-icons/gi";
 import ContactSelectedToast from "./contactSelectedToast";
+import GoogleDriveUpload from "./googleDriveUpload";
 
 export default function BulkSmsRecipientsOptionsDropdown(props) {
   //check if browser supports the contact picker api
@@ -13,7 +14,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
   const [placeholder, setPlaceholder] = useState(
     "Input Numbers or select other options"
   );
-
+  
   const getContact = async () => {
     const property = ["tel"];
     const opts = { multiple: true };
@@ -34,6 +35,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
       // Handle any errors here.
     }
     props.setShowDropdown(false);
+    setPlaceholder("Input Numbers or select other options");
   };
 
   return (
@@ -109,9 +111,9 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
             </span>
           )}
         </li>
-        <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
-          Upload contacts from Google Drive
-        </li>
+
+        <GoogleDriveUpload />
+
         <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
           Upload contact file
           <GiPaperClip />
