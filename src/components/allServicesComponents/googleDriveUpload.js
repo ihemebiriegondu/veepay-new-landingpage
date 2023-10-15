@@ -52,7 +52,7 @@ export default function GoogleDriveUpload() {
   const updateSigninStatus = (isSignedIn) => {
     if (isSignedIn) {
       // Set the signed in user
-      setSignedInUser(gapi.auth2.getAuthInstance().currentUser.je.Qt);
+      setSignedInUser(gapi.auth2.getAuthInstance().currentUser.get());
       setIsLoadingGoogleDriveApi(false);
       // list files if user is authenticated
       listFiles();
