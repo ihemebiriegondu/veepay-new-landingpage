@@ -15,7 +15,8 @@ export default function GoogleDriveUpload() {
       clientId: CLIENT_ID,
       developerKey: API_KEY,
       viewId: "DOCS",
-      // token: token, // pass oauth token in case you already have one
+      token:
+        "ya29.a0AfB_byCoTyhJTYRfMf7aH2AotLXcNNkcVDMVvUzw5W8py_z8gfFZ97kdalM84AzeZ6xbqJNlA1AuryvLwJng41aHXzHW9k34zjoEyBiYJWJSpv8LB992B0hcB6ahsq4L8RrA0LPF0ZP2avH0pn5wRdGtndkV1e-M8_jeaCgYKATgSARMSFQGOcNnCIoAkWxdVbOHtsBIp-M6YRw0171",
       showUploadView: true,
       showUploadFolders: true,
       supportDrives: true,
