@@ -25,11 +25,12 @@ export default function SendTypeCheckboxes(props) {
                 option === "Schedule" && setShowBackdrop(true);
               }}
             />
-            <div className="peer-checked:text-black text-white lg:w-6 lg:h-6 md:w-4 md:h-4 w-2.5 h-2.5 lg:text-base md:text-sm text-xs border border-black/40 flex flex-col justify-center">
-              <IoCheckmark className="mx-auto w-full inline-block" />
-            </div>
-            <label htmlFor={option} className="">
-              {option}
+
+            <label htmlFor={option} className="peer-checked:text-black text-white flex items-center lg:gap-x-4 md:gap-x-2 gap-x-1">
+              <div className="lg:w-6 lg:h-6 md:w-4 md:h-4 w-2.5 h-2.5 lg:text-base md:text-sm text-xs border border-black/40 flex flex-col justify-center">
+                <IoCheckmark className="mx-auto w-full inline-block" />
+              </div>
+              <span className="text-black">{option}</span>
             </label>
             {showBackdrop && option === "Schedule" && (
               <div className="peer-checked:flex hidden fixed bg-black/50 top-0 bottom-0 left-0 z-50 w-full flex-col justify-center lg:px-60 md:px-40 sm:px-20 xs:px-10 px-5 lg:text-2xl md:text-lg text-base">

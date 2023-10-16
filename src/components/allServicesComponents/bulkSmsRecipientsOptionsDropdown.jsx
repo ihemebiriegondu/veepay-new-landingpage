@@ -14,7 +14,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
   const [placeholder, setPlaceholder] = useState(
     "Input Numbers or select other options"
   );
-  
+
   const getContact = async () => {
     const property = ["tel"];
     const opts = { multiple: true };
@@ -33,6 +33,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
       props.setRecipientOptionsArray(recArray);
     } catch (error) {
       // Handle any errors here.
+      console.log(error);
     }
     props.setShowDropdown(false);
     setPlaceholder("Input Numbers or select other options");
@@ -112,7 +113,10 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
           )}
         </li>
 
-        <GoogleDriveUpload />
+        <GoogleDriveUpload
+          setShowDropdown={props.setShowDropdown}
+          setPlaceholder={setPlaceholder}
+        />
 
         <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
           Upload contact file

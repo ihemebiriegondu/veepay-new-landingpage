@@ -1,30 +1,52 @@
 import React from "react";
 import useDrivePicker from "react-google-drive-picker";
 
-export default function GoogleDriveUpload() {
-  //const [data, setData] = useState([]);
+export default function GoogleDriveUpload(props) {
+  //const [contacts, setContacts] = useState([]);
+
   const CLIENT_ID =
     "891792574135-ifpgmstrb480daqmk2ajitcrgkebjj80.apps.googleusercontent.com";
   const API_KEY = "AIzaSyDD0fA8LuMQKMDs2LoUFDwzcVlc187MKPU";
-  //const SCOPE = ["https://www.googleapis.com/auth/drive.readonly"];
 
   const [openPicker, authResponse] = useDrivePicker();
-  // const customViewsArray = [new google.picker.DocsView()]; // custom view
+
   const handleOpenPicker = () => {
+    let contactData;
+    let downloadUrl;
+
     openPicker({
       clientId: CLIENT_ID,
       developerKey: API_KEY,
+      //token: authResponse.access_token,
       viewId: "DOCS",
-      showUploadView: true,
-      showUploadFolders: true,
+      //viewMimeTypes: 'text/x-vcard',
+      viewMimeTypes: "text/plain",
+      showUploadView: false,
+      showUploadFolders: false,
       supportDrives: true,
       multiselect: true,
-      // customViews: customViewsArray, // custom view
       callbackFunction: (data) => {
         if (data.action === "cancel") {
-          console.log("User clicked cancel/close button");
+          props.setShowDropdown(false);
+          props.setPlaceholder("Input Numbers or select other options");
+        } else {
+          contactData = data.docs;
+          props.setShowDropdown(false);
+          props.setPlaceholder("Input Numbers or select other options");
+          console.log(contactData);
+
+          for (const key in contactData) {
+            //console.log(contactData[key].url);
+            downloadUrl = contactData[key].url;
+            console.log(downloadUrl);
+
+            fetch("https://cors-anywhere.herokuapp.com/" + downloadUrl)
+              .then((response) => response.text())
+              .then((text) => {
+                console.log(text);
+              });
+          }
         }
-        console.log(data);
       },
     });
     console.log(authResponse);
