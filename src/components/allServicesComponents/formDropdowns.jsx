@@ -1,10 +1,13 @@
 import React from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
+import CableTvSearch from "./cableTvSearch";
 
 export default function FormDropdowns(props) {
   const toggleDropdown = (e) => {
     const allButtons = document.querySelectorAll(".dropdownButton");
     const allDropdowns = document.querySelectorAll(".dropdownElement");
+    const cableSearch = document.getElementById("searchBar");
+
     const targetElement = e.target;
     const targetDropdown = document.querySelector(
       `[data-target-option="${e.target.id}"]`
@@ -38,6 +41,16 @@ export default function FormDropdowns(props) {
       targetDropdown.classList.remove("invisible");
     } else {
       targetDropdown.classList.add("invisible");
+    }
+
+    if (props.id === "paymentItemInput" && props.formOptions.length > 1) {
+      if (cableSearch.classList.contains("hidden")) {
+        cableSearch.classList.remove("hidden");
+        cableSearch.classList.add("flex");
+      } else {
+        cableSearch.classList.add("hidden");
+        cableSearch.classList.remove("flex");
+      }
     }
   };
 
@@ -80,65 +93,76 @@ export default function FormDropdowns(props) {
         ></button>
       </div>
 
-      <ul
-        className={`dropdownElement absolute z-30 w-full lg:border-2 border border-servicesInput lg:rounded-xl md:rounded-md rounded flex flex-col lg:divide-y divide-y-0.3 divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
-        data-target-option={props.id}
-      >
-        {props.formOptions &&
-          props.formOptions.map((options, i) => (
-            <li
-              key={props.id + i}
-              className={`lg:px-10 md:px-6 px-3 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
-                (props.id === "datanetwork" || props.id === "airtimenetwork") &&
-                "uppercase"
-              }`}
-              onClick={(e) => {
-                props.optionClickFunction(
-                  props.id === "datanetwork" || props.id === "airtimenetwork"
-                    ? options.network
-                    : props.id === "datavalue"
-                    ? options.value + "- " + options.days + " Days"
-                    : props.id === "billerInput"
-                    ? options.biller
-                    : props.id === "paymentItemInput"
-                    ? options.item
-                    : ""
-                );
-                props.id === "datavalue" &&
-                  props.setDataAmount("₦ " + options.price);
-                props.id === "paymentItemInput" &&
-                  props.setSubAmount(
-                    options.price === "Fill Amount"
-                      ? options.price
-                      : "₦ " + options.price
-                  );
+      <div>
+        {props.id === "paymentItemInput" && (
+          <CableTvSearch
+            items={props.formOptions}
+            setItems={props.setItems}
+            allItems={props.allItems}
+          />
+        )}
 
-                secondOptionClickFunction(e);
-              }}
-            >
-              {props.id === "datanetwork" || props.id === "airtimenetwork" ? (
-                options.network
-              ) : props.id === "datavalue" ? (
-                options.value + "- " + options.days + " Days"
-              ) : props.id === "billerInput" ? (
-                options.biller
-              ) : props.id === "paymentItemInput" ? (
-                <span className="">
-                  {options.item}{" "}
-                  <span className="text-black/50">
-                    (
-                    {options.price === "Fill Amount"
-                      ? options.price
-                      : "N" + options.price}
-                    )
+        <ul
+          className={`dropdownElement absolute z-30 w-full lg:border-2 border border-servicesInput lg:rounded-xl md:rounded-md rounded flex flex-col lg:divide-y divide-y-0.3 divide-primary transition-all duration-100 ease bg-white overflow-hidden invisible`}
+          data-target-option={props.id}
+        >
+          {props.formOptions &&
+            props.formOptions.map((options, i) => (
+              <li
+                key={props.id + i}
+                className={`lg:px-10 md:px-6 px-3 py-px transition duration-200 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-2xl md:text-lg text-sm ${
+                  (props.id === "datanetwork" ||
+                    props.id === "airtimenetwork") &&
+                  "uppercase"
+                }`}
+                onClick={(e) => {
+                  props.optionClickFunction(
+                    props.id === "datanetwork" || props.id === "airtimenetwork"
+                      ? options.network
+                      : props.id === "datavalue"
+                      ? options.value + "- " + options.days + " Days"
+                      : props.id === "billerInput"
+                      ? options.biller
+                      : props.id === "paymentItemInput"
+                      ? options.item
+                      : ""
+                  );
+                  props.id === "datavalue" &&
+                    props.setDataAmount("₦ " + options.price);
+                  props.id === "paymentItemInput" &&
+                    props.setSubAmount(
+                      options.price === "Fill Amount"
+                        ? options.price
+                        : "₦ " + options.price
+                    );
+
+                  secondOptionClickFunction(e);
+                }}
+              >
+                {props.id === "datanetwork" || props.id === "airtimenetwork" ? (
+                  options.network
+                ) : props.id === "datavalue" ? (
+                  options.value + "- " + options.days + " Days"
+                ) : props.id === "billerInput" ? (
+                  options.biller
+                ) : props.id === "paymentItemInput" ? (
+                  <span className="">
+                    {options.item}{" "}
+                    <span className="text-black/50">
+                      (
+                      {options.price === "Fill Amount"
+                        ? options.price
+                        : "N" + options.price}
+                      )
+                    </span>
                   </span>
-                </span>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
-      </ul>
+                ) : (
+                  ""
+                )}
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 }

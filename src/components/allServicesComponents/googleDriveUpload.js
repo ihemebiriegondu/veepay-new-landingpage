@@ -12,20 +12,20 @@ export default function GoogleDriveUpload(props) {
 
   const handleOpenPicker = () => {
     let contactData;
-    let downloadUrl;
 
     openPicker({
       clientId: CLIENT_ID,
       developerKey: API_KEY,
       //token: authResponse.access_token,
       viewId: "DOCS",
-      //viewMimeTypes: 'text/x-vcard',
+      //viewMimeTypes: "text/x-vcard",
       viewMimeTypes: "text/plain",
       showUploadView: false,
       showUploadFolders: false,
       supportDrives: true,
       multiselect: true,
       callbackFunction: (data) => {
+        //console.log(authResponse.access_token);
         if (data.action === "cancel") {
           props.setShowDropdown(false);
           props.setPlaceholder("Input Numbers or select other options");
@@ -33,23 +33,55 @@ export default function GoogleDriveUpload(props) {
           contactData = data.docs;
           props.setShowDropdown(false);
           props.setPlaceholder("Input Numbers or select other options");
-          console.log(contactData);
+          //console.log(contactData);
 
           for (const key in contactData) {
             //console.log(contactData[key].url);
-            downloadUrl = contactData[key].url;
-            console.log(downloadUrl);
+            const fileId = contactData[key].id;
+            //console.log(fileId);
+            const downloadUrl =
+              "https://www.googleapis.com/drive/v3/files/" +
+              fileId +
+              "?alt=media";
 
-            fetch("https://cors-anywhere.herokuapp.com/" + downloadUrl)
-              .then((response) => response.text())
-              .then((text) => {
-                console.log(text);
-              });
+            /*eslint-disable-next-line no-restricted-globals */
+            if (self.fetch) {
+              var setHeaders = new Headers();
+              setHeaders.append(
+                "Authorization",
+                "Bearer " + authResponse.access_token
+              );
+              setHeaders.append("Content-Type", "text/plain");
+
+              var setOptions = {
+                method: "GET",
+                headers: setHeaders,
+              };
+              fetch(downloadUrl, setOptions)
+                .then((response) => {
+                  if (response.ok) {
+                    var reader = response.body.getReader();
+                    var decoder = new TextDecoder();
+                    reader.read().then(function (result) {
+                      console.log(result)
+                      var data = {};
+                      data = decoder.decode(result.value, {
+                        stream: !result.done,
+                      });
+                      console.log(data);
+                    });
+                  } else {
+                    console.log("Response wast not ok");
+                  }
+                })
+                .catch((error) => {
+                  console.log("There is an error " + error.message);
+                });
+            }
           }
         }
       },
     });
-    console.log(authResponse);
   };
 
   return (

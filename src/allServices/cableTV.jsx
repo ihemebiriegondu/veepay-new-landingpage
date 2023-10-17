@@ -12,6 +12,7 @@ import TvSubsLists from "../components/allServicesComponents/tvSubsLists";
 
 export default function CableTV() {
   const [paymentItems, setPaymentItems] = useState([]);
+  const [filteredPaymentItems, setFilteredPaymentItems] = useState([]);
 
   const [biller, setBiller] = useState("Select biller");
   const [paymentItem, setPaymentItem] = useState("Payment item");
@@ -24,6 +25,7 @@ export default function CableTV() {
     TvSubsLists.forEach((list) => {
       if (list.biller === value) {
         setPaymentItems(list.paymentItems);
+        setFilteredPaymentItems(list.paymentItems);
       }
     });
     setPaymentItem("Payment item");
@@ -32,9 +34,8 @@ export default function CableTV() {
   const cableTvSubFunction = (e) => {
     e.preventDefault();
 
-    console.log(decoderNo)
+    console.log(decoderNo);
   };
-
 
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">
@@ -75,7 +76,9 @@ export default function CableTV() {
             <div>
               <FormDropdowns
                 id={"paymentItemInput"}
-                formOptions={paymentItems}
+                formOptions={filteredPaymentItems}
+                allItems={paymentItems}
+                setItems={setFilteredPaymentItems}
                 value={paymentItem}
                 optionClickFunction={(value) => {
                   setPaymentItem(value);

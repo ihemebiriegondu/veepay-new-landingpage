@@ -81,6 +81,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
 
         {recipients.length > 0 && (
           <ContactSelectedToast
+            text={"Contacts selected"}
             amount={recipients.length}
             setRecipients={setRecipients}
             setRecipientOptionsArray={props.setRecipientOptionsArray}
@@ -116,6 +117,7 @@ export default function BulkSmsRecipientsOptionsDropdown(props) {
         <GoogleDriveUpload
           setShowDropdown={props.setShowDropdown}
           setPlaceholder={setPlaceholder}
+          setRecipientOptionsArray={props.setRecipientOptionsArray}
         />
 
         <li className="flex items-center gap-x-2.5 lg:px-10 md:px-6 xs:px-3 px-2 py-px transition duration-100 ease-in-out hover:bg-primary/10 cursor-pointer lg:text-xl md:text-lg sm:text-base xs:text-sm text-xs">
