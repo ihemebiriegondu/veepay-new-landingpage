@@ -105,7 +105,13 @@ export default function Setting(props) {
         </article>
       )}
 
-      {showAddCard && <AddCard setShowAddCard={setShowAddCard} />}
+      {showAddCard && (
+        <AddCard
+          setShowAddCard={setShowAddCard}
+          cards={props.cards}
+          setCards={props.setCards}
+        />
+      )}
     </section>
   );
 }

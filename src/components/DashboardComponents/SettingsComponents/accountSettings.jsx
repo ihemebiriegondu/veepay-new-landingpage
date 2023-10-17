@@ -30,6 +30,16 @@ export default function AccountSetting(props) {
     }
   };
 
+  const removeCardFunction = (e) => {
+    console.log(e.target.id);
+    const cardsArray = props.cards;
+
+    const newCardsArray = cardsArray.filter(
+      (card) => card.number !== e.target.id
+    );
+    props.setCards(newCardsArray)
+  };
+
   return (
     <article className="lg:py-14 py-6 lg:px-12 px-4 bg-white">
       <h1 className="text-2xl text-primary font-semibold mb-8">Account</h1>
@@ -66,41 +76,56 @@ export default function AccountSetting(props) {
       <div className="pt-16">
         <h6 className="text-base font-medium mb-4">Cards</h6>
 
-        <div className="grid grid-cols-3">
-          <div>
-            <p className="text-right text-sm text-gray-500 pe-3">Remove</p>
-            <div className="pb-3 pt-20 px-5 rounded-xl relative">
-              <div className="relative z-30">
-                <p className="mb-8 text-2xl font-semibold">
-                  8763 2736 9873 0329
+        <div className="grid grid-cols-3 gap-8">
+          {props.cards &&
+            props.cards.map((card) => (
+              <div key={card.number}>
+                <p
+                  className="text-right text-sm text-gray-500 pe-3"
+                  id={card.number}
+                  onClick={(e) => removeCardFunction(e)}
+                >
+                  Remove
                 </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs">Card Holder Name</p>
-                    <p className="text-sm font-semibold">HILLERY NEVELIN</p>
+                <div className="pb-3 pt-20 px-5 rounded-xl relative">
+                  <div className="relative z-30">
+                    <p className="mb-8 text-2xl font-semibold">{card.number}</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs">Card Holder Name</p>
+                        <p className="text-sm font-semibold uppercase">
+                          {card.name}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs">Expired Date</p>
+                        <p className="text-sm font-semibold">
+                          {(card.expDate.month.length < 2
+                            ? `0${card.expDate.month}`
+                            : card.expDate.month) +
+                            "/" +
+                            card.expDate.year}
+                        </p>
+                      </div>
+                      <div className="w-12 h-7">
+                        <img
+                          src={masterCardLogo}
+                          alt="master card logo"
+                          className="w-full h-full"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs">Expired Date</p>
-                    <p className="text-sm font-semibold">10/28</p>
-                  </div>
-                  <div className="w-12 h-7">
+                  <div className="absolute top-0 bottom-0 w-full left-0 z-20">
                     <img
-                      src={masterCardLogo}
-                      alt="master card logo"
+                      src={cardBg}
+                      alt="card background"
                       className="w-full h-full"
                     />
                   </div>
                 </div>
               </div>
-              <div className="absolute top-0 bottom-0 w-full left-0 z-20">
-                <img
-                  src={cardBg}
-                  alt="card background"
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
+            ))}
         </div>
 
         <button
@@ -108,7 +133,7 @@ export default function AccountSetting(props) {
           className="mt-6 inline-block py-2 px-7 text-sm font-medium italic text-white rounded-md bg-primary outline-none transition ease-in-out duration-500"
           onClick={() => props.setShowAddCard(true)}
         >
-          Add new card
+          {props.cards.length > 0 ? "Add new card" : "Add card"}
         </button>
       </div>
 
