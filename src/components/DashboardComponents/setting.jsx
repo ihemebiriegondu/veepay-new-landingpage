@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import SettingBox from "./SettingsComponents/settingBox";
 import UserInfoSetting from "./SettingsComponents/userInfoSetting";
 import AccountSetting from "./SettingsComponents/accountSettings";
+import SettingFAQs from "./SettingsComponents/settingFAQs";
+import Contact from "./SettingsComponents/contact";
+import AddCard from "./SettingsComponents/addCard";
 
 import { GrContactInfo, GrAnnounce, GrCircleQuestion } from "react-icons/gr";
 import {
@@ -10,10 +13,10 @@ import {
   MdKeyboardArrowRight,
   MdOutlineSupportAgent,
 } from "react-icons/md";
-import SettingFAQs from "./SettingsComponents/settingFAQs";
-import Contact from "./SettingsComponents/contact";
 
 export default function Setting(props) {
+  const [showAddCard, setShowAddCard] = useState(false);
+
   const settingTabs = [
     {
       tabName: "User Info",
@@ -77,6 +80,9 @@ export default function Setting(props) {
         <AccountSetting
           bankDetails={props.bankDetails}
           updateBankDetails={props.updateBankDetails}
+          cards={props.cards}
+          setCards={props.setCards}
+          setShowAddCard={setShowAddCard}
         />
       ) : props.currentSettingTab === "FAQs" ? (
         <SettingFAQs />
@@ -98,6 +104,8 @@ export default function Setting(props) {
             ))}
         </article>
       )}
+
+      {showAddCard && <AddCard setShowAddCard={setShowAddCard} />}
     </section>
   );
 }
