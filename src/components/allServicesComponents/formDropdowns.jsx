@@ -51,6 +51,8 @@ export default function FormDropdowns(props) {
         cableSearch.classList.add("hidden");
         cableSearch.classList.remove("flex");
       }
+    } else if (props.id === "billerInput") {
+      cableSearch.classList.add("hidden");
     }
   };
 
