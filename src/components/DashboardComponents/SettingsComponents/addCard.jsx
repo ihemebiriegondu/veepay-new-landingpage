@@ -43,23 +43,45 @@ export default function AddCard(props) {
     e.preventDefault();
     const cardsArray = props.cards;
 
-    if (error.length === 0) {
-      const cardObj = {};
-      cardObj.name = cardName;
-      cardObj.number = cardNumber;
-      cardObj.cvc = cvc;
-      cardObj.expDate = expDate;
+    if (
+      cardNumber !== "" &&
+      cardName !== "" &&
+      cvc !== "" &&
+      expDate.month !== "" &&
+      expDate.year !== ""
+    ) {
+      if (error.length === 0) {
+        const cardObj = {};
+        cardObj.name = cardName;
+        cardObj.number = cardNumber;
+        cardObj.cvc = cvc;
+        cardObj.expDate = expDate;
 
-      if (cardsArray.length > 0) {
-        if (!cardsArray.some((card) => card.number === cardNumber)) {
+        if (cardsArray.length > 0) {
+          if (!cardsArray.some((card) => card.number === cardNumber)) {
+            cardsArray.push(cardObj);
+          }
+        } else {
           cardsArray.push(cardObj);
         }
-      } else {
-        cardsArray.push(cardObj);
+        props.setShowAddCard(false);
+        props.setCards(cardsArray);
       }
+    } else {
+      /*const cardsInputs = document.querySelectorAll(".cardInput");
+      let errorArray = error;
+
+      cardsInputs.forEach((input) => {
+        if (input.value === "") {
+          if (!errorArray.includes(input.id)) {
+            errorArray.push(input.id);
+          }
+        }
+      });
+      console.log(errorArray)
+      setError(errorArray);
+      console.log(error)*/
     }
-    props.setCards(cardsArray)
-    props.setShowAddCard(false);
   };
 
   return (
@@ -68,19 +90,19 @@ export default function AddCard(props) {
         <FiX onClick={() => props.setShowAddCard(false)} />
       </div>
       <div className="flex flex-col justify-center h-full">
-        <div className="bg-white mx-32 pt-7 pb-14 px-24 rounded-4xl rounded-bl-none">
-          <h1 className="mont text-4xl font-bold mb-8 text-primary">
+        <div className="bg-white xl:mx-32 lg:mx-24 md:mx-16 xs:mx-6 mx-3 md:pt-7 pt-6 md:pb-14 pb-7 xl:px-24 lg:px-16 md:px-10 xs:px-5 px-2.5 xl:rounded-4xl lg:rounded-3xl md:rounded-2xl xl:rounded-bl-none lg:rounded-bl-none md:rounded-bl-none">
+          <h1 className="mont lg:text-4xl md:text-3xl sm:text-2xl text-xl md:font-bold font-semibold lg:mb-8 md:mb-7 sm:mb-6 mb-5 text-primary">
             Add New Card
           </h1>
 
           <form
-            className="flex flex-col gap-y-10"
+            className="flex flex-col lg:gap-y-10 md:gap-y-8 gap-y-5"
             onSubmit={(e) => {
               addCardFunction(e);
             }}
           >
             <div
-              className={`flex items-center rounded-md border px-8 text-2xl ${
+              className={`flex items-center rounded-md border xl:px-8 lg:px-6 md:px-4 sm:px-3 px-2 xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm ${
                 error.includes("cardNumber")
                   ? "border-warning"
                   : "border-black/80"
@@ -92,7 +114,7 @@ export default function AddCard(props) {
                   id="cardNumber"
                   maxLength="19"
                   value={cardNoFormat(cardNumber)}
-                  className="block pb-2 pt-3 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
+                  className="block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
                   placeholder="0000 0000 0000 0000"
                   onChange={(e) => {
                     setCardNumber(e.target.value);
@@ -111,9 +133,9 @@ export default function AddCard(props) {
               <FiCreditCard className="" />
             </div>
 
-            <div className="grid grid-cols-2 gap-x-4">
+            <div className="grid grid-cols-2 lg:gap-4 md:gap-3 gap-2">
               <div
-                className={`flex items-center rounded-md border px-8 text-2xl ${
+                className={`flex items-center rounded-md border xl:px-8 lg:px-6 md:px-4 sm:px-3 px-2 xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm ${
                   error.includes("month") || error.includes("year")
                     ? "border-warning"
                     : "border-black/80"
@@ -128,7 +150,7 @@ export default function AddCard(props) {
                     max={"12"}
                     placeholder="MM"
                     maxLength={"2"}
-                    className="pb-2 pt-3.5 bg-transparent appearance-none outline-none placeholder:text-black/50 w-10"
+                    className="cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 bg-transparent appearance-none outline-none placeholder:text-black/50 md:w-10 w-6"
                     onChange={(e) => {
                       setExpDate((prevValue) => ({
                         ...prevValue,
@@ -164,7 +186,7 @@ export default function AddCard(props) {
                     max={"99"}
                     placeholder="YY"
                     maxLength={"2"}
-                    className="pb-2 pt-3.5 bg-transparent appearance-none outline-none placeholder:text-black/50"
+                    className="cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 bg-transparent appearance-none outline-none placeholder:text-black/50"
                     onChange={(e) => {
                       setExpDate((prevValue) => ({
                         ...prevValue,
@@ -199,7 +221,7 @@ export default function AddCard(props) {
               </div>
 
               <div
-                className={`items-center rounded-md border px-8 text-2xl ${
+                className={`items-center rounded-md border xl:px-8 lg:px-6 md:px-4 sm:px-3 px-2 xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm ${
                   error.includes("cvc") ? "border-warning" : "border-black/80"
                 } ${expDate.month !== "" ? "flex" : "hidden"}`}
               >
@@ -208,7 +230,7 @@ export default function AddCard(props) {
                     type="tel"
                     id="cvc"
                     maxLength={"3"}
-                    className="block pb-2 pt-3 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
+                    className="block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
                     placeholder="***"
                     onChange={(e) => {
                       setCvc(e.target.value);
@@ -217,40 +239,48 @@ export default function AddCard(props) {
                   />
                   <label
                     htmlFor="cvc"
-                    className={`absolute xs:text-sm text-xs duration-300 transform -translate-y-4 scale-75 top-1.5 z-10 origin-[0] bg-white px-1 left-9 ${
+                    className={`absolute xs:text-sm text-xs duration-300 transform -translate-y-4 scale-75 top-1.5 z-10 origin-[0] bg-white px-1 left-1 ${
                       error.includes("cvc") ? "text-warning" : "text-black"
                     }`}
                   >
                     CVC/CVV
                   </label>
                 </div>
-                <BiSolidErrorCircle className="text-black/70" />
+                <BiSolidErrorCircle
+                  className={`lg:text-2xl md:text-xl text-lg ${
+                    error.includes("cvc") ? "text-warning" : "text-black/70"
+                  }`}
+                />
               </div>
             </div>
 
-            <div className="relative grow">
-              <input
-                type="tel"
-                id="cardName"
-                className={`block pb-2 pt-3 w-full bg-transparent appearance-none outline-none placeholder:text-black/50 rounded-md border px-8 text-2xl ${
-                  error.includes("cardName")
-                    ? "border-warning"
-                    : "border-black/80"
-                }`}
-                placeholder="Enter Card Holder Name"
-                onChange={(e) => {
-                  setCardName(e.target.value);
-                  inputErrorCheck(e, 2);
-                }}
-              />
-              <label
-                htmlFor="cardName"
-                className={`absolute xs:text-sm text-xs duration-300 transform -translate-y-4 scale-75 top-1.5 z-10 origin-[0] bg-white px-1 left-9 ${
-                  error.includes("cardName") ? "text-warning" : "text-black"
-                }`}
-              >
-                Card Name
-              </label>
+            <div
+              className={`rounded-md border xl:px-8 lg:px-6 md:px-4 sm:px-3 px-2 xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm ${
+                error.includes("cardName")
+                  ? "border-warning"
+                  : "border-black/80"
+              }`}
+            >
+              <div className="relative grow">
+                <input
+                  type="tel"
+                  id="cardName"
+                  className={`block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50`}
+                  placeholder="Enter Card Holder Name"
+                  onChange={(e) => {
+                    setCardName(e.target.value);
+                    inputErrorCheck(e, 2);
+                  }}
+                />
+                <label
+                  htmlFor="cardName"
+                  className={`absolute xs:text-sm text-xs duration-300 transform -translate-y-4 scale-75 top-1.5 z-10 origin-[0] bg-white px-1 left-1 ${
+                    error.includes("cardName") ? "text-warning" : "text-black"
+                  }`}
+                >
+                  Card Name
+                </label>
+              </div>
             </div>
             <FormButtons
               type={"submit"}

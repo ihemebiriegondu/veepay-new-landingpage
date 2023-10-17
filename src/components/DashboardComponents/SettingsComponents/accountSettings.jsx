@@ -4,6 +4,10 @@ import FeedBackModal from "./feedBackModal";
 import masterCardLogo from "../../../assets/icons/MasterCard.png";
 import cardBg from "../../../assets/images/01.png";
 
+import CarouselSwipperButtons from "../MainDashboardComponents/carouselSwipperButtons";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y } from "swiper/modules";
+
 export default function AccountSetting(props) {
   const [bankName, setBankName] = useState(props.bankDetails.bankName);
   const [accName, setAccName] = useState(props.bankDetails.accName);
@@ -37,7 +41,7 @@ export default function AccountSetting(props) {
     const newCardsArray = cardsArray.filter(
       (card) => card.number !== e.target.id
     );
-    props.setCards(newCardsArray)
+    props.setCards(newCardsArray);
   };
 
   return (
@@ -76,57 +80,76 @@ export default function AccountSetting(props) {
       <div className="pt-16">
         <h6 className="text-base font-medium mb-4">Cards</h6>
 
-        <div className="grid grid-cols-3 gap-8">
+        <Swiper
+          modules={[A11y]}
+          spaceBetween={28}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            900: {
+              slidesPerView: 2,
+            },
+            1300: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          <CarouselSwipperButtons />
           {props.cards &&
             props.cards.map((card) => (
-              <div key={card.number}>
-                <p
-                  className="text-right text-sm text-gray-500 pe-3"
-                  id={card.number}
-                  onClick={(e) => removeCardFunction(e)}
-                >
-                  Remove
-                </p>
-                <div className="pb-3 pt-20 px-5 rounded-xl relative">
-                  <div className="relative z-30">
-                    <p className="mb-8 text-2xl font-semibold">{card.number}</p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-xs">Card Holder Name</p>
-                        <p className="text-sm font-semibold uppercase">
-                          {card.name}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-xs">Expired Date</p>
-                        <p className="text-sm font-semibold">
-                          {(card.expDate.month.length < 2
-                            ? `0${card.expDate.month}`
-                            : card.expDate.month) +
-                            "/" +
-                            card.expDate.year}
-                        </p>
-                      </div>
-                      <div className="w-12 h-7">
-                        <img
-                          src={masterCardLogo}
-                          alt="master card logo"
-                          className="w-full h-full"
-                        />
+              <SwiperSlide key={card.number}>
+                <div>
+                  <p
+                    className="text-right text-sm text-gray-500 pe-3"
+                    id={card.number}
+                    onClick={(e) => removeCardFunction(e)}
+                  >
+                    Remove
+                  </p>
+                  <div className="pb-3 xs:pt-20 pt-16 px-5 rounded-xl overflow-hidden relative">
+                    <div className="relative z-30">
+                      <p className="xs:mb-8 mb-6 xs:text-2xl text-lg font-semibold">
+                        {card.number}
+                      </p>
+                      <div className="flex items-center justify-between xs:gap-1 gap-1.5">
+                        <div>
+                          <p className="xs:text-xs text-xxs">Card Holder Name</p>
+                          <p className="xs:text-sm text-xs font-semibold uppercase">
+                            {card.name}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="xs:text-xs text-xxs">Expired Date</p>
+                          <p className="xs:text-sm text-xs font-semibold">
+                            {(card.expDate.month.length < 2
+                              ? `0${card.expDate.month}`
+                              : card.expDate.month) +
+                              "/" +
+                              card.expDate.year}
+                          </p>
+                        </div>
+                        <div className="xs:w-12 w-7 xs:h-7 h-4">
+                          <img
+                            src={masterCardLogo}
+                            alt="master card logo"
+                            className="w-full h-full"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="absolute top-0 bottom-0 w-full left-0 z-20">
-                    <img
-                      src={cardBg}
-                      alt="card background"
-                      className="w-full h-full"
-                    />
+                    <div className="absolute top-0 bottom-0 w-full left-0 z-20">
+                      <img
+                        src={cardBg}
+                        alt="card background"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-        </div>
+        </Swiper>
 
         <button
           type="button"
