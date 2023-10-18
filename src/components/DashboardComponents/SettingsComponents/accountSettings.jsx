@@ -5,7 +5,6 @@ import masterCardLogo from "../../../assets/icons/MasterCard.png";
 import visaLogo from "../../../assets/icons/Type=Default.png";
 import maestraLogo from "../../../assets/icons/Type=Color, showText=False, showSymbol=True.png";
 import jbcLogo from "../../../assets/icons/Style=Gradient, Flat=False.png";
-import cardBg from "../../../assets/images/01.png";
 
 import CarouselSwipperButtons from "../MainDashboardComponents/carouselSwipperButtons";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -112,7 +111,10 @@ export default function AccountSetting(props) {
                       Remove
                     </p>
                   </div>
-                  <div className="pb-3 px-5 rounded-xl overflow-hidden relative">
+                 
+                  <div
+                    className={`pb-3 px-5 rounded-xl overflow-hidden relative cards ${card.cardType && `${card.cardType}`}`}
+                  >
                     <div className="relative z-30">
                       <div
                         className={`flex justify-end xs:pt-10 pt-8 ${
@@ -186,13 +188,6 @@ export default function AccountSetting(props) {
                           )}
                         </div>
                       </div>
-                    </div>
-                    <div className="absolute top-0 bottom-0 w-full left-0 z-20">
-                      <img
-                        src={cardBg}
-                        alt="card background"
-                        className="w-full h-full object-cover"
-                      />
                     </div>
                   </div>
                 </div>

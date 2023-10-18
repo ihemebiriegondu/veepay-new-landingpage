@@ -47,8 +47,8 @@ module.exports = {
         "4xl": "40px",
       },
       divideWidth: {
-        '0.3': '0.32px'
-      }
+        0.3: "0.32px",
+      },
     },
   },
   plugins: [],
