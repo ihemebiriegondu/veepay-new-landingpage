@@ -8,8 +8,15 @@ export default function AddCard(props) {
   const [cardName, setCardName] = useState("");
   const [cvc, setCvc] = useState("");
   const [expDate, setExpDate] = useState({ month: "", year: "" });
+  const [cardType, setCardType] = useState("");
 
   const [error, setError] = useState([]);
+
+  const currentYear = new Date().getFullYear();
+  const maxEllapsedYear = (currentYear + 4).toString().slice(2);
+
+  const valid = require("card-validator");
+  const expDateValidation = valid.expirationDate(expDate);
 
   const cardNoFormat = (value) => {
     const number = value
@@ -25,8 +32,8 @@ export default function AddCard(props) {
     return parts.length > 1 ? parts.join(" ") : value;
   };
 
-  const inputErrorCheck = (e, limit) => {
-    if (e.target.value.length < limit) {
+  const inputErrorCheck = (e, validator) => {
+    if (validator) {
       let errorArray = error;
       if (!errorArray.includes(e.target.id)) {
         errorArray.push(e.target.id);
@@ -41,6 +48,8 @@ export default function AddCard(props) {
 
   const addCardFunction = (e) => {
     e.preventDefault();
+
+    let errorArray = error;
     const cardsArray = props.cards;
 
     if (
@@ -66,27 +75,31 @@ export default function AddCard(props) {
         }
         props.setShowAddCard(false);
         props.setCards(cardsArray);
+
+        const noVal = valid.number(cardNumber);
+        if (noVal.card) {
+          console.log(noVal.card.type);
+          setCardType(noVal.card.type);
+        }
       }
-    } else {
-      /*const cardsInputs = document.querySelectorAll(".cardInput");
+    } /*else {
+    /*const cardsInputs = document.querySelectorAll(".cardInput");
       let errorArray = error;
 
       cardsInputs.forEach((input) => {
         if (input.value === "") {
-          if (!errorArray.includes(input.id)) {
-            errorArray.push(input.id);
-          }
+          
         }
       });
       console.log(errorArray)
       setError(errorArray);
-      console.log(error)*/
-    }
+      console.log(error)
+    }*/
   };
 
   return (
     <article className="fixed bg-black/50 top-0 bottom-0 w-full left-0 z-50">
-      <div className="flex justify-end pt-4 pe-4 text-3xl text-white">
+      <div className="absolute top-0 right-0 flex justify-end pt-4 pe-4 sm:text-3xl text-xl text-white">
         <FiX onClick={() => props.setShowAddCard(false)} />
       </div>
       <div className="flex flex-col justify-center h-full">
@@ -112,13 +125,15 @@ export default function AddCard(props) {
                 <input
                   type="tel"
                   id="cardNumber"
+                  autoComplete="cc-number"
                   maxLength="19"
                   value={cardNoFormat(cardNumber)}
                   className="block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
                   placeholder="0000 0000 0000 0000"
                   onChange={(e) => {
                     setCardNumber(e.target.value);
-                    inputErrorCheck(e, 19);
+                    const numberValidation = valid.number(e.target.value);
+                    inputErrorCheck(e, !numberValidation.isValid);
                   }}
                 />
                 <label
@@ -146,12 +161,18 @@ export default function AddCard(props) {
                     type="number"
                     name="month"
                     id="month"
+                    autoComplete="cc-exp-month"
                     min={"1"}
                     max={"12"}
                     placeholder="MM"
                     maxLength={"2"}
                     className="cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 bg-transparent appearance-none outline-none placeholder:text-black/50 md:w-10 w-6"
                     onChange={(e) => {
+                      const expMonthValidation = valid.expirationMonth(
+                        e.target.value
+                      );
+                      inputErrorCheck(e, !expMonthValidation.isValid);
+
                       setExpDate((prevValue) => ({
                         ...prevValue,
                         month: e.target.value,
@@ -163,6 +184,7 @@ export default function AddCard(props) {
                           e.target.maxLength
                         );
                       }
+                      document.getElementById("year").value = "";
                     }}
                     onBlur={(e) => {
                       if (
@@ -171,10 +193,6 @@ export default function AddCard(props) {
                       ) {
                         e.target.value = "0" + e.target.value;
                       }
-                      if (parseInt(e.target.value) > 12) {
-                        e.target.value = "";
-                      }
-                      inputErrorCheck(e, 2);
                     }}
                   />
                   <p className="text-black/50">/</p>
@@ -182,12 +200,26 @@ export default function AddCard(props) {
                     type="number"
                     name="year"
                     id="year"
+                    autoComplete="cc-exp-year"
                     min={"0"}
                     max={"99"}
                     placeholder="YY"
                     maxLength={"2"}
                     className="cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 bg-transparent appearance-none outline-none placeholder:text-black/50"
                     onChange={(e) => {
+                      if (e.target.value > maxEllapsedYear) {
+                        let errorArray = error;
+                        if (!errorArray.includes(e.target.id)) {
+                          errorArray.push(e.target.id);
+                        }
+                        setError(errorArray);
+                      } else {
+                        const expDateValidation = valid.expirationDate({
+                          month: expDate.month,
+                          year: e.target.value,
+                        });
+                        inputErrorCheck(e, !expDateValidation.isValid);
+                      }
                       setExpDate((prevValue) => ({
                         ...prevValue,
                         year: e.target.value,
@@ -199,7 +231,6 @@ export default function AddCard(props) {
                           e.target.maxLength
                         );
                       }
-                      inputErrorCheck(e, 2);
                     }}
                     onBlur={(e) => {
                       if (
@@ -223,18 +254,21 @@ export default function AddCard(props) {
               <div
                 className={`items-center rounded-md border xl:px-8 lg:px-6 md:px-4 sm:px-3 px-2 xl:text-2xl lg:text-xl md:text-lg sm:text-base text-sm ${
                   error.includes("cvc") ? "border-warning" : "border-black/80"
-                } ${expDate.month !== "" ? "flex" : "hidden"}`}
+                } ${expDateValidation.isValid ? "flex" : "hidden"}`}
               >
                 <div className="relative grow">
                   <input
                     type="tel"
                     id="cvc"
+                    autoComplete="cc-csc"
                     maxLength={"3"}
                     className="block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50"
                     placeholder="***"
                     onChange={(e) => {
                       setCvc(e.target.value);
-                      inputErrorCheck(e, 3);
+
+                      const cvcValidation = valid.cvv(e.target.value);
+                      inputErrorCheck(e, !cvcValidation.isValid);
                     }}
                   />
                   <label
@@ -265,11 +299,13 @@ export default function AddCard(props) {
                 <input
                   type="tel"
                   id="cardName"
+                  autoComplete="cc-name"
                   className={`block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50`}
                   placeholder="Enter Card Holder Name"
                   onChange={(e) => {
                     setCardName(e.target.value);
-                    inputErrorCheck(e, 2);
+                    const nameValidation = valid.cardholderName(e.target.value);
+                    inputErrorCheck(e, !nameValidation.isValid);
                   }}
                 />
                 <label

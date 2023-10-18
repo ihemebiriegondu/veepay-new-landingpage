@@ -57,10 +57,18 @@ export default function FormDropdowns(props) {
   };
 
   const secondOptionClickFunction = (e) => {
+    const cableSearch = document.getElementById("searchBar");
+
     e.target.parentElement.classList.add("invisible");
     document
       .getElementById(e.target.parentElement.getAttribute("data-target-option"))
       .parentElement.classList.remove("border-servicesInputFocused");
+
+    if (props.id === "paymentItemInput") {
+      props.setItems(props.allItems);
+      document.getElementById("search").value = "";
+      cableSearch.classList.add("hidden");
+    }
   };
 
   return (
