@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import SettingInputs from "./settingInputs";
 import FeedBackModal from "./feedBackModal";
 import masterCardLogo from "../../../assets/icons/MasterCard.png";
+import visaLogo from "../../../assets/icons/Type=Default.png";
+import maestraLogo from "../../../assets/icons/Type=Color, showText=False, showSymbol=True.png";
+import jbcLogo from "../../../assets/icons/Style=Gradient, Flat=False.png";
 import cardBg from "../../../assets/images/01.png";
 
 import CarouselSwipperButtons from "../MainDashboardComponents/carouselSwipperButtons";
@@ -100,21 +103,43 @@ export default function AccountSetting(props) {
             props.cards.map((card) => (
               <SwiperSlide key={card.number}>
                 <div>
-                  <p
-                    className="text-right text-sm text-gray-500 pe-3"
-                    id={card.number}
-                    onClick={(e) => removeCardFunction(e)}
-                  >
-                    Remove
-                  </p>
-                  <div className="pb-3 xs:pt-20 pt-16 px-5 rounded-xl overflow-hidden relative">
+                  <div className="flex justify-end">
+                    <p
+                      className="text-right text-sm text-gray-500 pe-3 w-fit"
+                      id={card.number}
+                      onClick={(e) => removeCardFunction(e)}
+                    >
+                      Remove
+                    </p>
+                  </div>
+                  <div className="pb-3 px-5 rounded-xl overflow-hidden relative">
                     <div className="relative z-30">
+                      <div
+                        className={`flex justify-end xs:pt-10 pt-8 ${
+                          card.cardType === "mastercard" ||
+                          card.cardType === "visa"
+                            ? "xs:mb-10 mb-8"
+                            : "mb-7"
+                        }`}
+                      >
+                        <div className="xs:w-16 w-12 xs:h-12 h-8">
+                          {card.cardType === "visa" && (
+                            <img
+                              src={visaLogo}
+                              alt="visa logo"
+                              className="w-full h-full object-scale-down"
+                            />
+                          )}
+                        </div>
+                      </div>
                       <p className="xs:mb-8 mb-6 xs:text-2xl text-lg font-semibold">
                         {card.number}
                       </p>
                       <div className="flex items-center justify-between xs:gap-1 gap-1.5">
                         <div>
-                          <p className="xs:text-xs text-xxs">Card Holder Name</p>
+                          <p className="xs:text-xs text-xxs">
+                            Card Holder Name
+                          </p>
                           <p className="xs:text-sm text-xs font-semibold uppercase">
                             {card.name}
                           </p>
@@ -129,12 +154,36 @@ export default function AccountSetting(props) {
                               card.expDate.year}
                           </p>
                         </div>
-                        <div className="xs:w-12 w-7 xs:h-7 h-4">
-                          <img
-                            src={masterCardLogo}
-                            alt="master card logo"
-                            className="w-full h-full"
-                          />
+                        <div
+                          className={`${
+                            card.cardType === "mastercard"
+                              ? "xs:w-12 w-7 xs:h-7 h-4"
+                              : card.cardType === "visa"
+                              ? "hidden"
+                              : "xs:w-12 w-7 xs:h-12 h-8"
+                          }`}
+                        >
+                          {card.cardType === "mastercard" && (
+                            <img
+                              src={masterCardLogo}
+                              alt="master card logo"
+                              className="w-full h-full"
+                            />
+                          )}
+                          {card.cardType === "maestro" && (
+                            <img
+                              src={maestraLogo}
+                              alt="maestro card logo"
+                              className="w-full h-full"
+                            />
+                          )}
+                          {card.cardType === "jcb" && (
+                            <img
+                              src={jbcLogo}
+                              alt="jbc logo"
+                              className="w-full h-full object-scale-down"
+                            />
+                          )}
                         </div>
                       </div>
                     </div>

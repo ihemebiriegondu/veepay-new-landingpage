@@ -8,7 +8,6 @@ export default function AddCard(props) {
   const [cardName, setCardName] = useState("");
   const [cvc, setCvc] = useState("");
   const [expDate, setExpDate] = useState({ month: "", year: "" });
-  const [cardType, setCardType] = useState("");
 
   const [error, setError] = useState([]);
 
@@ -48,8 +47,6 @@ export default function AddCard(props) {
 
   const addCardFunction = (e) => {
     e.preventDefault();
-
-    let errorArray = error;
     const cardsArray = props.cards;
 
     if (
@@ -78,8 +75,7 @@ export default function AddCard(props) {
 
         const noVal = valid.number(cardNumber);
         if (noVal.card) {
-          console.log(noVal.card.type);
-          setCardType(noVal.card.type);
+          cardObj.cardType = noVal.card.type;
         }
       }
     } /*else {
@@ -134,6 +130,7 @@ export default function AddCard(props) {
                     setCardNumber(e.target.value);
                     const numberValidation = valid.number(e.target.value);
                     inputErrorCheck(e, !numberValidation.isValid);
+                    console.log(numberValidation);
                   }}
                 />
                 <label
