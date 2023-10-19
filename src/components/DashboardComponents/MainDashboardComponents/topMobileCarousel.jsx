@@ -7,16 +7,13 @@ import "swiper/css/pagination";
 
 import Wallet from "./walletSection";
 import Bank from "./bankSection";
+import SingleDashCard from "./singleDashCard";
 import CarouselSwipperButtons from "./carouselSwipperButtons";
 
 export default function TopMobileCarousel(props) {
   return (
     <div className="">
-      <Swiper
-        modules={[A11y]}
-        spaceBetween={50}
-        slidesPerView={1}
-      >
+      <Swiper modules={[A11y]} spaceBetween={50} slidesPerView={1}>
         <CarouselSwipperButtons />
         <SwiperSlide>
           <Wallet />
@@ -32,6 +29,20 @@ export default function TopMobileCarousel(props) {
             />
           </SwiperSlide>
         )}
+        {props.cards &&
+          props.cards.map((card) => (
+            <SwiperSlide key={card.number}>
+              <SingleDashCard
+                cardType={card.cardType}
+                cardNumber={card.number}
+                cardName={card.name}
+                cardMonth={card.expDate.month}
+                cardYear={card.expDate.year}
+                activeMainTab={props.activeMainTab}
+                activeSettingTab={props.activeSettingTab}
+              />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

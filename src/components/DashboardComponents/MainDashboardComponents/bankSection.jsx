@@ -28,7 +28,7 @@ export default function Bank(props) {
           <p className="text-center text-base">No details</p>
         ) : (
           <div
-            className={`flex flex-col xmd:gap-y-16 xs:gap-y-24 gap-y-20 relative z-40 ${
+            className={`flex flex-col xl:gap-y-16 xmd:gap-y-28 md:gap-y-24 xs:gap-y-20 gap-y-20 relative z-40 ${
               props.accName && props.accName.length > 12
                 ? "xmd:text-sm"
                 : "xmd:text-base"

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Wallet from "./MainDashboardComponents/walletSection";
 import QuickActions from "./MainDashboardComponents/quickActionsSection";
 import Bank from "./MainDashboardComponents/bankSection";
+import DashCards from "./MainDashboardComponents/dashCards";
 import Recent from "./MainDashboardComponents/recentSection";
 import AppAside from "./MainDashboardComponents/appAside";
 import Ads from "./MainDashboardComponents/ads";
@@ -12,6 +13,7 @@ import TopMobileCarousel from "./MainDashboardComponents/topMobileCarousel";
 export default function MainDashboard(props) {
   return (
     <section className="">
+      {console.log(props.cards)}
       <div className="flex flex-row justify-end items-center md:gap-3 gap-2.5">
         <Link
           to={"/dashboard"}
@@ -43,6 +45,7 @@ export default function MainDashboard(props) {
           <div className="xmd:hidden block relative">
             <TopMobileCarousel
               bankDetails={props.bankDetails}
+              cards={props.cards}
               activeMainTab={props.activeTab}
               activeSettingTab={props.setCurrentSettingTab}
             />
@@ -56,11 +59,16 @@ export default function MainDashboard(props) {
               </div>
               <Recent />
             </div>
-            <div className="bg-white p-5 rounded-xl xmd:block hidden">
+            <div className="bg-white p-5 rounded-xl xmd:flex flex-col justify-between hidden">
               <Bank
                 bankName={props.bankDetails.bankName}
                 accName={props.bankDetails.accName}
                 accNo={props.bankDetails.accNo}
+                activeMainTab={props.activeTab}
+                activeSettingTab={props.setCurrentSettingTab}
+              />
+              <DashCards
+                cards={props.cards}
                 activeMainTab={props.activeTab}
                 activeSettingTab={props.setCurrentSettingTab}
               />
