@@ -7,23 +7,29 @@ export default function CarouselSwipperButtons() {
 
   return (
     <div className="">
-      <div
-        className={`absolute top-1/2 left-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
-        onClick={() => {
-          swiper.slidePrev();
-        }}
-      >
-        <FiChevronLeft />
-      </div>
+      {swiper.realIndex !== 0 && (
+        <div
+          className={`absolute left-0.5 bottom-1/2 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
+          onClick={() => {
+            swiper.slidePrev();
+          }}
+        >
+          <FiChevronLeft />
+        </div>
+      )}
 
-      <div
-        className={`absolute bottom-1/2 right-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
-        onClick={() => {
-          swiper.slideNext();
-        }}
-      >
-        <FiChevronRight />
-      </div>
+      {swiper.realIndex === swiper.snapGrid.length - 1 ? (
+        ""
+      ) : (
+        <div
+          className={`absolute bottom-1/2 right-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
+          onClick={() => {
+            swiper.slideNext();
+          }}
+        >
+          <FiChevronRight />
+        </div>
+      )}
     </div>
   );
 }

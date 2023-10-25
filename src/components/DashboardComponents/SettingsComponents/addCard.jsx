@@ -78,19 +78,7 @@ export default function AddCard(props) {
           cardObj.cardType = noVal.card.type;
         }
       }
-    } /*else {
-    /*const cardsInputs = document.querySelectorAll(".cardInput");
-      let errorArray = error;
-
-      cardsInputs.forEach((input) => {
-        if (input.value === "") {
-          
-        }
-      });
-      console.log(errorArray)
-      setError(errorArray);
-      console.log(error)
-    }*/
+    }
   };
 
   return (
@@ -130,7 +118,6 @@ export default function AddCard(props) {
                     setCardNumber(e.target.value);
                     const numberValidation = valid.number(e.target.value);
                     inputErrorCheck(e, !numberValidation.isValid);
-                    console.log(numberValidation);
                   }}
                 />
                 <label

@@ -18,6 +18,8 @@ export default function AccountSetting(props) {
   const [error, setError] = useState(false);
   const [succes, setSucess] = useState(false);
 
+  const [activeSlide, setActiveSlide] = useState(0);
+
   const changeBankDetails = (e) => {
     e.preventDefault();
 
@@ -85,6 +87,7 @@ export default function AccountSetting(props) {
         <Swiper
           modules={[A11y]}
           spaceBetween={28}
+          onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
           breakpoints={{
             0: {
               slidesPerView: 1,
@@ -97,7 +100,7 @@ export default function AccountSetting(props) {
             },
           }}
         >
-          <CarouselSwipperButtons />
+          <CarouselSwipperButtons active={activeSlide} />
           {props.cards &&
             props.cards.map((card) => (
               <SwiperSlide key={card.number}>

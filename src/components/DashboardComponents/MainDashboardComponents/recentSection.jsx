@@ -45,7 +45,7 @@ export default function Recent() {
       </div>
 
       <div className="bg-white md:rounded-xl rounded-lg md:py-5 py-4 md:pe-4 pe-1">
-        <div className="md:h-64 h-44 overflow-y-scroll snap-mandatory snap-y scroll-my-4 recentScroll">
+        <div className="md:h-64 h-44 overflow-y-scroll snap-mandatory snap-y scroll-my-4 recentScroll outline-none">
           {history &&
             history.map((hist, i) => (
               <div key={i} className="md:py-5 md:ps-10 ps-4 md:pe-6 pe-3 snap-start">

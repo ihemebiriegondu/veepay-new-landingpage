@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y } from "swiper/modules";
 
@@ -11,10 +11,17 @@ import SingleDashCard from "./singleDashCard";
 import CarouselSwipperButtons from "./carouselSwipperButtons";
 
 export default function TopMobileCarousel(props) {
+  const [activeSlide, setActiveSlide] = useState(0);
+
   return (
     <div className="">
-      <Swiper modules={[A11y]} spaceBetween={50} slidesPerView={1}>
-        <CarouselSwipperButtons />
+      <Swiper
+        modules={[A11y]}
+        spaceBetween={50}
+        slidesPerView={1}
+        onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+      >
+        <CarouselSwipperButtons active={activeSlide} />
         <SwiperSlide>
           <Wallet />
         </SwiperSlide>
