@@ -7,7 +7,7 @@ import MainDashboard from "../components/DashboardComponents/mainDashboard";
 
 import avatar from "../assets/images/Vector.png";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [currentTab, setCurrentTab] = useState("Dashboard");
   const [currentSettingTab, setCurrentSettingTab] = useState("genSetting");
 
@@ -17,7 +17,6 @@ export default function Dashboard() {
     accName: "",
     accNo: "",
   });
-  const [cards, setCards] = useState([]);
 
   return (
     <main className="bg-[#F5F4F7] relative top-0 bottom-0 w-full">
@@ -40,8 +39,8 @@ export default function Dashboard() {
             setProfilePic={setUserPhoto}
             bankDetails={bankDetails}
             updateBankDetails={setBankDetails}
-            cards={cards}
-            setCards={setCards}
+            cards={props.cards}
+            setCards={props.setCards}
           />
         ) : (
           <MainDashboard
@@ -49,7 +48,7 @@ export default function Dashboard() {
             setCurrentSettingTab={setCurrentSettingTab}
             profilePic={userPhoto}
             bankDetails={bankDetails}
-            cards={cards}
+            cards={props.cards}
           />
         )}
       </section>

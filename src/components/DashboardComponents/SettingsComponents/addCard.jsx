@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiCreditCard, FiX } from "react-icons/fi";
 import { BiSolidErrorCircle } from "react-icons/bi";
 import FormButtons from "../../login&signupComponents/formButtons";
+import bankCardsList from "../SettingsComponents/bankCardsList";
 
 export default function AddCard(props) {
   const [cardNumber, setCardNumber] = useState("");
@@ -15,6 +16,7 @@ export default function AddCard(props) {
   const maxEllapsedYear = (currentYear + 4).toString().slice(2);
 
   const valid = require("card-validator");
+  const lookup = require("binlookup")();
   const expDateValidation = valid.expirationDate(expDate);
 
   const cardNoFormat = (value) => {
@@ -58,6 +60,19 @@ export default function AddCard(props) {
     ) {
       if (error.length === 0) {
         const cardObj = {};
+
+        let lookUpBank;
+        lookup(cardNumber.split(" ").join("")).then((data) => {
+          lookUpBank = data.bank.name;
+          cardObj.bankName = data.bank.name;
+
+          const bankCard = bankCardsList.find(
+            (card) => card.name.toUpperCase() === lookUpBank
+          );
+          cardObj.bankColor = bankCard.cardColor;
+          cardObj.bankLogo = bankCard.cardLogo;
+        });
+
         cardObj.name = cardName;
         cardObj.number = cardNumber;
         cardObj.cvc = cvc;
@@ -77,6 +92,8 @@ export default function AddCard(props) {
         if (noVal.card) {
           cardObj.cardType = noVal.card.type;
         }
+
+        console.log(cardObj)
       }
     }
   };

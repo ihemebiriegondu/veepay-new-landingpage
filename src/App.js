@@ -14,8 +14,11 @@ import Bulksms from "./allServices/bulksms";
 import CableTV from "./allServices/cableTV";
 import FundWallet from "./pages/fundWallet";
 import WithdrawFunds from "./pages/withdrawFunds";
+import { useState } from "react";
 
 function App() {
+  const [cards, setCards] = useState([]);
+
   return (
     <Router>
       <ScrollToTop />
@@ -30,15 +33,21 @@ function App() {
         <Route path="/confirmcode" element={<PasswordResetCode />} />
         <Route path="/createpassword" element={<CreatePassword />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={<Dashboard cards={cards} setCards={setCards} />}
+        />
 
         <Route path="/sme data" element={<SmeData />} />
         <Route path="/airtime purchase" element={<AirtimePurchase />} />
         <Route path="/bulk sms" element={<Bulksms />} />
         <Route path="/cable tv subscription" element={<CableTV />} />
 
-        <Route path="/fund wallet" element={<FundWallet />} />
-        <Route path="/withdraw funds" element={<WithdrawFunds />}/>
+        <Route
+          path="/fund wallet"
+          element={<FundWallet cards={cards} setCards={setCards} />}
+        />
+        <Route path="/withdraw funds" element={<WithdrawFunds />} />
       </Routes>
     </Router>
   );

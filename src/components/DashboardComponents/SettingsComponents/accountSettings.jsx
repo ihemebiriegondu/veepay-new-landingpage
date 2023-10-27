@@ -39,7 +39,6 @@ export default function AccountSetting(props) {
   };
 
   const removeCardFunction = (e) => {
-    console.log(e.target.id);
     const cardsArray = props.cards;
 
     const newCardsArray = cardsArray.filter(
@@ -114,9 +113,9 @@ export default function AccountSetting(props) {
                       Remove
                     </p>
                   </div>
-                 
+
                   <div
-                    className={`pb-3 px-5 rounded-xl overflow-hidden relative cards ${card.cardType && `${card.cardType}`}`}
+                    className={`pb-3 px-5 rounded-xl overflow-hidden relative cards ${card.bankColor}`}
                   >
                     <div className="relative z-30">
                       <div
@@ -128,13 +127,7 @@ export default function AccountSetting(props) {
                         }`}
                       >
                         <div className="xs:w-16 w-12 xs:h-12 h-8">
-                          {card.cardType === "visa" && (
-                            <img
-                              src={visaLogo}
-                              alt="visa logo"
-                              className="w-full h-full object-scale-down"
-                            />
-                          )}
+                          <img src={card.bankLogo} alt="bank logo" />
                         </div>
                       </div>
                       <p className="xs:mb-8 mb-6 xs:text-2xl text-lg font-semibold">
@@ -163,8 +156,6 @@ export default function AccountSetting(props) {
                           className={`${
                             card.cardType === "mastercard"
                               ? "xs:w-12 w-7 xs:h-7 h-4"
-                              : card.cardType === "visa"
-                              ? "hidden"
                               : "xs:w-12 w-7 xs:h-12 h-8"
                           }`}
                         >
@@ -172,6 +163,13 @@ export default function AccountSetting(props) {
                             <img
                               src={masterCardLogo}
                               alt="master card logo"
+                              className="w-full h-full"
+                            />
+                          )}
+                          {card.cardType === "visa" && (
+                            <img
+                              src={visaLogo}
+                              alt="visa logo"
                               className="w-full h-full"
                             />
                           )}
