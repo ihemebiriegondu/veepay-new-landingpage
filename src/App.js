@@ -12,6 +12,8 @@ import SmeData from "./allServices/smeData";
 import AirtimePurchase from "./allServices/airtimePurchase";
 import Bulksms from "./allServices/bulksms";
 import CableTV from "./allServices/cableTV";
+import FundWallet from "./pages/fundWallet";
+import WithdrawFunds from "./pages/withdrawFunds";
 
 function App() {
   return (
@@ -34,6 +36,9 @@ function App() {
         <Route path="/airtime purchase" element={<AirtimePurchase />} />
         <Route path="/bulk sms" element={<Bulksms />} />
         <Route path="/cable tv subscription" element={<CableTV />} />
+
+        <Route path="/fund wallet" element={<FundWallet />} />
+        <Route path="/withdraw funds" element={<WithdrawFunds />}/>
       </Routes>
     </Router>
   );

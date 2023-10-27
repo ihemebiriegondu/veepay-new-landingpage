@@ -46,13 +46,13 @@ export default function Wallet() {
         </div>
         <div className="flex items-center md:gap-8 sm:gap-7 xs:gap-4 gap-3 italic font-medium md:text-base xs:text-sm text-xs">
           <Link
-            to={"/dashboard"}
+            to={"/fund wallet"}
             className="inline-block md:py-3.5 py-2 md:px-7 xs:px-6 px-3 text-primary rounded-md bg-white outline-none transition ease-in-out duration-500"
           >
             Fund Wallet
           </Link>
           <Link
-            to={"/dashboard"}
+            to={"/withdraw funds"}
             className="inline-block md:py-3.5 py-2 md:px-7 xs:px-6 px-3 text-white hover:text-primary rounded-md border border-white hover:bg-white outline-none transition ease-in-out duration-500"
           >
             Withdraw Cash

@@ -24,31 +24,27 @@ export default function Bank(props) {
             : "bg-primary/90 text-white"
         }`}
       >
-        {props.accName === "" ? (
-          <p className="text-center text-base">No details</p>
-        ) : (
-          <div
-            className={`flex flex-col xl:gap-y-16 xmd:gap-y-28 md:gap-y-24 xs:gap-y-20 gap-y-20 relative z-40 ${
-              props.accName && props.accName.length > 12
-                ? "xmd:text-sm"
-                : "xmd:text-base"
-            }`}
-          >
-            <p className="text-right capitalize">{props.bankName}</p>
-            <div className="ps-0.5">
-              <p
-                className={`capitalize ${
-                  props.accName && props.accName.length > 12
-                    ? "xmd:text-base text-lg"
-                    : "xmd:text-lg"
-                }`}
-              >
-                {props.accName}
-              </p>
-              <p className="mt-2">{props.accNo}</p>
-            </div>
+        <div
+          className={`flex flex-col xl:gap-y-16 xmd:gap-y-28 md:gap-y-24 gap-y-20 relative z-40 ${
+            props.accName && props.accName.length > 12
+              ? "xmd:text-sm"
+              : "xmd:text-base"
+          }`}
+        >
+          <p className="text-right capitalize">{props.bankName}</p>
+          <div className="ps-0.5">
+            <p
+              className={`capitalize ${
+                props.accName && props.accName.length > 12
+                  ? "xmd:text-base text-lg"
+                  : "xmd:text-lg"
+              }`}
+            >
+              {props.accName}
+            </p>
+            <p className="mt-2">{props.accNo}</p>
           </div>
-        )}
+        </div>
         <div
           className={`absolute left-0 bottom-0 right-0 z-30 opacity-50 ${
             props.accName === "" ? "hidden" : "block"

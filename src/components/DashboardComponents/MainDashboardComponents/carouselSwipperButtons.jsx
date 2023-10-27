@@ -9,7 +9,7 @@ export default function CarouselSwipperButtons() {
     <div className="">
       {swiper.realIndex !== 0 && (
         <div
-          className={`absolute left-0.5 bottom-1/2 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
+          className={`absolute left-0.5 bottom-1/2 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-md transition duration-200 ease-in cursor-pointer`}
           onClick={() => {
             swiper.slidePrev();
           }}
@@ -22,7 +22,7 @@ export default function CarouselSwipperButtons() {
         ""
       ) : (
         <div
-          className={`absolute bottom-1/2 right-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-sm transition duration-200 ease-in cursor-pointer`}
+          className={`absolute bottom-1/2 right-0.5 z-50 text-xl text-black bg-white hover:text-primary p-1 rounded-full shadow-md transition duration-200 ease-in cursor-pointer`}
           onClick={() => {
             swiper.slideNext();
           }}

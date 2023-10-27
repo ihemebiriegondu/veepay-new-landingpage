@@ -13,7 +13,6 @@ import TopMobileCarousel from "./MainDashboardComponents/topMobileCarousel";
 export default function MainDashboard(props) {
   return (
     <section className="">
-      {console.log(props.cards)}
       <div className="flex flex-row justify-end items-center md:gap-3 gap-2.5">
         <Link
           to={"/dashboard"}
@@ -60,18 +59,42 @@ export default function MainDashboard(props) {
               <Recent />
             </div>
             <div className="bg-white p-5 rounded-xl xmd:flex flex-col justify-between hidden">
-              <Bank
-                bankName={props.bankDetails.bankName}
-                accName={props.bankDetails.accName}
-                accNo={props.bankDetails.accNo}
-                activeMainTab={props.activeTab}
-                activeSettingTab={props.setCurrentSettingTab}
-              />
-              <DashCards
-                cards={props.cards}
-                activeMainTab={props.activeTab}
-                activeSettingTab={props.setCurrentSettingTab}
-              />
+              {props.bankDetails.accName === "" && props.cards.length === 0 ? (
+                <div className="xmd:w-72 text-center h-full flex flex-col justify-center">
+                  <p className="text-black/70">No bank/card details added</p>
+                  <div className="mx-auto w-2/3">
+                    <button
+                      type="button"
+                      className={`lg:py-2 py-1 lg:text-lg md:text-base sm:text-sm font-medium rounded mt-3 w-full outline-none transition ease-in-out duration-500 bg-primary hover:bg-primary/90 text-white`}
+                      onClick={() => {
+                        props.activeTab("Settings");
+                        props.setCurrentSettingTab("Accounts");
+                      }}
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  {props.bankDetails.accName !== "" && (
+                    <Bank
+                      bankName={props.bankDetails.bankName}
+                      accName={props.bankDetails.accName}
+                      accNo={props.bankDetails.accNo}
+                      activeMainTab={props.activeTab}
+                      activeSettingTab={props.setCurrentSettingTab}
+                    />
+                  )}
+                  {props.cards.length > 0 && (
+                    <DashCards
+                      cards={props.cards}
+                      activeMainTab={props.activeTab}
+                      activeSettingTab={props.setCurrentSettingTab}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </article>
