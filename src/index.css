@@ -58,3 +58,66 @@ body {
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: 0px !important;
 }
+
+.accessbg {
+  /*background: linear-gradient(
+    to bottom right,
+    white 30%,
+    #fc640c 10%,
+    white 40%,
+    gray 10%
+  );*/
+  background: linear-gradient(
+    to bottom right,
+    white 0%,
+    white 40%,
+    #fc640c 40%,
+    #fc640c 42%,
+
+    white 42%,
+    white 46%,
+    rgba(223, 220, 220, 0.521) 46%,
+    rgba(223, 220, 220, 0.521) 48%,
+    white 48%,
+    white 52%,
+    rgba(223, 220, 220, 0.521) 52%,
+    rgba(223, 220, 220, 0.521) 54%,
+
+    white 54%,
+    white 57%,
+    rgba(223, 220, 220, 0.521) 57%,
+    rgba(223, 220, 220, 0.521) 60%,
+    white 60%,
+    white 63%,
+    rgba(223, 220, 220, 0.521) 63%,
+    rgba(223, 220, 220, 0.521) 66%,
+
+    white 66%,
+    white 68.5%,
+    rgba(223, 220, 220, 0.521) 68.5%,
+    rgba(223, 220, 220, 0.521) 72%,
+    white 72%,
+    white 74.5%,
+    rgba(223, 220, 220, 0.521) 74.5%,
+    rgba(223, 220, 220, 0.521) 78%,
+
+    white 78%,
+    white 80%,
+    rgba(223, 220, 220, 0.521) 80%,
+    rgba(223, 220, 220, 0.521) 84%,
+    white 84%,
+    white 86%,
+    rgba(223, 220, 220, 0.521) 86%,
+    rgba(223, 220, 220, 0.521) 90%,
+
+    white 90%,
+    white 91%,
+    rgba(223, 220, 220, 0.521) 91%,
+    rgba(223, 220, 220, 0.521) 95.5%,
+    white 95.5%,
+    white 96.5%,
+    rgba(223, 220, 220, 0.521) 96.5%
+  );
+}
+
+/*bg-gradient-to-br from-white from-30% via-[#fc640c] via-10%*/

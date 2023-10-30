@@ -65,35 +65,37 @@ export default function AddCard(props) {
         lookup(cardNumber.split(" ").join("")).then((data) => {
           lookUpBank = data.bank.name;
           cardObj.bankName = data.bank.name;
+          console.log(data.bank.name);
 
-          const bankCard = bankCardsList.find(
-            (card) => card.name.toUpperCase() === lookUpBank
-          );
-          cardObj.bankColor = bankCard.cardColor;
-          cardObj.bankLogo = bankCard.cardLogo;
-        });
+          if (lookUpBank !== "") {
+            const bankCard = bankCardsList.find(
+              (card) => card.name === lookUpBank
+            );
+            cardObj.bankColor = bankCard.cardColor;
+            cardObj.bankLogo = bankCard.cardLogo;
 
-        cardObj.name = cardName;
-        cardObj.number = cardNumber;
-        cardObj.cvc = cvc;
-        cardObj.expDate = expDate;
+            //other fuctions after getting bank name
+            cardObj.name = cardName;
+            cardObj.number = cardNumber;
+            cardObj.cvc = cvc;
+            cardObj.expDate = expDate;
 
-        if (cardsArray.length > 0) {
-          if (!cardsArray.some((card) => card.number === cardNumber)) {
-            cardsArray.push(cardObj);
+            if (cardsArray.length > 0) {
+              if (!cardsArray.some((card) => card.number === cardNumber)) {
+                cardsArray.push(cardObj);
+              }
+            } else {
+              cardsArray.push(cardObj);
+            }
+            props.setShowAddCard(false);
+            props.setCards(cardsArray);
+
+            const noVal = valid.number(cardNumber);
+            if (noVal.card) {
+              cardObj.cardType = noVal.card.type;
+            }
           }
-        } else {
-          cardsArray.push(cardObj);
-        }
-        props.setShowAddCard(false);
-        props.setCards(cardsArray);
-
-        const noVal = valid.number(cardNumber);
-        if (noVal.card) {
-          cardObj.cardType = noVal.card.type;
-        }
-
-        console.log(cardObj)
+        });
       }
     }
   };

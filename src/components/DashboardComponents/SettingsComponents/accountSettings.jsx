@@ -115,19 +115,24 @@ export default function AccountSetting(props) {
                   </div>
 
                   <div
-                    className={`pb-3 px-5 rounded-xl overflow-hidden relative cards ${card.bankColor}`}
+                    className={`pb-3 px-5 rounded-xl overflow-hidden relative ${card.bankColor} ${card.bankName === 'ACCESS' && 'border shadow'}`}
                   >
                     <div className="relative z-30">
                       <div
-                        className={`flex justify-end xs:pt-10 pt-8 ${
-                          card.cardType === "mastercard" ||
-                          card.cardType === "visa"
-                            ? "xs:mb-10 mb-8"
-                            : "mb-7"
-                        }`}
+                        className={`flex ${card.bankName === 'ACCESS' ? 'justify-start xs:pt-2 pt-1.5' : 'justify-end xs:pt-10 pt-8'} xs:mb-10 mb-8`}
                       >
-                        <div className="xs:w-16 w-12 xs:h-12 h-8">
-                          <img src={card.bankLogo} alt="bank logo" />
+                        <div
+                          className={
+                            card.bankName === "GTBANK"
+                              ? "border border-white"
+                              : ""
+                          }
+                        >
+                          <img
+                            src={card.bankLogo}
+                            alt="bank logo"
+                            className=""
+                          />
                         </div>
                       </div>
                       <p className="xs:mb-8 mb-6 xs:text-2xl text-lg font-semibold">
