@@ -26,6 +26,10 @@ export default function FundWallet(props) {
     setCardsToDisplay(newCardList);
   };
 
+  const fundWalletFunction = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">
       <main className="absolute top-0 bottom-0 w-full z-20 lg:bg-servicesBg bg-mobileFormBg flex flex-col justify-between">
@@ -42,20 +46,34 @@ export default function FundWallet(props) {
             </Link>
           </div>
 
-          <form className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 xs:px-6 px-4 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4">
+          <form
+            onSubmit={(e) => {
+              fundWalletFunction(e);
+            }}
+            className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 xs:px-6 px-4 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4"
+          >
             <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary lg:-mb-9 md:-mb-5 -mb-1">
               Fund Wallet
             </h1>
-
-            <div>
-              <FormDropdowns
-                id={"cardsList"}
-                formOptions={cardsToDisplay}
-                value={cardSelected}
-                optionClickFunction={setCardToUse}
-              />
-            </div>
-
+            {props.cards.length > 0 ? (
+              <div>
+                <FormDropdowns
+                  id={"cardsList"}
+                  formOptions={cardsToDisplay}
+                  value={cardSelected}
+                  optionClickFunction={setCardToUse}
+                />
+              </div>
+            ) : (
+              <div className="lg:rounded-xl md:rounded-lg rounded-md lg:px-10 md:px-6 px-2 lg:py-5 md:py-3.5 py-2 shadow">
+                <Link
+                  to={"/dashboard"}
+                  className="text-white bg-primary/90 inline-block py-2 px-3 lg:rounded-lg md:rounded-md rounded-sm"
+                >
+                  Add card details
+                </Link>
+              </div>
+            )}
             <div>
               <label
                 htmlFor="fundamount"
@@ -74,7 +92,6 @@ export default function FundWallet(props) {
                 }}
               />
             </div>
-
             <div>
               <label
                 htmlFor="fundpassword"
@@ -111,15 +128,12 @@ export default function FundWallet(props) {
                 </button>
               </div>
             </div>
-
             <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
               <FormButtons
-                type={'submit'}
+                type={"submit"}
                 text={"Fund"}
                 buttonType={"submit"}
-                font={
-                  "font-bold mont lg:text-3xl md:text-xl text-base"
-                }
+                font={"font-bold mont lg:text-3xl md:text-xl text-base"}
               />
             </div>
           </form>
