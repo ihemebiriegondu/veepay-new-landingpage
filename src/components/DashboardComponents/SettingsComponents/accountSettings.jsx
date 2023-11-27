@@ -115,11 +115,19 @@ export default function AccountSetting(props) {
                   </div>
 
                   <div
-                    className={`pb-3 px-5 rounded-xl overflow-hidden relative ${card.bankColor} ${card.bankName === 'ACCESS' && 'border shadow'}`}
+                    className={`pb-3 px-5 rounded-xl overflow-hidden h-60 relative ${
+                      card.bankColor
+                    } ${card.bankName === "ACCESS BANK PLC" && "border shadow"}`}
                   >
                     <div className="relative z-30">
                       <div
-                        className={`flex ${card.bankName === 'ACCESS' ? 'justify-start xs:pt-2 pt-1.5' : 'justify-end xs:pt-10 pt-8'} xs:mb-10 mb-8`}
+                        className={`flex ${
+                          card.bankName === "ACCESS BANK PLC"
+                            ? "justify-start xs:pt-2 pt-1.5"
+                            : card.bankName === "STANBIC IBTC BANK"
+                            ? "justify-start xs:pt-10 pt-8"
+                            : "justify-end xs:pt-10 pt-8"
+                        } xs:mb-10 mb-8`}
                       >
                         <div
                           className={

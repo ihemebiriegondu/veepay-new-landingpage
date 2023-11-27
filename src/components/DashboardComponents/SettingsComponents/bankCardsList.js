@@ -1,7 +1,7 @@
 import gtLogo from "../../../assets/icons/bankLogos/Bank Image.png";
 import accessLogo from "../../../assets/icons/bankLogos/Bank Image (2).png";
 import citiLogo from "../../../assets/icons/bankLogos/Group 80.png";
-import stanbic from "../../../assets/icons/bankLogos/Bank Image (4).png";
+import stanbic from "../../../assets/icons/bankLogos/Bank Image (6).png";
 
 const cardLists = [
   {
@@ -11,7 +11,7 @@ const cardLists = [
     cardLogo: gtLogo,
   },
   {
-    name: "ACCESS",
+    name: "ACCESS BANK PLC",
     cardColor: "accessbg",
     cardLogo: accessLogo,
   },
@@ -22,7 +22,7 @@ const cardLists = [
   },
   {
     name:'STANBIC IBTC BANK',
-    cardColor: "",
+    cardColor: "stanbicbg",
     cardLogo: stanbic,
   },
   {

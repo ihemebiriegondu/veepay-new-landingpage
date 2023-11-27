@@ -120,4 +120,9 @@ body {
   );
 }
 
-/*bg-gradient-to-br from-white from-30% via-[#fc640c] via-10%*/
+.stanbicbg {
+  background: linear-gradient(120deg, #1c9cd4 40%, #212c66 40%, #212c66 90%);
+  color: rgba(255, 255, 255, 0.801);
+}
+
+/* bg-gradient-to-br from-[#1c9cd4] from-40% via-[#212c66] via-40% to-[#212c66] to-90% */

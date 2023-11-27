@@ -5,12 +5,26 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import FormInputs from "../components/allServicesComponents/formInputs";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Footer from "../components/footer";
+import FormDropdowns from "../components/allServicesComponents/formDropdowns";
+import FormButtons from "../components/login&signupComponents/formButtons";
 
 export default function FundWallet(props) {
   const [passwordType, setPasswordType] = useState("password");
 
-  //const [cardSelected, setCardSelected] = useState([]);
-  console.log(props.cards);
+  const [cardsToDisplay, setCardsToDisplay] = useState(props.cards);
+  const [cardSelected, setCardSelected] = useState(props.cards[0]);
+
+  const setCardToUse = (cardOption) => {
+    props.cards.forEach((card) => {
+      if (card.number === cardOption) {
+        setCardSelected(card);
+      }
+    });
+    const newCardList = props.cards.filter(
+      (card) => card.number !== cardOption
+    );
+    setCardsToDisplay(newCardList);
+  };
 
   return (
     <div className="lg:bg-servicesBg bg-mobileFormBg">
@@ -29,32 +43,17 @@ export default function FundWallet(props) {
           </div>
 
           <form className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 xs:px-6 px-4 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4">
-            <h1 className="mont text-4xl font-bold text-primary lg:-mb-9 md:-mb-5 -mb-1">
+            <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary lg:-mb-9 md:-mb-5 -mb-1">
               Fund Wallet
             </h1>
 
             <div>
-              <select
-                name="selectCard"
-                id="selectCard"
-                className="outline-none border-none"
-              >
-                {props.cards &&
-                  props.cards.map((card) => (
-                    <option key={card.number} value="">
-                      <div>
-                        <img src="" alt="banklogo" />
-                      </div>
-                      <div>
-                        <p></p>
-                        <p></p>
-                      </div>
-                      <div>
-                        <p>Change</p>
-                      </div>
-                    </option>
-                  ))}
-              </select>
+              <FormDropdowns
+                id={"cardsList"}
+                formOptions={cardsToDisplay}
+                value={cardSelected}
+                optionClickFunction={setCardToUse}
+              />
             </div>
 
             <div>
@@ -111,6 +110,17 @@ export default function FundWallet(props) {
                   />
                 </button>
               </div>
+            </div>
+
+            <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
+              <FormButtons
+                type={'submit'}
+                text={"Fund"}
+                buttonType={"submit"}
+                font={
+                  "font-bold mont lg:text-3xl md:text-xl text-base"
+                }
+              />
             </div>
           </form>
         </section>

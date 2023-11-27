@@ -66,33 +66,39 @@ export default function AddCard(props) {
           lookUpBank = data.bank.name;
           cardObj.bankName = data.bank.name;
           console.log(data.bank.name);
+          console.log(data.country.name)
 
-          if (lookUpBank !== "") {
-            const bankCard = bankCardsList.find(
-              (card) => card.name === lookUpBank
-            );
-            cardObj.bankColor = bankCard.cardColor;
-            cardObj.bankLogo = bankCard.cardLogo;
-
-            //other fuctions after getting bank name
-            cardObj.name = cardName;
-            cardObj.number = cardNumber;
-            cardObj.cvc = cvc;
-            cardObj.expDate = expDate;
-
-            if (cardsArray.length > 0) {
-              if (!cardsArray.some((card) => card.number === cardNumber)) {
+          if (data.bank.name !== "" && data.bank.name !== undefined) {
+            if (data.country.name === 'Nigeria') {
+              const bankCard = bankCardsList.find(
+                (card) => card.name === lookUpBank
+              );
+              cardObj.bankColor = bankCard.cardColor;
+              cardObj.bankLogo = bankCard.cardLogo;
+  
+              //other fuctions after getting bank name
+              cardObj.name = cardName;
+              cardObj.number = cardNumber;
+              cardObj.cvc = cvc;
+              cardObj.expDate = expDate;
+  
+              if (cardsArray.length > 0) {
+                if (!cardsArray.some((card) => card.number === cardNumber)) {
+                  cardsArray.push(cardObj);
+                }
+              } else {
                 cardsArray.push(cardObj);
               }
-            } else {
-              cardsArray.push(cardObj);
+              props.setShowAddCard(false);
+              props.setCards(cardsArray);
+  
+              const noVal = valid.number(cardNumber);
+              if (noVal.card) {
+                cardObj.cardType = noVal.card.type;
+              }
             }
-            props.setShowAddCard(false);
-            props.setCards(cardsArray);
-
-            const noVal = valid.number(cardNumber);
-            if (noVal.card) {
-              cardObj.cardType = noVal.card.type;
+            else {
+              console.log('Not in nigeria')
             }
           }
         });
