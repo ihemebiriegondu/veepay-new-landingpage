@@ -306,7 +306,7 @@ export default function AddCard(props) {
             >
               <div className="relative grow">
                 <input
-                  type="tel"
+                  type="text"
                   id="cardName"
                   autoComplete="cc-name"
                   className={`block cardInput lg:pb-2 pb-1.5 lg:pt-3 pt-2.5 w-full bg-transparent appearance-none outline-none placeholder:text-black/50`}

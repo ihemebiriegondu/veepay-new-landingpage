@@ -89,7 +89,7 @@ export default function FormDropdowns(props) {
       >
         {props.id === "cardsList" ? (
           <div className="flex xs:gap-x-3 gap-x-2 items-center">
-            <div className="xs:w-10 w-9 xs:h-10 h-9">
+            <div className="w-10 h-10">
               <img
                 src={props.value.bankLogo}
                 alt="bank logo"
