@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { Link } from "react-router-dom";
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import FormInputs from "../components/allServicesComponents/formInputs";
 import SettingInputs from "../components/DashboardComponents/SettingsComponents/settingInputs";
 import FormButtons from "../components/login&signupComponents/formButtons";
+import { BiSolidBank } from "react-icons/bi";
 
 export default function WithdrawFunds(props) {
   const [passwordType, setPasswordType] = useState("password");
@@ -31,31 +32,45 @@ export default function WithdrawFunds(props) {
           </h1>
 
           <form className="bg-white flex flex-col lg:gap-y-16 md:gap-y-14 gap-y-12 lg:rounded-t-4xl md:rounded-t-3xl sm:rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl sm:rounded-br-xl lg:py-14 md:py-9 py-6 lg:px-20 md:px-12 xs:px-6 px-4 xl:mx-32 lg:mx-16 mx-0">
-            <div>
-              <p className="lg:mb-7 md:mb-4 mb-2 lg:text-2xl md:text-xl sm:text-lg text-base font-medium ">
-                Confirm Bank Details
-              </p>
-              <div className="grid md:grid-cols-2 grid-cols-1 2xl:gap-x-40 xl:gap-x-32 lg:gap-x-28 md:gap-x-12 gap-x-8 lg:gap-y-12 gap-y-6 md:pe-0 sm:pe-20 xs:pe-10 pe-8">
-                <SettingInputs
-                  label={"Bank Name"}
-                  value={props.bankDetails.bankName}
-                  inputEvent={""}
-                  inputType={"viewOnly"}
-                />
-                <SettingInputs
-                  label={"Account Name"}
-                  value={props.bankDetails.accName}
-                  inputEvent={""}
-                  inputType={"viewOnly"}
-                />
-                <SettingInputs
-                  label={"Account No"}
-                  value={props.bankDetails.accNo}
-                  inputEvent={""}
-                  inputType={"viewOnly"}
-                />
+            {props.bankDetails.accNo === "" ? (
+              <div className="lg:rounded-xl md:rounded-lg rounded-md flex items-center justify-between shadow mb-2 text-black bg-white lg:px-10 md:px-6 sm:px-2 px-3 lg:py-5 md:py-3.5 sm:py-2 py-3">
+                <div className="flex items-center md:gap-x-3 gap-x-1">
+                  <span className="text-white bg-darkSecondary md:p-2.5 p-2 rounded-full md:text-2xl text-xl">
+                    <BiSolidBank />
+                  </span>
+                  <p className="font-medium md:text-base text-sm">Add Bank Details</p>
+                </div>
+                <span>
+                  <IoChevronForwardOutline />
+                </span>
               </div>
-            </div>
+            ) : (
+              <div className="">
+                <p className="lg:mb-7 md:mb-4 mb-2 lg:text-2xl md:text-xl sm:text-lg text-base font-medium ">
+                  Confirm Bank Details
+                </p>
+                <div className="grid md:grid-cols-2 grid-cols-1 2xl:gap-x-40 xl:gap-x-32 lg:gap-x-28 md:gap-x-12 gap-x-8 lg:gap-y-12 gap-y-6 md:pe-0 sm:pe-20 xs:pe-10 pe-8">
+                  <SettingInputs
+                    label={"Bank Name"}
+                    value={props.bankDetails.bankName}
+                    inputEvent={""}
+                    inputType={"viewOnly"}
+                  />
+                  <SettingInputs
+                    label={"Account Name"}
+                    value={props.bankDetails.accName}
+                    inputEvent={""}
+                    inputType={"viewOnly"}
+                  />
+                  <SettingInputs
+                    label={"Account No"}
+                    value={props.bankDetails.accNo}
+                    inputEvent={""}
+                    inputType={"viewOnly"}
+                  />
+                </div>
+              </div>
+            )}
 
             <div className="flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4">
               <div>

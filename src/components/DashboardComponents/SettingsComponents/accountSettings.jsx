@@ -76,7 +76,7 @@ export default function AccountSetting(props) {
           type="submit"
           className="w-3/4 inline-block py-2 px-7 text-sm font-medium italic text-white rounded-md bg-primary outline-none transition ease-in-out duration-500"
         >
-          Update
+          {props.bankDetails.accNo === "" ? "Add Details" : "Update"}
         </button>
       </form>
 
@@ -117,7 +117,9 @@ export default function AccountSetting(props) {
                   <div
                     className={`pb-3 px-5 rounded-xl overflow-hidden h-60 relative ${
                       card.bankColor
-                    } ${card.bankName === "ACCESS BANK PLC" && "border shadow"}`}
+                    } ${
+                      card.bankName === "ACCESS BANK PLC" && "border shadow"
+                    }`}
                   >
                     <div className="relative z-30">
                       <div

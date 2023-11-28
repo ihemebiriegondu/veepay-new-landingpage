@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import LogoNav from "../components/login&signupComponents/logoNav";
 import { Link } from "react-router-dom";
-import { IoArrowBackOutline } from "react-icons/io5";
+import { IoArrowBackOutline, IoChevronForwardOutline } from "react-icons/io5";
+import { AiFillCreditCard } from "react-icons/ai";
 import FormInputs from "../components/allServicesComponents/formInputs";
 import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import Footer from "../components/footer";
@@ -56,16 +57,30 @@ export default function FundWallet(props) {
             <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary mb-4 sm:block hidden">
               Fund Wallet
             </h1>
-            {props.cards.length > 0 && (
-              <div className="lg:mb-12 md:mb-8 sm:mb-4">
+            <div className="lg:mb-12 md:mb-8 sm:mb-4">
+              {props.cards.length > 0 ? (
                 <FormDropdowns
                   id={"cardsList"}
                   formOptions={cardsToDisplay}
                   value={cardSelected}
                   optionClickFunction={setCardToUse}
                 />
-              </div>
-            )}
+              ) : (
+                <div className="lg:rounded-xl md:rounded-lg rounded-md flex items-center justify-between shadow mb-2 text-black bg-white lg:px-10 md:px-6 sm:px-2 px-3 lg:py-5 md:py-3.5 sm:py-2 py-3">
+                  <div className="flex items-center md:gap-x-3 gap-x-1">
+                    <span className="text-white bg-darkPrimary md:p-2.5 p-2 rounded-full md:text-2xl text-xl">
+                      <AiFillCreditCard />
+                    </span>
+                    <p className="font-medium md:text-base text-sm">
+                      Add Credit/Debit card
+                    </p>
+                  </div>
+                  <span>
+                    <IoChevronForwardOutline />
+                  </span>
+                </div>
+              )}
+            </div>
 
             <form
               onSubmit={(e) => {
