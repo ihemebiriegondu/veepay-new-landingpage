@@ -18,6 +18,11 @@ import { useState } from "react";
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [bankDetails, setBankDetails] = useState({
+    bankName: "",
+    accName: "",
+    accNo: "",
+  });
 
   return (
     <Router>
@@ -35,7 +40,14 @@ function App() {
 
         <Route
           path="/dashboard"
-          element={<Dashboard cards={cards} setCards={setCards} />}
+          element={
+            <Dashboard
+              cards={cards}
+              setCards={setCards}
+              bankDetails={bankDetails}
+              setBankDetails={setBankDetails}
+            />
+          }
         />
 
         <Route path="/sme data" element={<SmeData />} />
@@ -47,7 +59,10 @@ function App() {
           path="/fund wallet"
           element={<FundWallet cards={cards} setCards={setCards} />}
         />
-        <Route path="/withdraw funds" element={<WithdrawFunds />} />
+        <Route
+          path="/withdraw funds"
+          element={<WithdrawFunds bankDetails={bankDetails} />}
+        />
       </Routes>
     </Router>
   );

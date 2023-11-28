@@ -79,7 +79,7 @@ export default function FormDropdowns(props) {
         type="button"
         className={`${
           props.id === "cardsList"
-            ? "relative flex items-center justify-between outline-none border-none shadow mb-2 text-black w-full"
+            ? "relative flex items-center justify-between outline-none border-none shadow mb-2 text-black w-full bg-white lg:px-10 md:px-6 sm:px-2 px-3 lg:py-5 md:py-3.5 sm:py-2 py-3"
             : "lg:my-3 md:my-1.5 my-0.5 relative flex items-center justify-between outline-none border-servicesInput text-black w-full dropdownButton"
         } ${
           props.page === "sms"

@@ -52,17 +52,12 @@ export default function FundWallet(props) {
             </Link>
           </div>
 
-          <form
-            onSubmit={(e) => {
-              fundWalletFunction(e);
-            }}
-            className="lg:py-16 md:py-11 py-6 lg:px-20 md:px-12 xs:px-6 px-4 bg-white xl:mx-32 lg:mx-16 mx-0 lg:rounded-t-4xl md:rounded-t-3xl rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl rounded-br-xl flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4"
-          >
-            <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary lg:-mb-5 md:-mb-3 -mb-1">
+          <article className="lg:rounded-t-4xl md:rounded-t-3xl sm:rounded-t-xl lg:rounded-br-4xl md:rounded-br-3xl sm:rounded-br-xl overflow-hidden sm:bg-white lg:py-14 md:py-9 sm:py-6 lg:px-20 md:px-12 sm:px-6 xl:mx-32 lg:mx-16 mx-0">
+            <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary mb-4 sm:block hidden">
               Fund Wallet
             </h1>
             {props.cards.length > 0 && (
-              <div>
+              <div className="lg:mb-12 md:mb-8 sm:mb-4">
                 <FormDropdowns
                   id={"cardsList"}
                   formOptions={cardsToDisplay}
@@ -71,69 +66,81 @@ export default function FundWallet(props) {
                 />
               </div>
             )}
-            <div>
-              <label
-                htmlFor="fundamount"
-                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
-              >
-                Amount (₦)
-              </label>
-              <FormInputs
-                type={"tel"}
-                id={"fundamount"}
-                placeholder={"Enter Amount"}
-                disabled={false}
-                value={""}
-                inputChanged={(value) => {
-                  console.log(value);
-                }}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="fundpassword"
-                className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl text-lg"
-              >
-                Password
-              </label>
-              <div
-                className={`lg:my-3 md:my-1.5 my-0.5 lg:border-4 md:border-3 border-2 border-servicesInput lg:rounded-xl md:rounded-lg rounded-md lg:px-10 md:px-6 px-2 lg:text-2xl md:text-lg text-base flex items-center justify-between`}
-              >
-                <input
-                  type={passwordType}
-                  name="fundpassword"
-                  id="fundpassword"
-                  placeholder="********"
-                  className="lg:py-5 md:py-3.5 py-2 outline-none bg-transparent w-full me-4 text-black"
-                  onChange={(e) => {
-                    console.log(e.target.value);
+
+            <form
+              onSubmit={(e) => {
+                fundWalletFunction(e);
+              }}
+              className="bg-white flex flex-col lg:gap-y-12 md:gap-y-8 gap-y-4 sm:px-0 xs:px-6 px-4 sm:py-0 py-6"
+            >
+              <h1 className="mont lg:text-4xl md:text-3xl text-2xl font-bold text-primary sm:mb-4 sm:hidden">
+                Fund Wallet
+              </h1>
+
+              <div>
+                <label
+                  htmlFor="fundamount"
+                  className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl sm:text-lg text-base"
+                >
+                  Amount (₦)
+                </label>
+                <FormInputs
+                  type={"tel"}
+                  id={"fundamount"}
+                  placeholder={"Enter Amount"}
+                  disabled={false}
+                  value={""}
+                  inputChanged={(value) => {
+                    console.log(value);
                   }}
                 />
-                <button type="button" className="outline-none border-none">
-                  <HiOutlineEye
-                    className={`${
-                      passwordType === "password" ? "block" : "hidden"
-                    }`}
-                    onClick={() => setPasswordType("text")}
-                  />
-                  <HiOutlineEyeOff
-                    className={`${
-                      passwordType === "password" ? "hidden" : "block"
-                    }`}
-                    onClick={() => setPasswordType("password")}
-                  />
-                </button>
               </div>
-            </div>
-            <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
-              <FormButtons
-                type={"submit"}
-                text={"Fund"}
-                buttonType={"submit"}
-                font={"font-bold mont lg:text-3xl md:text-xl text-base"}
-              />
-            </div>
-          </form>
+              <div>
+                <label
+                  htmlFor="fundpassword"
+                  className="lg:ps-2.5 ps-2 ps-1.5 lg:text-2xl md:text-xl sm:text-lg text-base"
+                >
+                  Password
+                </label>
+                <div
+                  className={`lg:my-3 md:my-1.5 my-0.5 lg:border-4 md:border-3 border-2 border-servicesInput lg:rounded-xl md:rounded-lg rounded-md lg:px-10 md:px-6 px-2 lg:text-2xl md:text-lg text-base flex items-center justify-between`}
+                >
+                  <input
+                    type={passwordType}
+                    name="fundpassword"
+                    id="fundpassword"
+                    placeholder="********"
+                    className="lg:py-5 md:py-3.5 py-2 outline-none bg-transparent w-full me-4 text-black"
+                    onChange={(e) => {
+                      console.log(e.target.value);
+                    }}
+                  />
+                  <button type="button" className="outline-none border-none">
+                    <HiOutlineEye
+                      className={`${
+                        passwordType === "password" ? "block" : "hidden"
+                      }`}
+                      onClick={() => setPasswordType("text")}
+                    />
+                    <HiOutlineEyeOff
+                      className={`${
+                        passwordType === "password" ? "hidden" : "block"
+                      }`}
+                      onClick={() => setPasswordType("password")}
+                    />
+                  </button>
+                </div>
+              </div>
+              <div className="mx-auto sm:w-1/2 w-4/5 pt-6">
+                <FormButtons
+                  type={"submit"}
+                  text={"Fund"}
+                  buttonType={"submit"}
+                  font={"font-bold mont lg:text-3xl md:text-xl text-base"}
+                />
+              </div>
+            </form>
+          </article>
         </section>
 
         <div className="bottom-0 w-full">
